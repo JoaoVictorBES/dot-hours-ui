@@ -13,19 +13,19 @@
 
             <div class="form-group">
                 <label for="username">Usuário</label>
-                <input type="text" class="input-field" id="username" [(ngModel)]="usuarioLogin.username" placeholder="usuário" name="username" required>
+                <input type="text" class="input-field" id="username" [(ngModel)]="usuarioLogin.username"  name="username" required>
             </div>
             
             <div class="form-group">
                 <label for="password">Senha</label>
-                <input type="password" class="input-field" id="password" [(ngModel)]="usuarioLogin.password" placeholder="password" name="password" required>
+                <input type="password" class="input-field" id="password" [(ngModel)]="usuarioLogin.password"  name="password" required>
             </div>
             
             <div class="link-container">
                 <a href="/reset-password">Esqueceu a senha?</a>
             </div>
 
-            <button type="submit" class="submit-btn" href="/dashboard">SUBMIT</button>
+            <button type="submit" class="submit-btn" href="/dashboard">LOGAR</button>
 
         </form>
 

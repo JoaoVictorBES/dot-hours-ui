@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Projeto } from '../../Models/projeto';
+import { ProjetoService } from '../../Services/projeto.service';
 
 @Component({
   selector: 'app-projeto',
@@ -7,6 +9,16 @@ import { Component } from '@angular/core';
   templateUrl: './projeto.component.html',
   styleUrl: './projeto.component.scss'
 })
-export class ProjetoComponent {
+export class ProjetoComponent implements OnInit {
+
+  projetos: Projeto[] = [];
+
+  constructor(private projetoService: ProjetoService) {}
+
+  ngOnInit(): void {
+    this.projetoService.getProjetos().subscribe(data => {
+      this.projetos = data;
+    });
+  }
 
 }

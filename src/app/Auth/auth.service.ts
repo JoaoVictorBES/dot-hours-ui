@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+
 import { inject, Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,7 +6,6 @@ import { inject, Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  http = inject(HttpClient);
 
   API = "http://localhost:8080/api/";
 

@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Projeto } from '../Models/projeto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,4 +15,9 @@ export class ProjetoService {
 
   
   constructor() { }
+
+  getProjetos(): Observable<Projeto[]> {
+    return this.http.get<Projeto[]>(this.API);
+  }
+
 }

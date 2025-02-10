@@ -1,7 +1,6 @@
 body, html {
     margin: 0;
     padding: 0; 
-    
 }
 
 .container {
@@ -42,16 +41,20 @@ body, html {
 .login-box h2 {
     font-size: 50px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+    margin-top: -20px;
+    color:#171C2D;
 }
 
 .login-box p {
     font-size: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    
+    color:#171C2D;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 label{
@@ -60,6 +63,7 @@ label{
     margin-bottom: 10px;
     display: block;
     text-align: left;
+    color:#171C2D;
 }
 
 .input-field {
@@ -74,20 +78,23 @@ label{
     font-size: 16px;
     text-align: center;
     outline: none;
+    opacity: 50%;
 }
 
 .submit-btn {
-    background-color: #111;
+    background-color: #171C2D;
     color: #F4B860;
     padding: 12px 25px;
     border: none;
     border-radius: 20px;
-    font-size: 14px;
+    font-size: 20px;
     cursor: pointer;
     font-weight: bold;
     text-transform: uppercase;
     transition: 0.3s;
-    margin-top: 70px;
+    margin-top: 50px;
+    width: 200px;
+    height: 50px;
 }
 
 .submit-btn:hover {

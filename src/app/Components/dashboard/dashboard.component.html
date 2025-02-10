@@ -1,1 +1,62 @@
 
+<body>
+
+    <header>
+
+        <div class="sidebar">
+
+            <div class="profile">
+                <img src="avatar.jpg" alt="Admin Silva">
+                <h2>Admin Silva</h2>
+            </div>
+
+            <nav>
+                <ul>
+                    <li>Dashboard</li>
+                    <li>Projetos</li>
+                    <li>Atividades</li>
+                    <li>Nova Tarefa</li>
+                    <li>Relatórios</li>
+                    <li>Gerenciamento de Usuário</li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+   
+    <main>
+
+        <section class="top-bar">
+            <button class="nova-tarefa">Nova Tarefa</button>
+        </section>
+
+        <section class="container">
+
+            <div class="box-projetos">
+                <h3>Projetos</h3>
+                <div *ngFor="let projeto of projetos" class="item">
+                    {{ projeto.nome }} - Prioridade: {{ projeto.prioridade }} - {{ projeto.usuarioResponsavel.nome }} - {{projeto.descricao}} - {{projeto.status}}
+                </div>
+            </div>
+
+            <div class="box-atividades">
+                <h3>Atividades</h3>
+                <div *ngFor="let atividade of atividades" class="item">
+                    {{ atividade.nome }} - Status: {{ atividade.status }} - {{ atividade.usuarioResponsavel.nome }}
+                </div>
+            </div>
+
+        </section>
+
+        <section class="botoes">
+            <div class="botao">Gerenciamento de Projetos</div>
+            <div class="botao destaque">Relatórios</div>
+            <div class="botao">Gerenciamento de Usuários</div>
+        </section>
+
+    </main>
+
+</body>
+
+
