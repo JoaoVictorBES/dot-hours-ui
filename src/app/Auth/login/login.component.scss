@@ -1,37 +1,32 @@
-body {
-   margin: 0;
-   padding: 0;
+body, html {
+    margin: 0;
+    padding: 0; 
+    
 }
 
 .container {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 80px;
-    width: 90%;
-    height: 80%;
+    height: 100vh; 
+    background-color: #254252;
+    padding: 40px;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
+    font-family: 'Roboto', sans-serif;
 }
 
 .logo {
     text-align: center;
     color: #F4B860;
-
-}
-
-.logo h1 {
-    font-size: 36px;
-    font-weight: bold;
-    margin: 10px 0;
-}
-
-.logo p {
-    font-size: 12px;
-    letter-spacing: 2px;
+    flex: 1;
 }
 
 .logo img {
-    width: 120px;
+    width: 120px; 
     height: auto;
+    margin-bottom: 10px;
 }
+
 
 .login-box {
     background-color: #F4B860;
@@ -39,23 +34,39 @@ body {
     border-radius: 20px;
     text-align: center;
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
-    width: 300px;
+    width: 350px;
+    flex: 1;
+    height: 70%;
 }
 
-.login-box h1 {
-    margin-bottom: 20px;
-    color: #111;
-    font-size: 28px;
+.login-box h2 {
+    font-size: 50px;
     font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.login-box p {
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 
 .form-group {
     margin-bottom: 20px;
 }
 
+label{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+    text-align: left;
+}
+
 .input-field {
     width: 100%;
+    height: 40px;
     padding: 12px;
+    margin: 10px 0;
     border-radius: 10px;
     border: none;
     background-color: #2E2B26;
@@ -75,8 +86,40 @@ body {
     cursor: pointer;
     font-weight: bold;
     text-transform: uppercase;
+    transition: 0.3s;
+    margin-top: 70px;
 }
 
 .submit-btn:hover {
     background-color: #333;
+}
+
+.link-container{
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+.link-container a{
+    color: #111;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+// Ajuste para telas menores
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .login-box {
+        width: 90%;
+    }
+
+    .logo {
+        margin-bottom: 20px;
+    }
 }

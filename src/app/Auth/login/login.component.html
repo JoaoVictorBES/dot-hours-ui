@@ -1,30 +1,34 @@
-
-    <div class="container">
-        <div class="logo">
-            <img class="logo-icon" href="/src/app/Assets/DOT__1_-removebg-preview.png">
-            <h1>DOT HOURS</h1>
-            <p>PROJECT MANAGEMENT</p>
-        </div>
-        <div class="login-box">
-            <form (ngSubmit)="login()" class="form-container">
-
-                <div class="form-group">
-
-                    <label for="username">Usuário</label>
-                    <input type="text" class="input-field" id="username"  [(ngModel)]="login.name" placeholder="Usuário" name="campoUsuario" required>
-
-                </div>
-                
-                <div class="form-group">
-                    
-                    <label for="password">Senha</label>
-                    <input type="password" class="input-field" id="password" placeholder="Senha" name="campoSenha" required>
-
-                </div>
-               
-                <button class="submit-btn">SUBMIT</button>
-
-            </form>
-        </div>
+<div class="container">
+    
+    <div class="logo">
+        <img class="logo-icon" src="/src/app/Assets/DOT__1_-removebg-preview.png" alt="Logo DOT HOURS">
     </div>
 
+    <div class="login-box">
+
+        <h2>LOGIN</h2>
+        <p>Seja Bem-Vindo! Logue com sua conta.</p>
+
+        <form (ngSubmit)="logar()" class="form-container">
+
+            <div class="form-group">
+                <label for="username">Usuário</label>
+                <input type="text" class="input-field" id="username" [(ngModel)]="usuarioLogin.username" placeholder="usuário" name="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" class="input-field" id="password" [(ngModel)]="usuarioLogin.password" placeholder="password" name="password" required>
+            </div>
+            
+            <div class="link-container">
+                <a href="/reset-password">Esqueceu a senha?</a>
+            </div>
+
+            <button type="submit" class="submit-btn" href="/dashboard">SUBMIT</button>
+
+        </form>
+
+    </div>
+
+</div>

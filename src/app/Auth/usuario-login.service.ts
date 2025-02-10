@@ -21,5 +21,9 @@ export class UsuarioLoginService {
 
   }
 
+  //autenticar senha
+
+  //recuperar senha
+
 
 }
