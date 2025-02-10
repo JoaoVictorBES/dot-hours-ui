@@ -9,6 +9,7 @@ import { Usuario } from '../Models/usuario';
 export class UsuarioLoginService {
 
   http = inject(HttpClient);
+  
   API = "http://localhost:8080/api/usuario";
 
 

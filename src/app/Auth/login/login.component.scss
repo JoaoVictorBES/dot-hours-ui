@@ -1,70 +1,82 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #0F2C3F;
-    font-family: Arial, sans-serif;
+   margin: 0;
+   padding: 0;
 }
+
 .container {
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 80px;
+    width: 90%;
+    height: 80%;
 }
+
 .logo {
     text-align: center;
     color: #F4B860;
+
 }
+
 .logo h1 {
-    font-size: 32px;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 10px 0;
 }
+
 .logo p {
     font-size: 12px;
     letter-spacing: 2px;
 }
-.logo-icon {
-    width: 100px;
-    height: 100px;
-    border: 3px solid #F4B860;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 40px;
+
+.logo img {
+    width: 120px;
+    height: auto;
 }
+
 .login-box {
     background-color: #F4B860;
-    padding: 30px;
-    border-radius: 15px;
+    padding: 40px;
+    border-radius: 20px;
     text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
+    width: 300px;
 }
-.login-box h2 {
+
+.login-box h1 {
     margin-bottom: 20px;
     color: #111;
-    font-size: 24px;
+    font-size: 28px;
+    font-weight: bold;
 }
-.input-box {
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.input-field {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 12px;
     border-radius: 10px;
     border: none;
     background-color: #2E2B26;
     color: #fff;
     font-size: 16px;
     text-align: center;
+    outline: none;
 }
+
 .submit-btn {
     background-color: #111;
     color: #F4B860;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border: none;
     border-radius: 20px;
     font-size: 14px;
     cursor: pointer;
-    margin-top: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
+
 .submit-btn:hover {
     background-color: #333;
 }
