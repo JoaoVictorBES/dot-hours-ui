@@ -1,0 +1,43 @@
+.sidebar {
+    background-color: #0a1128;
+    color: #f4a261;
+}
+
+.sidebar .circle {
+    width: 50px;
+    height: 50px;
+    background-color: #f4a261;
+    border-radius: 50%;
+}
+
+.sidebar .icons i {
+    font-size: 24px;
+    color: #f4a261;
+    cursor: pointer;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.table-container {
+    background-color: #f4a261;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+table {
+    background-color: transparent;
+    text-align: center;
+}
+
+th {
+    font-weight: bold;
+    color: black;
+}
+
+td {
+    font-size: 14px;
+    color: black;
+}

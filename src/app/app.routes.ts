@@ -3,6 +3,7 @@ import { LoginComponent } from './Auth/login/login.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { CadastroUsuarioComponent } from './Components/dashboard/layout/cadastro-usuario/cadastro-usuario.component';
 import { CadastroProjetoComponent } from './Components/dashboard/layout/cadastro-projeto/cadastro-projeto.component';
+import { ListaProjetosComponent } from './Components/dashboard/layout/lista-projetos/lista-projetos.component';
 
 export const routes: Routes = [
 
@@ -14,6 +15,8 @@ export const routes: Routes = [
 
     {path: 'cadastro-usuario', component: CadastroUsuarioComponent},
 
-    {path: 'cadastro-projeto', component: CadastroProjetoComponent}
+    {path: 'cadastro-projeto', component: CadastroProjetoComponent},
+
+    {path: 'lista-projetos', component: ListaProjetosComponent}
 
 ];
