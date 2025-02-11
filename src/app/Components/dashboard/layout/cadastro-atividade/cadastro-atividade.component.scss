@@ -1,0 +1,44 @@
+.sidebar {
+
+    margin-left: -10px;
+    width: 80px;
+    background-color:#171C2D;
+    height: 100vh;
+    
+    .circle {
+        width: 50px;
+        height: 50px;
+        background-color: #F9982F;
+        border-radius: 50%;
+    }
+
+    .nav-item {
+        font-size: 1.5rem;
+        color: #F9982F;
+        margin: 20px 0;
+        text-align: center;
+    }
+
+
+}
+
+.form-box {
+    background-color:#EAB56F;
+    width: 60%;
+    border-radius: 10px;
+    
+    h2 {
+        color: #171C2D;
+    }
+
+    .form-control {
+        border: none;
+        border-radius: 5px;
+    }
+
+    .btn {
+        border-radius: 5px;
+        color:#fff ;
+        background-color: #171C2D;
+    }
+}
