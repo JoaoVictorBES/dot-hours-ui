@@ -1,81 +1,89 @@
-<div class="box-container">
-    <div class="sidebar">
-
-        <div class="profile">
-            <img src="/src/assets/Design_sem_nome-removebg-verde-preview.png" alt="Admin Silva">
-            <h2>Admin Silva</h2>
+<div class="container-fluid">
+    <div class="row">
+        
+        <!-- Sidebar -->
+        <div class="col-lg-2 sidebar text-center">
+            <div class="profile">
+                <img src="/src/assets/Design_sem_nome-removebg-verde-preview.png" alt="Admin Silva">
+                <h2>Admin Silva</h2>
+            </div>
+            <nav class="text-start">
+                <ul class="list-unstyled">
+                    <li>Dashboard</li>
+                    <li>Projetos</li>
+                    <li>Atividades</li>
+                    <li>Nova Tarefa</li>
+                    <li>Relatórios</li>
+                    <li>Gerenciamento de Usuário</li>
+                </ul>
+            </nav>
         </div>
 
-        <nav>
-            <ul>
-                <li>Dashboard</li>
-                <li>Projetos</li>
-                <li>Atividades</li>
-                <li>Nova Tarefa</li>
-                <li>Relatórios</li>
-                <li>Gerenciamento de Usuário</li>
-            </ul>
-        </nav>
-
-    </div>
-
-    
-   
-    <main>
-
-        <section class="top-bar">
-            <button class="nova-tarefa">Nova Tarefa</button>
-        </section>
-
-        <section class="container">
-
-            <div class="box-projetos">
-                <h3>Projetos</h3>
-                <div *ngFor="let projeto of projetos" class="item">
-                    <strong>{{ projeto.nome }}</strong>
-                    <span>{{ projeto.prioridade }} - {{ projeto.usuarioResponsavel.nome }}</span>
-                    <p>{{ projeto.descricao }} - {{ projeto.status }}</p>
-                </div>
-            </div>
-
-            <div class="box-atividades">
-                <h3>Atividades</h3>
-                <div *ngFor="let atividade of atividades" class="item">
-                    <strong>{{ atividade.nome }}</strong>
-                    <span>{{ atividade.status }} - {{ atividade.usuarioResponsavel.nome }}</span>
-                </div>
-            </div>
-
-        </section>
-
-        <section class="botoes">
-
-            <div class="botao">
-                <i class="fa-solid fa-clipboard-list"></i>
-                <span>Gerenciamento de Projetos</span>
-            </div>
-
-            <div class="botao destaque">
-                <i class="fa-solid fa-chart-pie"></i>
-                <span>Relatórios</span>
-            </div>
-
-            <div class="botao">
-                <i class="fa-solid fa-user"></i>
-                <span>Gerenciamento de Usuários</span>
-            </div>
-
-            <div class="botao">
-                <i class="fa-solid fa-user"></i>
-                <span>Gerenciamento de Usuários</span>
-            </div>
+        <!-- Conteúdo Principal -->
+        <div class="col-lg-10 offset-lg-2">
             
-        </section>
+            <!-- Top Bar -->
+            <div class="row mt-3">
+                <div class="col text-end">
+                    <button class="btn btn-warning">Nova Tarefa</button>
+                </div>
+            </div>
 
-    </main>
+            <!-- Projetos e Atividades -->
+            <div class="row mt-4">
+                <div class="col-lg-6">
+                    <div class="box-projetos">
+                        <h3>Projetos</h3>
+                        <div *ngFor="let projeto of projetos" class="item">
+                            <strong>{{ projeto.nome }}</strong>
+                            <span>{{ projeto.prioridade }} - {{ projeto.usuarioResponsavel.nome }}</span>
+                            <p>{{ projeto.descricao }} - {{ projeto.status }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="box-atividades">
+                        <h3>Atividades</h3>
+                        <div *ngFor="let atividade of atividades" class="item">
+                            <strong>{{ atividade.nome }}</strong>
+                            <span>{{ atividade.status }} - {{ atividade.usuarioResponsavel.nome }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botões -->
+            <div class="row mt-4 text-center botoes">
+                <div class="col-lg-3">
+                    <div class="botao">
+                        <i class="fa-solid fa-clipboard-list"></i>
+                        <span>Gerenciamento de Projetos</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="botao destaque">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Relatórios</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="botao">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Gerenciamento de Usuários</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="botao">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Gerenciamento de Usuários</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
-    
-
-
-
-

@@ -1,0 +1,25 @@
+.logo-section .logo i {
+    color: #f4a261;
+}
+
+.form-section {
+    background-color: #f4a261;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+}
+
+.input-custom {
+    background-color: #3d3d3d;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    padding: 12px;
+}
+
+.input-custom::placeholder {
+    color: #bbb;
+}
+
+.btn {
+    border-radius: 20px;
+}
