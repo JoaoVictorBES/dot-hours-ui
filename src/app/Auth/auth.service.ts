@@ -10,4 +10,6 @@ export class AuthService {
   API = "http://localhost:8080/api/";
 
   constructor() { }
+
+  login(){}
 }

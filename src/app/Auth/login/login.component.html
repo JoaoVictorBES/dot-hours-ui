@@ -1,34 +1,30 @@
 <div class="container">
-    
-    <div class="logo">
-        <img class="logo-icon" src="/src/app/Assets/DOT__1_-removebg-preview.png" alt="Logo DOT HOURS">
+    <div class="row align-items-center justify-content-center">
+        <!-- Logo -->
+        <div class="col-lg-4 text-center">
+            <div class="logo-container">
+                <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="Dot Hours Logo">
+                <h3>DOT HOURS</h3>
+                <p>PROJECT MANAGEMENT</p>
+            </div>
+        </div>
+
+        <!-- Login Form -->
+        <div class="col-lg-4">
+            <div class="login-container">
+                <h2>LOGIN</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="username">Usuário</label>
+                        <input type="text" id="username" placeholder="Digite seu usuário" [(ngModel)]="login.nome" name="username" (keyup.enter)="logar()" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" placeholder="Digite sua senha" [(ngModel)]="login.senha" (keyup.enter)="logar()" required>
+                    </div>
+                    <button type="submit">SUBMIT</button>
+                </form>
+            </div>
+        </div>
     </div>
-
-    <div class="login-box">
-
-        <h2>LOGIN</h2>
-        <p>Seja Bem-Vindo! Logue com sua conta.</p>
-
-        <form (ngSubmit)="logar()" class="form-container">
-
-            <div class="form-group">
-                <label for="username">Usuário</label>
-                <input type="text" class="input-field" id="username" [(ngModel)]="usuarioLogin.username"  name="username" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="password">Senha</label>
-                <input type="password" class="input-field" id="password" [(ngModel)]="usuarioLogin.password"  name="password" required>
-            </div>
-            
-            <div class="link-container">
-                <a href="/reset-password">Esqueceu a senha?</a>
-            </div>
-
-            <button type="submit" class="submit-btn" href="/dashboard">LOGAR</button>
-
-        </form>
-
-    </div>
-
 </div>
