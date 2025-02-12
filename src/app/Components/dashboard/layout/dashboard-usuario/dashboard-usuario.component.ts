@@ -3,15 +3,15 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-lancamento-horas',
+  selector: 'app-dashboard-usuario',
   standalone: true,
   imports: [
     FormsModule,
     CommonModule
   ],
-  templateUrl: './lancamento-horas.component.html',
-  styleUrl: './lancamento-horas.component.scss'
+  templateUrl: './dashboard-usuario.component.html',
+  styleUrl: './dashboard-usuario.component.scss'
 })
-export class LancamentoHorasComponent {
+export class DashboardUsuarioComponent {
 
 }

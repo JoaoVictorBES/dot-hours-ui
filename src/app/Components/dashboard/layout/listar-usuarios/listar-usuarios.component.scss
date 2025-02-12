@@ -21,37 +21,25 @@
     margin-top: 20px;
     cursor: pointer;
 }
-
-.table-box {
-    background-color: #f4b860;
+.content {
     padding: 20px;
-    border-radius: 10px;
 }
-
-h2 {
+.table-container {
+    background-color: #ffb84d;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+.table thead {
     font-weight: bold;
-    color: #000;
 }
-
-button.btn-warning {
-    background-color: #ffcc5c;
+.btn-novo {
+    background-color: #ffb84d;
     border: none;
+    padding: 10px 20px;
     font-weight: bold;
-}
-
-table {
-    width: 100%;
-    background-color: #fff;
     border-radius: 5px;
-    overflow: hidden;
 }
-
-thead {
-    background-color: #f4b860;
-    color: #000;
-    font-weight: bold;
-}
-
-tbody tr:hover {
-    background-color: #ffe0a6;
+.btn-novo:hover {
+    background-color: #e09e3b;
 }
