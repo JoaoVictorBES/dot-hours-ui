@@ -12,26 +12,26 @@ import { DashboardUsuarioComponent } from './Components/dashboard/layout/dashboa
 
 export const routes: Routes = [
 
-    {path: '', redirectTo: 'dashboard-admin', pathMatch: 'full'},
+    {path: '', redirectTo: 'login', pathMatch: 'full'},
 
     {path: 'login', component: LoginComponent},
 
-    {path: 'dashboard-admin', component: DashboardComponent},
+    {path: 'dashboard/admin', component: DashboardComponent},
 
-    {path: 'cadastro-usuario', component: CadastroUsuarioComponent},
+    {path: 'cadastro/usuario', component: CadastroUsuarioComponent},
 
-    {path: 'cadastro-projeto', component: CadastroProjetoComponent},
+    {path: 'cadastro/projeto', component: CadastroProjetoComponent},
 
-    {path: 'listar-projetos', component: ListarProjetosComponent},
+    {path: 'listar/projetos', component: ListarProjetosComponent},
 
-    {path: 'cadastro-atividade', component: CadastroAtividadeComponent},
+    {path: 'cadastro/atividade', component: CadastroAtividadeComponent},
 
-    {path: 'listar-atividades', component: ListarAtividadesComponent},
+    {path: 'listar/atividades', component: ListarAtividadesComponent},
 
-    {path: 'lancar-horas', component: LancamentoHorasComponent},
+    {path: 'lancar/horas', component: LancamentoHorasComponent},
 
-    {path: 'listar-usuarios', component: ListarUsuariosComponent},
+    {path: 'listar/usuarios', component: ListarUsuariosComponent},
 
-    {path: 'dashboard-usuario', component: DashboardUsuarioComponent}
+    {path: 'dashboard/usuario', component: DashboardUsuarioComponent}
 
 ];

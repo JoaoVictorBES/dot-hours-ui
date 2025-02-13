@@ -23,23 +23,30 @@ export class LoginService {
 
   addToken(token: string){
 
-    localStorage.setItem('token', token)
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('token', token);
+    }
 
   }
 
   removerToken(){
 
-    localStorage.removeItem('token')
+    if (typeof localStorage !== 'undefined') {
+      localStorage.removeItem('token');
+    }
 
   }
 
   getToken(){
 
-    return localStorage.getItem('token')
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem('token');
+    }
+    return null;
 
   }
 
-  jwtDecode(): any {
+  jwtDecode() {
     let token = this.getToken();
     if (token) {
         return jwtDecode<JwtPayload>(token);

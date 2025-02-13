@@ -1,9 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { LoginService } from '../login.service';
+
 import { FormsModule } from '@angular/forms';
 import { Login } from '../../Models/Login';
-import { Router } from 'express';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../../Services/login.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +19,15 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginComponent {
 
-  router = inject(Router)
+  authService = inject(AuthService);
+  router: Router;
   login: Login = new Login();
   loginService = inject(LoginService)
 
-  constructor() {}
+  constructor(router: Router) {
+    this.router = router;
+    this.loginService.removerToken();
+  }
  
 
   logar() {
@@ -30,7 +36,7 @@ export class LoginComponent {
       next: token => {
         if(token){
           this.loginService.addToken(token);
-          this.router.navigate(['/dashboard-admin'])
+          this.router.navigate(['/dashboard/admin'])
         }else{
           alert('Usuário ou senha incorretos!');
         }
