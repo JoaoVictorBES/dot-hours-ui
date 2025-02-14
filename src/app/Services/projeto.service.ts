@@ -16,8 +16,26 @@ export class ProjetoService {
   
   constructor() { }
 
-  getProjetos(): Observable<Projeto[]> {
+
+
+  findAll(): Observable<Projeto[]> {
+
     return this.http.get<Projeto[]>(this.API);
+
   }
 
+  findById(id: number): Observable<Projeto>{
+
+    return this.http.get<Projeto>(`${this.API}/${id}`)
+
+  }
+
+  create(projeto: Projeto): Observable<Projeto>{
+
+    return this.http.post<Projeto>(`${this.API}`, projeto);
+
+  }
+   
+
+ 
 }

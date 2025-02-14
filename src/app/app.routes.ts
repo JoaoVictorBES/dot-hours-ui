@@ -9,6 +9,8 @@ import { ListarAtividadesComponent } from './Components/dashboard/layout/listar-
 import { LancamentoHorasComponent } from './Components/lancamento-horas/lancamento-horas.component';
 import { ListarUsuariosComponent } from './Components/dashboard/layout/listar-usuarios/listar-usuarios.component';
 import { DashboardUsuarioComponent } from './Components/dashboard/layout/dashboard-usuario/dashboard-usuario.component';
+import { ProjetoComponent } from './Components/projeto/projeto.component';
+import { AtividadeComponent } from './Components/atividade/atividade.component';
 
 export const routes: Routes = [
 
@@ -28,10 +30,14 @@ export const routes: Routes = [
 
     {path: 'listar/atividades', component: ListarAtividadesComponent},
 
-    {path: 'lancar/horas', component: LancamentoHorasComponent},
+    {path: 'lancar-horas', component: LancamentoHorasComponent},
 
     {path: 'listar/usuarios', component: ListarUsuariosComponent},
 
-    {path: 'dashboard/usuario', component: DashboardUsuarioComponent}
+    {path: 'dashboard/usuario', component: DashboardUsuarioComponent},
+
+    {path: 'projeto/:id', component: ProjetoComponent},
+
+    {path: 'atividade/:id', component: AtividadeComponent}
 
 ];

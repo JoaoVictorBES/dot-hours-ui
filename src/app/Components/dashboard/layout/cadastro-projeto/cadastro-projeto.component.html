@@ -16,27 +16,27 @@
     <div class="main-content col-lg-11 d-flex align-items-center justify-content-center">
         <div class="form-container p-5 rounded">
             <h2 class="text-center fw-bold">NOVO PROJETO</h2>
-            <form>
+            <form (ngSubmit) ="create()" class="form">
                 <div class="mb-3">
-                    <input type="text" class="form-control input-custom" placeholder="Nome do Projeto">
+                    <input type="text" class="form-control input-custom" placeholder="Nome do Projeto" name="name" [(ngModel)]="projeto.nome">
                 </div>
                 <div class="mb-3">
-                    <input type="text" class="form-control input-custom" placeholder="Descrição do Projeto">
+                    <input type="text" class="form-control input-custom" placeholder="Descrição do Projeto" [(ngModel)]="projeto.descricao">
                 </div>
                 <div class="row">
                     <div class="col-lg-6 mb-3">
-                        <input type="date" class="form-control input-custom" placeholder="Data de Criação">
+                        <input type="date" class="form-control input-custom" placeholder="Data de Criação" [(ngModel)]="projeto.dataCriacao">
                     </div>
                     <div class="col-lg-6 mb-3">
-                        <input type="date" class="form-control input-custom" placeholder="Data da Previsão de Término">
+                        <input type="date" class="form-control input-custom" placeholder="Data da Previsão de Término" [(ngModel)]="projeto.dataFim">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 mb-3">
-                        <input type="text" class="form-control input-custom" placeholder="Prioridade">
+                        <input type="text" class="form-control input-custom" placeholder="Prioridade" [(ngModel)]="projeto.prioridade">
                     </div>
                     <div class="col-lg-6 mb-3">
-                        <input type="text" class="form-control input-custom" placeholder="Status">
+                        <input type="text" class="form-control input-custom" placeholder="Status" [(ngModel)]="projeto.status">
                     </div>
                 </div>
                 <div class="d-flex justify-content-center gap-3">

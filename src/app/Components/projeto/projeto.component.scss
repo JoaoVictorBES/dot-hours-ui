@@ -1,0 +1,51 @@
+.sidebar {
+    background-color: #0d1b2a;
+    height: 100vh;
+    padding: 20px;
+    color: white;
+}
+.sidebar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+    font-weight: bold;
+}
+.sidebar a:hover {
+    color: #f4a261;
+}
+.content {
+    background-color: #f4a261;
+    padding: 30px;
+    border-radius: 10px;
+}
+.box {
+    background-color: #0d1b2a;
+    padding: 15px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+.btn-custom {
+    background-color: #0d1b2a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.btn-custom:hover {
+    background-color: #1b2c42;
+}
+.trash-icon {
+    text-align: right;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+}

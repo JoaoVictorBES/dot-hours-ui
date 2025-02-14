@@ -8,14 +8,14 @@
                 <h2>Admin Silva</h2>
             </div>
             <nav class="text-start">
-                <ul class="list-unstyled">
-                    <li>Dashboard</li>
-                    <li>Projetos</li>
-                    <li>Atividades</li>
-                    <li>Nova Tarefa</li>
-                    <li>Relatórios</li>
-                    <li>Gerenciamento de Usuário</li>
-                </ul>
+                <div class="list-unstyled">
+                    <a routerLink="dashboard/admin" href="/dashboard/admin">Dashboard</a>
+                    <a routerLink="/listar/projetos" href="/listar/projetos">Projetos</a>
+                    <a routerLink="/listar/atividades" href="/listar/atividades">Atividades</a>
+                    <a routerLink="/lancar-horas" href="/lancar-horas">Nova Tarefa</a>
+                    <a routerLink="">Relatórios</a>
+                    <a routerLink="/listar/usuarios" href="/listar/usuarios">Gerenciamento de Usuário</a>
+                </div>
             </nav>
         </div>
 
@@ -25,7 +25,7 @@
             <!-- Top Bar -->
             <div class="row mt-3">
                 <div class="col text-end">
-                    <button class="btn btn-warning">Nova Tarefa</button>
+                    <a class="btn btn-warning" routerLink="/lancar-horas" href="/lancar-horas">Nova Tarefa</a>
                 </div>
             </div>
 
@@ -33,7 +33,7 @@
             <div class="row mt-4">
                 <div class="col-lg-6">
                     <div class="box-projetos">
-                        <h3>Projetos</h3>
+                        <h3>PROJETOS</h3>
                         <div *ngFor="let projeto of projetos" class="item">
                             <strong>{{ projeto.nome }}</strong>
                             <span>{{ projeto.prioridade }} - {{ projeto.usuarioResponsavel.nome }}</span>
@@ -44,7 +44,7 @@
 
                 <div class="col-lg-6">
                     <div class="box-atividades">
-                        <h3>Atividades</h3>
+                        <h3>ATIVIDADES</h3>
                         <div *ngFor="let atividade of atividades" class="item">
                             <strong>{{ atividade.nome }}</strong>
                             <span>{{ atividade.status }} - {{ atividade.usuarioResponsavel.nome }}</span>
@@ -55,32 +55,31 @@
 
             <!-- Botões -->
             <div class="row mt-4 text-center botoes">
-                <div class="col-lg-3">
-                    <div class="botao">
-                        <i class="fa-solid fa-clipboard-list"></i>
-                        <span>Gerenciamento de Projetos</span>
-                    </div>
+                <div class="col-lg-4 d-flex">
+                    <a href="/listar/projetos" class="flex-fill">
+                        <div class="botao">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                            <span>Gerenciamento de Projetos</span>
+                        </div>
+                    </a>                   
                 </div>
 
-                <div class="col-lg-3">
-                    <div class="botao destaque">
-                        <i class="fa-solid fa-chart-pie"></i>
-                        <span>Relatórios</span>
-                    </div>
+                <div class="col-lg-4 d-flex">
+                    <a href="" class="flex-fill">
+                        <div class="botao destaque">
+                            <i class="fa-solid fa-chart-pie"></i>
+                            <span>Relatórios</span>
+                        </div>
+                    </a>                   
                 </div>
 
-                <div class="col-lg-3">
-                    <div class="botao">
-                        <i class="fa-solid fa-user"></i>
-                        <span>Gerenciamento de Usuários</span>
-                    </div>
-                </div>
-
-                <div class="col-lg-3">
-                    <div class="botao">
-                        <i class="fa-solid fa-user"></i>
-                        <span>Gerenciamento de Usuários</span>
-                    </div>
+                <div class="col-lg-4 d-flex">
+                    <a href="/listar/usuarios" class="flex-fill">
+                        <div class="botao">
+                            <i class="fa-solid fa-user"></i>
+                            <span>Gerenciamento de Usuários</span>
+                        </div>
+                    </a>                  
                 </div>
             </div>
 

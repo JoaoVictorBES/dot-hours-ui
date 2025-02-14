@@ -2,7 +2,7 @@ import { Usuario } from "./usuario";
 
 export class Projeto {
 
-    id: number;
+  id: number;
   nome: string;
   descricao: string;
   dataInicio: string; 

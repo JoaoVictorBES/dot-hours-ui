@@ -9,12 +9,12 @@
     position: fixed;
 }
 
-.sidebar nav ul {
+.sidebar nav  {
     list-style: none;
     padding: 0;
 }
 
-.sidebar nav ul li {
+.sidebar nav {
     padding: 10px 0;
     cursor: pointer;
     font-weight: bold;
@@ -35,11 +35,46 @@
     margin-bottom: 20px;
 }
 
+.profile h2{
+    font-size: 27px;
+    color: #EAB56F;
+}
+
+.list-unstyled a {
+    display: block;
+    padding: 10px 0; 
+    text-decoration: none; 
+    color: #EAB56F; 
+    font-size: 15px;
+}
+
+.list-unstyled a:hover {
+    color: #fff; 
+}
+
 .box-projetos, .box-atividades {
     background: #273c51;
     padding: 20px;
     border-radius: 10px;
     height: 30rem;
+    text-align: center;
+}
+
+ .box-projetos h3 {
+    color:#EAB56F ;
+}
+
+.box-atividades h3{
+    color:#EAB56F;
+}
+
+.btn-warning{
+    color: #171C2D;
+}
+
+.botoes {
+    display: flex;
+    justify-content: space-between;
 }
 
 .botoes .botao {
@@ -48,14 +83,32 @@
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
+    width: 100%;
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;;
 }
 
-.destaque {
-    background: #f39c12;
+.botoes .col-lg-4 {
+    display: flex;
+}
+
+.botoes a {
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    height: 100%;
 }
 
 .botao i {
     font-size: 2rem;
     margin-bottom: 10px;
     display: block;
+    color: #EAB56F;
+}
+
+span{
+    color:#EAB56F;
 }
