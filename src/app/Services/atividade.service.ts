@@ -16,7 +16,7 @@ export class AtividadeService {
 
 
   getAtividades(): Observable<Atividade[]> {
-    return this.http.get<Atividade[]>(this.API);
+    return this.http.get<Atividade[]>(`${this.API}/findAll`);
   }
 
 }

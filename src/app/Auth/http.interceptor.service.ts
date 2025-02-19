@@ -10,11 +10,22 @@ export const HttpInterceptorService: HttpInterceptorFn = (request, next) => {
   let router = inject(Router);
 
   // inclui o token do localstorage em cada requisição http (header) //
-  let token = localStorage.getItem('token');
-  if (token && !router.url.includes('/login')) {
-    request = request.clone({
-      setHeaders: { Authorization: 'Bearer ' + token },
-    });
+  
+  //let token = localStorage.getItem('token');
+  //if (token && !router.url.includes('/login')) {
+    //request = request.clone({
+      //setHeaders: { Authorization: 'Bearer ' + token },
+    //});
+  //}
+
+  if (typeof window !== 'undefined') {
+    let token = localStorage.getItem('token');
+
+    if (token && !router.url.includes('/login')) {
+      request = request.clone({
+        setHeaders: { Authorization: 'Bearer ' + token },
+      });
+    }
   }
 
   // Tratamento das responses //

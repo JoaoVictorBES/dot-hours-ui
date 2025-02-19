@@ -4,11 +4,24 @@
     <div class="sidebar d-flex flex-column align-items-center justify-content-between col-lg-1 py-4">
         <div class="circle"></div>
         <div class="icons d-flex flex-column gap-4">
-            <i class="fa-solid fa-clipboard"></i>
-            <i class="fa-solid fa-user"></i>
-            <i class="fa-solid fa-sitemap" onclick=""></i>
-            <i class="fa-solid fa-chart-line"></i>
-            <i class="fa-solid fa-clock"></i>
+            <a routerLink="/dashboard/admin" href="/dashboard/admin" title="home">
+                <i class="bi bi-house"></i>
+            </a>
+            <a routerLink="/listar/atividades" href="/listar/atividades" title="Atividades">
+                <i class="bi bi-list-task"></i> 
+            </a>
+            <a routerLink="/listar/usuarios" href="/listar/usuarios" title="Usuarios">
+                <i class="bi bi-person"></i>
+            </a>
+            <a routerLink="/listar/projetos" href="/listar/projetos" title="Projetos">
+                <i class="bi bi-folder"></i>
+            </a>
+            <a routerLink="" href="" title="Relatórios">
+                <i class="bi bi-bar-chart"></i>
+            </a>
+            <a routerLink="/lancar-horas" href="/lancar-horas" title="Lançar-Horas">
+                <i class="bi bi-clock"></i>
+            </a>
         </div>
     </div>
 
@@ -18,30 +31,36 @@
             <h2 class="text-center fw-bold">NOVO PROJETO</h2>
             <form (ngSubmit) ="create()" class="form">
                 <div class="mb-3">
+                    <label for="nome">Nome do Projeto</label>
                     <input type="text" class="form-control input-custom" placeholder="Nome do Projeto" name="name" [(ngModel)]="projeto.nome">
                 </div>
                 <div class="mb-3">
-                    <input type="text" class="form-control input-custom" placeholder="Descrição do Projeto" [(ngModel)]="projeto.descricao">
+                    <label for="descricao">Descrição</label>
+                    <input type="text" class="form-control input-custom" placeholder="Descrição do Projeto" name="descricao" [(ngModel)]="projeto.descricao">
                 </div>
                 <div class="row">
                     <div class="col-lg-6 mb-3">
-                        <input type="date" class="form-control input-custom" placeholder="Data de Criação" [(ngModel)]="projeto.dataCriacao">
+                        <label for="dataInicio">Data de Início</label>
+                        <input type="date" class="form-control input-custom" placeholder="Data de Criação" name="data-criacao" [(ngModel)]="projeto.dataCriacao">
                     </div>
                     <div class="col-lg-6 mb-3">
-                        <input type="date" class="form-control input-custom" placeholder="Data da Previsão de Término" [(ngModel)]="projeto.dataFim">
+                        <label for="dataFim">Data de Fim</label>
+                        <input type="date" class="form-control input-custom" placeholder="Data da Previsão de Término" name="data-fim" [(ngModel)]="projeto.dataFim">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 mb-3">
-                        <input type="text" class="form-control input-custom" placeholder="Prioridade" [(ngModel)]="projeto.prioridade">
+                        <label for="prioridade">Prioridade</label>
+                        <input type="text" class="form-control input-custom" placeholder="Prioridade" name="prioridade" [(ngModel)]="projeto.prioridade">
                     </div>
                     <div class="col-lg-6 mb-3">
-                        <input type="text" class="form-control input-custom" placeholder="Status" [(ngModel)]="projeto.status">
+                        <label for="status">Status</label>
+                        <input type="text" class="form-control input-custom" placeholder="Status" name="status" [(ngModel)]="projeto.status">
                     </div>
                 </div>
+                
                 <div class="d-flex justify-content-center gap-3">
-                    <button type="button" class="btn btn-dark btn-icon"><i class="fa-solid fa-trash"></i></button>
-                    <button type="button" class="btn btn-dark btn-icon"><i class="fa-solid fa-pencil"></i></button>
+                   
                     <button type="submit" class="btn btn-dark">CREATE PROJECT</button>
                 </div>
             </form>

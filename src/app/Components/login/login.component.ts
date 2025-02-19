@@ -5,7 +5,7 @@ import { Login } from '../../Models/Login';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../../Services/login.service';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../Auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +31,6 @@ export class LoginComponent {
  
 
   logar() {
-   
     this.loginService.logar(this.login).subscribe({
       next: token => {
         if(token){

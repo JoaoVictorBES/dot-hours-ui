@@ -21,12 +21,13 @@ export class LoginService {
     return this.http.post<string>(this.API, login, {responseType: 'text' as 'json' });
   }
 
-  addToken(token: string){
-
-    if (typeof localStorage !== 'undefined') {
+  addToken(token: string): void {
+    if (token) {
       localStorage.setItem('token', token);
+      console.log('Token salvo:', token); // Debugging
+    } else {
+      console.error('Tentativa de salvar um token inválido!');
     }
-
   }
 
   removerToken(){

@@ -1,19 +1,27 @@
 .sidebar {
-    background-color: #0a1128;
+    background-color: #567c8d;
     color: #f4a261;
+    gap: 20px;
+    width: 70px; 
+    height: 100vh; 
+    margin-left: -15px;
 }
 
 .sidebar .circle {
     width: 50px;
     height: 50px;
-    background-color: #f4a261;
+    background-color: #f5efeb;
     border-radius: 50%;
 }
 
 .sidebar .icons i {
-    font-size: 24px;
-    color: #f4a261;
+    font-size: 32px;
+    color: #f5efeb;
     cursor: pointer;
+}
+
+.icons{
+    margin-bottom: 80px;
 }
 
 .main-content {
@@ -23,7 +31,7 @@
 }
 
 .form-container {
-    background-color: #f4a261;
+    background-color: #567c8d;
     width: 70%;
     padding: 30px;
     border-radius: 15px;
@@ -31,17 +39,16 @@
 }
 
 .input-custom {
-    background-color: #1e3a5f;
+    background-color: #fff;
     border: none;
-    color: white;
+    color: #000;
     padding: 12px;
     border-radius: 10px;
 }
 
 .input-custom::placeholder {
-    color: #bbb;
+    color: #000;
     text-align: center;
-    font-weight: bold;
 }
 
 .btn-icon {

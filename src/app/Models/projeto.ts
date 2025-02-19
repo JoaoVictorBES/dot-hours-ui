@@ -8,7 +8,7 @@ export class Projeto {
   dataInicio: string; 
   dataFim: string;
   status: string;
-  usuarioResponsavel: Usuario; 
+  idUsuarioResponsavel: number;
   dataCriacao: string; 
   prioridade: string;
 
@@ -19,7 +19,7 @@ export class Projeto {
     dataInicio: string,
     dataFim: string,
     status: string,
-    usuarioResponsavel: Usuario,
+    idUsuarioResponsavel: number, 
     dataCriacao: string,
     prioridade: string
   ) {
@@ -29,7 +29,7 @@ export class Projeto {
     this.dataInicio = dataInicio;
     this.dataFim = dataFim;
     this.status = status;
-    this.usuarioResponsavel = usuarioResponsavel;
+    this.idUsuarioResponsavel = idUsuarioResponsavel;
     this.dataCriacao = dataCriacao;
     this.prioridade = prioridade;
   }
