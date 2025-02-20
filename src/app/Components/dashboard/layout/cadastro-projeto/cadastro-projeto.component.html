@@ -41,7 +41,7 @@
                 <div class="row">
                     <div class="col-lg-6 mb-3">
                         <label for="dataInicio">Data de Início</label>
-                        <input type="date" class="form-control input-custom" placeholder="Data de Criação" name="data-criacao" [(ngModel)]="projeto.dataCriacao">
+                        <input type="date" class="form-control input-custom" placeholder="Data Inicio" name="data-inicio" [(ngModel)]="projeto.dataInicio">
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="dataFim">Data de Fim</label>
@@ -51,17 +51,25 @@
                 <div class="row">
                     <div class="col-lg-6 mb-3">
                         <label for="prioridade">Prioridade</label>
-                        <input type="text" class="form-control input-custom" placeholder="Prioridade" name="prioridade" [(ngModel)]="projeto.prioridade">
+                        <select class="form-control input-custom" name="prioridade" [(ngModel)]="projeto.prioridade">
+                            <option *ngFor="let prioridade of prioridadeOptions" [value]="prioridade">
+                                {{ prioridade }}
+                            </option>
+                        </select>
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="status">Status</label>
-                        <input type="text" class="form-control input-custom" placeholder="Status" name="status" [(ngModel)]="projeto.status">
+                        <select class="form-control input-custom" name="status" [(ngModel)]="projeto.status">
+                            <option *ngFor="let status of statusOptions" [value]="status">
+                                {{ status }}
+                            </option>
+                        </select>
                     </div>
                 </div>
                 
                 <div class="d-flex justify-content-center gap-3">
                    
-                    <button type="submit" class="btn btn-dark">CREATE PROJECT</button>
+                    <button type="submit" class="btn btn-dark">CRIAR PROJETO</button>
                 </div>
             </form>
         </div>

@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Usuario } from '../../../../Models/usuario';
 import { ProjetoService } from '../../../../Services/projeto.service';
+import { PrioridadeProjeto } from '../../../../Enums/prioridade-projeto.enum';
+import { StatusProjeto } from '../../../../Enums/status-projeto.enum';
 
 
 @Component({
@@ -22,6 +24,8 @@ export class CadastroProjetoComponent {
 
   projeto: Projeto = new Projeto(0, '', '', '', '', '', 0, '', '');
 
+  statusOptions = Object.values(StatusProjeto); // Transforma o enum em array de valores
+  prioridadeOptions = Object.values(PrioridadeProjeto);
 
   create(): void {
 

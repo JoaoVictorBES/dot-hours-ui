@@ -1,0 +1,6 @@
+export enum StatusProjeto {
+    PENDENTE = "PENDENTE",
+    EM_ANDAMENTO = "EM_ANDAMENTO",
+    CANCELADO = "CANCELADO",
+    CONCLUIDO = "CONCLUIDO"
+  }

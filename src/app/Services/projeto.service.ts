@@ -19,12 +19,13 @@ export class ProjetoService {
   constructor() { }
 
   create(projeto: Projeto): Observable<Projeto> {
+    
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     console.log('Token enviado no header:', token);
     
-    return this.http.post<Projeto>(`${this.API}`, projeto, { headers }).pipe(
+    return this.http.post<Projeto>(`${this.API}/create`, projeto, { headers }).pipe(
       catchError(error => {
         if (error.status === 403) {
           this.router.navigate(['/dashboard/admin']);
