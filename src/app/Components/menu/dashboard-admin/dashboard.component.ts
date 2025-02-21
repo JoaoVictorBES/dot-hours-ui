@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Atividade } from '../../Models/atividade';
-import { Projeto } from '../../Models/projeto';
+import { Atividade } from '../../../Models/atividade';
+import { Projeto } from '../../../Models/projeto';
 
 @Component({
   selector: 'app-dashboard',

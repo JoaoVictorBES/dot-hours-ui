@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Login } from '../../../../Models/Login';
-import { Usuario } from '../../../../Models/usuario';
-import { UsuarioService } from '../../../../Services/usuario.service';
+
 import { Router } from '@angular/router';
+import { Login } from '../../../Models/Login';
+import { Usuario } from '../../../Models/usuario';
+import { UsuarioService } from '../../../Services/usuario.service';
 
 @Component({
   selector: 'app-cadastro-usuario',

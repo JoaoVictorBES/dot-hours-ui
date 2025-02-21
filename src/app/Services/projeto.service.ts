@@ -21,6 +21,7 @@ export class ProjetoService {
   create(projeto: Projeto): Observable<Projeto> {
     
     const token = localStorage.getItem('token');
+    
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     console.log('Token enviado no header:', token);
@@ -37,18 +38,57 @@ export class ProjetoService {
   
 
   findAll(): Observable<Projeto[]> {
+    
     return this.http.get<Projeto[]>(`${this.API}/listAll`);
 
   }
 
   findById(id: number): Observable<Projeto>{
 
-    return this.http.get<Projeto>(`${this.API}/${id}`)
+    const token = localStorage.getItem('token'); // Pegando o token do localStorage
+
+    console.log('Token enviado:', token);
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<Projeto>(`${this.API}/findById/${id}`, { headers }).pipe(
+      catchError(error => {
+        if (error.status === 403) {
+          this.router.navigate(['/dashboard/admin']); // Redireciona para login se não estiver autenticado
+        }
+        return throwError(error);
+      })
+    );
 
   }
 
-  
-   
 
+  delete(id: number): Observable<string>{
+    
+    const token = localStorage.getItem('token'); // Pegando o token do localStorage
+
+    console.log('Token enviado:', token);
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.delete(`${this.API}/delete/${id}` , { headers, responseType: 'text'}).pipe(
+      catchError(error => {
+        if (error.status === 403) {
+          this.router.navigate(['/dashboard/admin']); // Redireciona para login se não estiver autenticado
+        }
+        return throwError(error);
+      })
+    );
+
+  }
+
+  update(id: number, projeto: Projeto): Observable<Projeto> {
+    const token = localStorage.getItem('token'); // Pegando o token do localStorage
+    console.log('Token enviado:', token);
+  
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  
+    return this.http.put<Projeto>(`${this.API}/update/${id}`, projeto, { headers });
+  }
  
 }

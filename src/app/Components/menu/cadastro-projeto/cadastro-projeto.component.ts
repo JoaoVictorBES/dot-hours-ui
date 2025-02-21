@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { Projeto } from '../../../../Models/projeto';
+import { Projeto } from '../../../Models/projeto';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Usuario } from '../../../../Models/usuario';
-import { ProjetoService } from '../../../../Services/projeto.service';
-import { PrioridadeProjeto } from '../../../../Enums/prioridade-projeto.enum';
-import { StatusProjeto } from '../../../../Enums/status-projeto.enum';
+import { Usuario } from '../../../Models/usuario';
+import { ProjetoService } from '../../../Services/projeto.service';
+import { PrioridadeProjeto } from '../../../Enums/prioridade-projeto.enum';
+import { StatusProjeto } from '../../../Enums/status-projeto.enum';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -20,7 +22,13 @@ import { StatusProjeto } from '../../../../Enums/status-projeto.enum';
 })
 export class CadastroProjetoComponent {
 
-  constructor(private projetoService: ProjetoService) {}
+  router: Router;
+
+  constructor(private projetoService: ProjetoService, router: Router) {
+
+    this.router = router;
+
+  }
 
   projeto: Projeto = new Projeto(0, '', '', '', '', '', 0, '', '');
 
@@ -32,6 +40,7 @@ export class CadastroProjetoComponent {
     this.projetoService.create(this.projeto).subscribe(
       (response) => {
         console.log('Projeto criado com sucesso:', response);
+        this.router.navigate(['/listar/projetos']);
         // Redirecione ou mostre uma mensagem de sucesso, conforme necessário
       },
       (error) => {

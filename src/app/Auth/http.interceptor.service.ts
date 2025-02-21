@@ -33,7 +33,6 @@ export const HttpInterceptorService: HttpInterceptorFn = (request, next) => {
     catchError((err: any) => {
       if (err instanceof HttpErrorResponse) {
 	  
-	  
         if (err.status === 401) { //401 - NON AUTHORIZED
 
           alert('401 - tratar aqui - tratar erro personalizado ');

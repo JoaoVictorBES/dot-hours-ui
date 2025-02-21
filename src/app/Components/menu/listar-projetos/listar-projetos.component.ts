@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { Projeto } from '../../../../Models/projeto';
-import { Atividade } from '../../../../Models/atividade';
-import { AtividadeService } from '../../../../Services/atividade.service';
-import { ProjetoService } from '../../../../Services/projeto.service';
+import { Projeto } from '../../../Models/projeto';
+import { Atividade } from '../../../Models/atividade';
+import { AtividadeService } from '../../../Services/atividade.service';
+import { ProjetoService } from '../../../Services/projeto.service';
 
 @Component({
   selector: 'app-listar-projetos',
