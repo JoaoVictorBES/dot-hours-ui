@@ -3,7 +3,7 @@ import { Atividade } from "./atividade";
 export class Usuario {
 
   id: number;
-  nome: string;
+  username: string;
   email: string;
   senha: string;
   dataCriacao: string; 
@@ -13,7 +13,7 @@ export class Usuario {
 
   constructor(
     id: number,
-    nome: string,
+    username: string,
     email: string,
     senha: string,
     dataCriacao: string,
@@ -22,7 +22,7 @@ export class Usuario {
     atividades: Atividade[] = []
   ) {
     this.id = id;
-    this.nome = nome;
+    this.username = username;
     this.email = email;
     this.senha = senha;
     this.dataCriacao = dataCriacao;

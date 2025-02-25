@@ -1,59 +1,88 @@
-<div class="container-fluid d-flex">
+<div class="container-fluid vh-100 d-flex">
     <!-- Sidebar -->
-    <div class="sidebar d-flex flex-column align-items-center p-3">
+    <div class="sidebar d-flex flex-column align-items-center justify-content-between col-lg-1 py-4">
         <div class="circle"></div>
-        <ul class="nav flex-column mt-4">
-            <li class="nav-item"><i class="bi bi-clipboard"></i></li>
-            <li class="nav-item"><i class="bi bi-person"></i></li>
-            <li class="nav-item"><i class="bi bi-people"></i></li>
-            <li class="nav-item"><i class="bi bi-bar-chart"></i></li>
-            <li class="nav-item"><i class="bi bi-clock"></i></li>
-        </ul>
+        <div class="icons d-flex flex-column gap-4">
+            <a routerLink="/dashboard/admin" href="/dashboard/admin" title="home">
+                <i class="bi bi-house"></i>
+            </a>
+            <a routerLink="/listar/atividades" href="/listar/atividades" title="Atividades">
+                <i class="bi bi-list-task"></i> 
+            </a>
+            <a routerLink="/listar/usuarios" href="/listar/usuarios" title="Usuarios">
+                <i class="bi bi-person"></i>
+            </a>
+            <a routerLink="/listar/projetos" href="/listar/projetos" title="Projetos">
+                <i class="bi bi-folder"></i>
+            </a>
+            <a routerLink="" title="Relatórios">
+                <i class="bi bi-bar-chart"></i>
+            </a>
+            <a routerLink="/lancar-horas" href="/lancar-horas" title="Lançar-Horas">
+                <i class="bi bi-clock"></i>
+            </a>
+        </div>
     </div>
-    
+
     <!-- Formulário -->
-    <div class="container d-flex justify-content-center align-items-center flex-grow-1">
-        <div class="form-box p-4 rounded">
-            <h2 class="text-center">NOVA ATIVIDADE</h2>
-            <form>
-                <div class="row mb-3">
-                    <div class="col-lg-12">
-                        <input type="text" class="form-control" placeholder="Nome da Atividade">
+    <div class="main-content col-lg-11 d-flex align-items-center justify-content-center">
+        <div class="form-container p-5 rounded">
+            <h2 class="text-center fw-bold">NOVA ATIVIDADE</h2>
+            <form (ngSubmit)="create()" class="form">
+                <div class="row">
+                    <div class="col-lg-12 mb-3">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control input-custom text-center" placeholder="NOME DA ATIVIDADE" name="nome" [(ngModel)]="atividade.nome">
                     </div>
                 </div>
-                <div class="row mb-3">
-                    <div class="col-lg-6">
-                        <input type="text" class="form-control" placeholder="Usuário Responsável">
+                <div class="row">
+                    <div class="col-lg-6 mb-3">
+                        <label for="usuarios-vinculados">Vincular usuarios</label>
+                        <select class="form-control input-custom text-center" name="usuarios" [(ngModel)]="atividade.idUsuarioVinculado">
+                            <option *ngFor="let usuario of usuarios" [value]="usuario.id">  
+                                {{ usuario.username }}
+                            </option>
+                        </select>
                     </div>
-                    <div class="col-lg-6">
-                        <input type="text" class="form-control" placeholder="Usuário Vinculado">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-lg-6">
-                        <input type="text" class="form-control" placeholder="Status">
-                    </div>
-                    <div class="col-lg-6">
-                        <input type="text" class="form-control" placeholder="Projeto Relacionado">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-lg-6">
-                        <input type="date" class="form-control" placeholder="Data de Início">
-                    </div>
-                    <div class="col-lg-6">
-                        <input type="date" class="form-control" placeholder="Data Fim">
+                    <div class="col-lg-6 mb-3">
+                        <label for="vincular-projeto">Vincular projeto</label>
+                    <select class="form-control input-custom text-center" name="projeto" [(ngModel)]="atividade.idProjetoVinculado">
+                        <option *ngFor="let projeto of listaProjetos" [value]="projeto.id">
+                            {{ projeto.nome }}
+                        </option>
+                    </select>
                     </div>
                 </div>
-                <div class="row mb-3">
-                    <div class="col-lg-12">
-                        <textarea class="form-control" rows="3" placeholder="Descrição da Atividade"></textarea>
+                <div class="row">
+                    <div class="col-lg-4 mb-3">
+                        <label for="status">Status</label>
+                        <select class="form-control input-custom" name="status" [(ngModel)]="atividade.status">
+                            <option *ngFor="let status of statusOptions" [value]="status">
+                                {{ status }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4 mb-3">
+                        <label for="data-inicio">Data de início</label>
+                        <input type="date" class="form-control input-custom text-center" name="data-inicio" [(ngModel)]="atividade.dataInicio">
+                    </div>
+                    <div class="col-lg-4 mb-3">
+                        <label for="data-fim">Data do fim</label>
+                        <input type="date" class="form-control input-custom text-center" name="data-fim" [(ngModel)]="atividade.dataFim">
+                    </div>
+                    
+                </div>
+                <div class="row">
+                   
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 mb-3">
+                        <label for="descricao">Descrição</label>
+                        <textarea class="form-control input-custom text-center" placeholder="DESCRIÇÃO DA ATIVIDADE" name="descricao" [(ngModel)]="atividade.descricao"></textarea>
                     </div>
                 </div>
-                <div class="d-flex justify-content-between">
-                    <button type="button" class="btn btn-outline-secondary"><i class="bi bi-pencil"></i></button>
-                    <button type="button" class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
-                    <button type="submit" class="btn btn-primary">Criar Atividade</button>
+                <div class="d-flex justify-content-center gap-3">
+                    <button type="submit" class="btn btn-dark">CRIAR ATIVIDADE</button>
                 </div>
             </form>
         </div>

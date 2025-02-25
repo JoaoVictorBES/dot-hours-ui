@@ -59,7 +59,7 @@
                         <h3>ATIVIDADES</h3>
                         <div *ngFor="let atividade of atividades" class="item">
                             <strong>{{ atividade.nome }}</strong>
-                            <span>{{ atividade.status }} - {{ atividade.usuarioResponsavel.nome }}</span>
+                            <span>{{ atividade.status }} - {{ atividade.idUsuarioResponsavel }}</span>
                         </div>
                     </div>
                 </div>

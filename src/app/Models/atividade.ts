@@ -3,39 +3,32 @@ import { Usuario } from "./usuario";
 
 export class Atividade {
 
-  id: number;
-  projeto: Projeto;
+  id!: number;
   nome: string;
   descricao: string;
-  dataInicio: Date;
-  dataFim: Date;
+  dataInicio: string;
+  dataFim: string;
   status: string;
-  usuarioResponsavel: Usuario;
-  dataCriacao: Date;
-  usuarios: Usuario[];
+  idUsuarioResponsavel!: number;
+  idUsuarioVinculado!: number;
+  idProjetoVinculado!: number;
+  dataCriacao: string;
+  
 
   constructor(
-    id: number,
-    projeto: Projeto,
     nome: string,
     descricao: string,
-    dataInicio: Date,
-    dataFim: Date,
+    dataInicio: string,
+    dataFim: string,
     status: string,
-    usuarioResponsavel: Usuario,
-    dataCriacao: Date,
-    usuarios: Usuario[]
+    dataCriacao: string,
   ) {
-    this.id = id;
-    this.projeto = projeto;
     this.nome = nome;
     this.descricao = descricao;
     this.dataInicio = dataInicio;
     this.dataFim = dataFim;
     this.status = status;
-    this.usuarioResponsavel = usuarioResponsavel;
     this.dataCriacao = dataCriacao;
-    this.usuarios = usuarios;
   }
 
 }

@@ -35,11 +35,8 @@
                         <th>ID</th>
                         <th>NOME</th>
                         <th>DESCRIÇÃO</th>
-                        <th>INICIO</th>
-                        <th>FIM</th>
                         <th>STATUS</th>
                         <th>USUÁRIO RESP</th>
-                        <th>CRIAÇÃO</th>
                         <th>PRIORIDADE</th>
                         <th>AÇÕES</th>
                     </tr>
@@ -49,12 +46,9 @@
                     <tr *ngFor="let projeto of projetos">
                         <td>{{ projeto.id }}</td>
                         <td>{{ projeto.nome }}</td>
-                        <td>{{ projeto.descricao }}</td>
-                        <td>{{ projeto.dataInicio }}</td>
-                        <td>{{ projeto.dataFim }}</td>
+                        <td>{{ projeto.descricao.length > 50 ? (projeto.descricao | slice:0:50) + '...' : projeto.descricao }}</td>
                         <td>{{ projeto.status }}</td>
                         <td>{{ projeto.idUsuarioResponsavel }}</td>
-                        <td>{{ projeto.dataCriacao }}</td>
                         <td>{{ projeto.prioridade }}</td>
                         <td>
                             <button class="view-btn" [routerLink]="['/projeto', projeto.id]">
@@ -68,23 +62,6 @@
 
                 </tbody>
             </table>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
         </div>
     </div>
 </div>

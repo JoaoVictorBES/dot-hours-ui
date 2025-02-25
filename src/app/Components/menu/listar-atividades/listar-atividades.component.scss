@@ -1,57 +1,86 @@
 .sidebar {
-    width: 80px;
-    height: 100vh;
-    background-color: #091a2a;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
+    background-color: #0a1128;
+    color: #f4a261;
+    gap: 20px;
+    width: 70px; 
+    height: 100vh; 
+    margin-left: -15px;
 }
 
-.circle {
+.sidebar .circle {
     width: 50px;
     height: 50px;
-    background-color: #f4b860;
+    background-color: #f4a261;
     border-radius: 50%;
 }
 
-.nav-item i {
-    font-size: 24px;
-    color: #f4b860;
-    margin-top: 20px;
-    cursor: pointer;
+.sidebar .icons i {
+    font-size: 32px;
+    color: #f4a261;
+    cursor: pointer;   
 }
 
-.table-box {
-    background-color: #f4b860;
+.icons{
+    margin-bottom: 100px;
+}
+
+.icons a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 37px;
+}
+
+.main-content h2{
+    color: #f4a261;
+}
+
+.btn-project {
+    background-color: #0a1128;
+    color: #f4a261;
+    transition: 0.1s ease-in-out;
+}
+
+.btn-project:hover {
+    color: #f4a261; 
+    border: 2px
+}
+
+.table-container {
+    background-color: #f4a261;
+    border-radius: 15px;
     padding: 20px;
-    border-radius: 10px;
 }
 
-h2 {
-    font-weight: bold;
-    color: #000;
+
+.view-btn i {
+    font-size: 20px; 
+    display: flex;
+    margin-top: 4px;
 }
 
-button.btn-warning {
-    background-color: #ffcc5c;
-    border: none;
-    font-weight: bold;
-}
 
 table {
-    width: 100%;
-    background-color: #fff;
-    border-radius: 5px;
-    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
 }
 
-thead {
-    background-color: #f4b860;
-    color: #000;
+th {
     font-weight: bold;
+    color: black;
 }
 
-tbody tr:hover {
-    background-color: #ffe0a6;
+td {
+    font-size: 14px;
+    color: black;
 }
+
+

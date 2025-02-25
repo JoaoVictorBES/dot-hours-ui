@@ -1,4 +1,5 @@
-import { Usuario } from "./usuario";
+import { Atividade } from "./atividade";
+
 
 export class Projeto {
 
@@ -11,6 +12,7 @@ export class Projeto {
   idUsuarioResponsavel: number;
   dataCriacao: string; 
   prioridade: string;
+  atividades: Atividade[];
 
   constructor(
     id: number,
@@ -21,7 +23,8 @@ export class Projeto {
     status: string,
     idUsuarioResponsavel: number, 
     dataCriacao: string,
-    prioridade: string
+    prioridade: string,
+    atividades: Atividade[]
   ) {
     this.id = id;
     this.nome = nome;
@@ -32,6 +35,7 @@ export class Projeto {
     this.idUsuarioResponsavel = idUsuarioResponsavel;
     this.dataCriacao = dataCriacao;
     this.prioridade = prioridade;
+    this.atividades = atividades;
   }
 
 }

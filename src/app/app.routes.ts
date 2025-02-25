@@ -12,6 +12,7 @@ import { DashboardUsuarioComponent } from './Components/menu/dashboard-usuario/d
 import { ProjetoComponent } from './Components/projeto/projeto.component';
 import { AtividadeComponent } from './Components/atividade/atividade.component';
 import { EditarProjetoComponent } from './Components/menu/editar-projeto/editar-projeto.component';
+import { EditarAtividadeComponent } from './Components/menu/editar-atividade/editar-atividade.component';
 
 export const routes: Routes = [
 
@@ -41,6 +42,8 @@ export const routes: Routes = [
 
     {path: 'atividade/:id', component: AtividadeComponent},
 
-    {path: 'editar/projeto/:id' , component: EditarProjetoComponent}
+    {path: 'editar/projeto/:id' , component: EditarProjetoComponent},
+
+    {path: 'editar/atividade/:id' , component: EditarAtividadeComponent}
 
 ];

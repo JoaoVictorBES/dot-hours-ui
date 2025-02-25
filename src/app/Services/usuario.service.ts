@@ -19,5 +19,11 @@ export class UsuarioService {
     return this.http.post<Usuario>(`${this.API}/cadastro`, usuario);
 
   }
+
+  findAll(): Observable<Usuario[]> {
+        
+        return this.http.get<Usuario[]>(`${this.API}/findAll`,);
+    
+  }
   
 }

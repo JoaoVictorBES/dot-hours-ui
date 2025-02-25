@@ -1,71 +1,63 @@
-<div class="container-fluid d-flex">
+<div class="container-fluid vh-100 d-flex">
     <!-- Sidebar -->
-    <div class="sidebar d-flex flex-column align-items-center p-3">
+    <div class="sidebar d-flex flex-column align-items-center justify-content-between col-lg-1 py-4">
         <div class="circle"></div>
-        <ul class="nav flex-column mt-4">
-            <li class="nav-item"><i class="bi bi-list-task"></i></li>
-            <li class="nav-item"><i class="bi bi-person"></i></li>
-            <li class="nav-item"><i class="bi bi-folder"></i></li>
-            <li class="nav-item"><i class="bi bi-bar-chart"></i></li>
-            <li class="nav-item"><i class="bi bi-clock"></i></li>
-        </ul>
+        <div class="icons d-flex flex-column gap-4">
+            <a routerLink="/listar/atividades" href="/listar/atividades">
+                <i class="bi bi-list-task"></i> 
+            </a>
+            <a routerLink="/listar/usuarios" href="/listar/usuarios">
+                <i class="bi bi-person"></i>
+            </a>
+            <a routerLink="/listar/projetos" href="/listar/projetos">
+                <i class="bi bi-folder"></i>
+            </a>
+            <a routerLink="" href="">
+                <i class="bi bi-bar-chart"></i>
+            </a>
+            <a routerLink="/lancar-horas" href="/lancar-horas">
+                <i class="bi bi-clock"></i>
+            </a>
+        </div>
     </div>
-    
-    <!-- Conteúdo -->
-    <div class="container d-flex justify-content-center align-items-center flex-grow-1">
-        <div class="table-box p-4 rounded">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2 class="text-center">ATIVIDADES</h2>
-                <button class="btn btn-warning">NOVA ATIVIDADE</button>
-            </div>
-            <table class="table table-striped mt-3">
+
+    <!-- Área Principal -->
+    <div class="main-content col-lg-11 p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="fw-bold">ATIVIDADES</h2>
+            <button class="btn btn-project" [routerLink]="['/cadastro/atividade']">NOVA ATIVIDADE</button>
+        </div>
+
+        <div class="table-container p-4 rounded">
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>NOME</th>
                         <th>DESCRIÇÃO</th>
-                        <th>DATA INICIO</th>
-                        <th>DATA FIM</th>
                         <th>STATUS</th>
-                        <th>USUÁRIO RESPONSÁVEL</th>
-                        <th>DATA CRIAÇÃO</th>
-                        <th>PRIORIDADE</th>
+                        <th>USUÁRIO RESP</th>
+                        <th>AÇÕES</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>35</td>
-                        <td>ESENVOlVIMENTO BACKEND</td>
-                        <td>IMPLEMENTAR REGRAS DE NEGÓCIO</td>
-                        <td>2024-02-05</td>
-                        <td>2024-02-10</td>
-                        <td>EM ANDAMENTO</td>
-                        <td>2024-01-20</td>
-                        <td>2024-02-03</td>
-                        <td>ALTA</td>
+                    
+                    <tr *ngFor="let atividade of atividades">
+                        <td>{{ atividade.id }}</td>
+                        <td>{{ atividade.nome }}</td>
+                        <td>{{ atividade.descricao ? (atividade.descricao.length > 50 ? (atividade.descricao | slice:0:50) + '...' : atividade.descricao) : '' }}</td>
+                        <td>{{ atividade.status }}</td>
+                        <td>{{ atividade.idUsuarioResponsavel }}</td>
+                        <td>
+                            <button class="view-btn" [routerLink]="['/atividade', atividade.id]">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <button class="edit" [routerLink]="['/editar/atividade', atividade.id]">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>356</td>
-                        <td>PLANEJAMENTO SPRINT 1</td>
-                        <td>DEFINIÇÃO DE TAREFAS PARA SPRINT</td>
-                        <td>2024-02-05</td>
-                        <td>2024-02-10</td>
-                        <td>EM ANDAMENTO</td>
-                        <td>2024-01-20</td>
-                        <td>2024-02-03</td>
-                        <td>ALTA</td>
-                    </tr>
-                    <tr>
-                        <td>356</td>
-                        <td>PLANEJAMENTO SPRINT 1</td>
-                        <td>DEFINIÇÃO DE TAREFAS PARA SPRINT</td>
-                        <td>2024-02-05</td>
-                        <td>2024-02-10</td>
-                        <td>EM ANDAMENTO</td>
-                        <td>2024-01-20</td>
-                        <td>2024-02-03</td>
-                        <td>ALTA</td>
-                    </tr>
+
                 </tbody>
             </table>
         </div>

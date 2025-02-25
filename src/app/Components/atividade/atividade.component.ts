@@ -16,7 +16,7 @@ export class AtividadeComponent implements OnInit {
   constructor(private atividadeService: AtividadeService) {}
 
   ngOnInit(): void {
-    this.atividadeService.getAtividades().subscribe(data => {
+    this.atividadeService.findAll().subscribe(data => {
       this.atividades = data;
     });
   }

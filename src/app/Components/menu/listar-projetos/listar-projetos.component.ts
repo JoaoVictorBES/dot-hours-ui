@@ -43,7 +43,7 @@ export class ListarProjetosComponent implements OnInit {
   }
 
   carregarAtividades(): void {
-    this.atividadeService.getAtividades().subscribe({
+    this.atividadeService.findAll().subscribe({
       next: (data) => {
         this.atividades = data;
       },
