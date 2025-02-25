@@ -22,7 +22,7 @@ export class EditarAtividadeComponent {
       projeto: Atividade | null = null;
       router: Router;
       atividade!: Atividade;
-    
+      statusOptions = Object.values(StatusAtividade); // Pega os valores do enum StatusAtividade
       usuarios: Usuario[] =[];
       
       constructor(private atividadeService: AtividadeService, private route: ActivatedRoute, router: Router) {
@@ -33,10 +33,7 @@ export class EditarAtividadeComponent {
         this.carregarAtividade();
       }
   
-  
-      statusOptions = Object.values(StatusAtividade); 
-    
-  
+      
     
       private carregarAtividade(): void {
         const id = this.route.snapshot.paramMap.get('id');

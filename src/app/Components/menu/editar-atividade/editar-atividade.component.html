@@ -31,7 +31,7 @@
     <div class="col-lg-10 d-flex justify-content-center align-items-center">
         <div class="content w-75">
             <h2 class="text-center">{{ atividade.nome }}</h2>
-            <div class="row g-3" *ngIf="projeto">
+            <div class="row g-3" *ngIf="atividade">
                 <div class="col-lg-3">
                     <label for="criacao">Criação</label>
                     <input type="date" class="form-control" [(ngModel)]="atividade.dataCriacao">
