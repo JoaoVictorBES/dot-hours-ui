@@ -10,7 +10,7 @@ export class Atividade {
   dataFim: string;
   status: string;
   idUsuarioResponsavel!: number;
-  idUsuarioVinculado!: number;
+  idUsuariosVinculados!: number[];
   idProjetoVinculado!: number;
   dataCriacao: string;
   

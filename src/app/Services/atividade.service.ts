@@ -18,7 +18,7 @@ export class AtividadeService {
   constructor() { }
 
 
-  findAll(): Observable<Atividade[]> {
+  listAll(): Observable<Atividade[]> {
       
     return this.http.get<Atividade[]>(`${this.API}/listAll`);
 

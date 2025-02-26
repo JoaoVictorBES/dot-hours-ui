@@ -65,7 +65,7 @@ export class EditarAtividadeComponent {
           this.atividadeService.delete(id).subscribe({
             next: () => {
               alert('Atividade deletada com sucesso!');
-              this.router.navigate(['/dashboard/admin']);
+              this.router.navigate(['/listar/atividades']);
             },
             error: (error) => {
               console.error('Erro ao deletar atividade:', error);

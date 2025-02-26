@@ -30,11 +30,11 @@ export class ListarAtividadesComponent implements OnInit {
   }
 
   carregarAtividades(): void {
-    this.atividadeService.findAll().subscribe({
-      next: (data) => {
-        this.atividades = data;
+    this.atividadeService.listAll().subscribe({
+      next: (atividades: Atividade[]) => {
+        this.atividades = atividades;
       },
-      error: (err) => console.error("Erro ao carregar atividades:", err)
+      error: (err: any) => console.error("Erro ao carregar atividades:", err)
     });
   }
 

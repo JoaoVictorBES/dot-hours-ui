@@ -60,7 +60,7 @@ export class CadastroAtividadeComponent implements OnInit {
 
   
   carregarAtividades(): void {
-    this.atividadeService.findAll().subscribe(
+    this.atividadeService.listAll().subscribe(
       (atividades: Atividade[]) => {
         console.log('atividades', atividades)
         this.listaAtividades = atividades;
@@ -96,35 +96,33 @@ export class CadastroAtividadeComponent implements OnInit {
   }
  
   create(): void {
-  //debugger;
     if (!this.atividade.status) {
         this.atividade.status = StatusAtividade.PENDENTE;
     }
 
-    // Convertendo idUsuarioVinculado e idProjetoVinculado para number
-    this.atividade.idUsuarioVinculado = Number(this.atividade.idUsuarioVinculado);
+    // Certificando-se de que idUsuariosVinculados seja um array de números
+    this.atividade.idUsuariosVinculados = this.atividade.idUsuariosVinculados.map(id => Number(id));
+
+    // Convertendo idProjetoVinculado para número
     this.atividade.idProjetoVinculado = Number(this.atividade.idProjetoVinculado);
     
-    // Convertendo a data para o formato correto (yyyy-MM-dd)
+    // Formatando as datas corretamente
     this.atividade.dataInicio = this.atividade.dataInicio.split('T')[0];
     this.atividade.dataFim = this.atividade.dataFim.split('T')[0];
 
-    //this.atividade.dataCriacao = this.atividade.dataFim.split('T')[0];
-
     console.log('Atividade a ser criada:', JSON.stringify(this.atividade, null, 2));
-
 
     this.atividadeService.create(this.atividade).subscribe(
         (response: Atividade) => {
             console.log('Atividade criada:', response);
-            this.atividade = response;
             this.router.navigate(['/listar/atividades']);
         },
         (error) => {
             console.error('Erro ao criar atividade:', error);
         }
     );
-  }
+}
+
   
 
 
