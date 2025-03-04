@@ -35,7 +35,7 @@ export const HttpInterceptorService: HttpInterceptorFn = (request, next) => {
         } else if (err.status === 403) { //403 - FORBIDDEN
 
           alert('403 - tratar aqui - tratar erro personalizado ');
-		  router.navigate(['/login']);
+		      router.navigate(['/login']);
 
         } else {
           console.error('HTTP error:', err);

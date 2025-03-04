@@ -1,1 +1,63 @@
-<p>usuario works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-lg-2 sidebar d-flex flex-column align-items-center">
+            <img src="https://via.placeholder.com/80" alt="Admin" class="rounded-circle">
+            <h5>Admin Silva</h5>
+            <nav class="text-start">
+                <div class="list-unstyled">
+                    <a routerLink="dashboard/admin" href="/dashboard/admin">
+                        <i class="bi bi-house"></i> Dashboard
+                    </a>
+                    <a routerLink="/listar/projetos" href="/listar/projetos">
+                        <i class="bi bi-folder"></i> Projetos
+                    </a>
+                    <a routerLink="/listar/atividades" href="/listar/atividades">
+                        <i class="bi bi-list-task"></i> Atividades
+                    </a>
+                    <a routerLink="/lancar-horas" href="/lancar-horas">
+                        <i class="bi bi-clock"></i> Nova Tarefa
+                    </a>
+                    <a routerLink="">
+                        <i class="bi bi-bar-chart"></i> Relatórios
+                    </a>
+                    <a routerLink="/listar/usuarios" href="/listar/usuarios">
+                        <i class="bi bi-person"></i> Gerenciamento de Usuário
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Conteúdo principal -->
+        <div class="col-lg-10 d-flex justify-content-center align-items-center">
+            <div class="content-box w-75">
+                <h2>Usuário</h2>
+                <div class="row" *ngIf="usuario">
+                    <div class="col-lg-6 mb-3">
+                        <label for="nome">Nome</label>
+                        <div class="info-box"> {{ usuario.username }}</div>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="email">Email</label>
+                        <div class="info-box"> {{ usuario.email }}</div>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="role">Role</label>
+                        <div class="info-box"> {{ usuario.role }}</div>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="ultimoLogin">Último Login</label>
+                        <div class="info-box"> {{ usuario.ultimoLogin }}</div>
+                    </div>
+                    <div class="col-lg-6 mt-4">
+                        <label for="atividades">Atividades</label>
+                        <div class="info-box"> {{ usuario.atividades.length }} </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

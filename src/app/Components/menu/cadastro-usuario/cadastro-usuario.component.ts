@@ -21,19 +21,19 @@ export class CadastroUsuarioComponent {
 
   router = inject(Router);
   UsuarioService = inject(UsuarioService);
-  usuario: Usuario = new Usuario(0, '', '', '', '', '', '');
+  usuario: Usuario = new Usuario(null, '', '', '', '', '', '');
   login: Login = new Login();
 
   ngOnInit(): void {
 
   }
 
-  cadastrar(){
+  cadastrar(): void{
 
       this.UsuarioService.create(this.usuario).subscribe({
         next: (response) => {
           console.log('Usuário cadastrado com sucesso:', response);
-          this.router.navigate(['/login']);
+          this.router.navigate(['/listar/usuarios']);
         },
         error: (err) => {
           console.error('Erro ao cadastrar usuário:', err);

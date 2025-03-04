@@ -3,30 +3,33 @@ import { Usuario } from "./usuario";
 
 export class LancamentoHoras {
 
-        id: number;
-        atividade: Atividade; 
-        usuario: Usuario; 
+        id!: number;
+        idAtividade: number | Atividade;
+        idUsuario: number | Usuario;
         descricao: string;
         dataInicio: string; 
         dataFim: string;
         dataRegistro: string;
+        tempoDuracao: string;
       
         constructor(
           id: number,
-          atividade: Atividade,
-          usuario: Usuario,
+          idAtividade: number,
+          idUsuario: number,
           descricao: string,
           dataInicio: string,
           dataFim: string,
-          dataRegistro: string
+          dataRegistro: string,
+          tempoDuracao: string
         ) {
           this.id = id;
-          this.atividade = atividade;
-          this.usuario = usuario;
+          this.idAtividade = idAtividade;
+          this.idUsuario = idUsuario;
           this.descricao = descricao;
           this.dataInicio = dataInicio;
           this.dataFim = dataFim;
           this.dataRegistro = dataRegistro;
+          this.tempoDuracao = tempoDuracao;
         }
 
 }

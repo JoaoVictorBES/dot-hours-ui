@@ -1,28 +1,35 @@
 *{
-    color: aliceblue;
+    color: rgb(0, 0, 0);
 }
 
 .sidebar {
-    background: #567c8d;
+    background: #fff;
     height: 100vh;
     padding: 20px;
     position: fixed;
+    font-size: 10px;
 }
 
-.sidebar nav  {
-    list-style: none;
-    padding: 0;
+.sidebar nav a{
+    font-size: 14px;
+}
+
+.sidebar nav i{
+    font-size: 14px;
 }
 
 .sidebar nav {
     padding: 10px 0;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: normal;
     letter-spacing: 2px;  
     margin-bottom: 10px;  
     text-transform: uppercase; 
     color: antiquewhite;
+    list-style: none;
+    padding: 0;
 }
+
 
 .profile img {
     width: 100px;
@@ -37,48 +44,48 @@
 
 .profile h2{
     font-size: 27px;
-    color: #EAB56F;
+    color: #000;
 }
 
 .list-unstyled a {
     display: block;
     padding: 10px 0; 
     text-decoration: none; 
-    color: #EAB56F; 
+    color: #000; 
     font-size: 15px;
 }
 
 .list-unstyled a:hover {
-    color: #fff; 
+    color: #0e35d3; 
 }
 
 .box-projetos, .box-atividades {
-    background: #567c8d;
+    background: #fff;
     padding: 20px;
     border-radius: 10px;
     height: 30rem;
     text-align: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 }
 
  .box-projetos h3 {
-    color:#EAB56F ;
+    color:#000 ;
 }
 
 .box-atividades h3{
-    color:#EAB56F;
+    color:#000;
 }
 
-.btn-warning{
-    color: #171C2D;
-}
+
 
 .botoes {
     display: flex;
     justify-content: space-between;
+    
 }
 
 .botoes .botao {
-    background: #567c8d;
+    background: #fff;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -88,7 +95,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;;
+    justify-content: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 }
 
 .botoes .col-lg-4 {
@@ -106,9 +114,9 @@
     font-size: 2rem;
     margin-bottom: 10px;
     display: block;
-    color: #EAB56F;
+    color: #000;
 }
 
 span{
-    color:#EAB56F;
+    color:#000;
 }

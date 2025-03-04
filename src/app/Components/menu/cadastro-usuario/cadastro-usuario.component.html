@@ -1,33 +1,61 @@
-<div class="container-fluid vh-100 d-flex align-items-center bg-dark">
-    <div class="container">
-        <div class="row align-items-center">
-            <!-- Seção da logo -->
-            <div class="col-lg-6 text-center text-lg-start text-warning logo-section">
-                <div class="logo">
-                    <i class="fa-solid fa-clock fa-5x"></i> <!-- Ícone de relógio -->
-                </div>
-                <h1 class="fw-bold mt-3">DOT HOURS</h1>
-                <p class="fs-5">PROJECT MANAGEMENT</p>
-            </div>
+<div class="container-fluid vh-100 d-flex">
+    <!-- Sidebar -->
+    <div class="sidebar d-flex flex-column align-items-center justify-content-between col-lg-1 py-4">
+        <div class="circle"></div>
+        <div class="icons d-flex flex-column gap-4">
+            <a routerLink="/dashboard/admin" href="/dashboard/admin" title="home">
+                <i class="bi bi-house"></i>
+            </a>
+            <a routerLink="/listar/atividades" href="/listar/atividades" title="Atividades">
+                <i class="bi bi-list-task"></i> 
+            </a>
+            <a routerLink="/listar/usuarios" href="/listar/usuarios" title="Usuarios">
+                <i class="bi bi-person"></i>
+            </a>
+            <a routerLink="/listar/projetos" href="/listar/projetos" title="Projetos">
+                <i class="bi bi-folder"></i>
+            </a>
+            <a routerLink="" title="Relatórios">
+                <i class="bi bi-bar-chart"></i>
+            </a>
+            <a routerLink="/lancar-horas" href="/lancar-horas" title="Lançar-Horas">
+                <i class="bi bi-clock"></i>
+            </a>
+        </div>
+    </div>
 
-            <!-- Seção do formulário -->
-            <div class="col-lg-6">
-                <div class="form-section p-5 rounded">
-                    <h2 class="fw-bold text-dark">CADASTRO DE USUÁRIO</h2>
-                    <form>
-                        <div class="mb-3">
-                            <input type="text" class="form-control input-custom" placeholder="Nome">
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control input-custom" placeholder="E-mail">
-                        </div>
-                        <div class="mb-3">
-                            <input type="password" class="form-control input-custom" placeholder="Senha">
-                        </div>
-                        <button type="submit" class="btn btn-dark w-100">SUBMIT</button>
-                    </form>
+    <!-- Formulário -->
+    <div class="main-content col-lg-8 d-flex align-items-center justify-content-center">
+        <div class="form-container p-5 bg-light">
+            <h2 class="text-center fw-bold">NOVO USUARIO</h2>
+            <form (ngSubmit)="cadastrar()" class="form">
+                <div class="row">
+                    <div class="col-lg-6 mb-3">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control input-custom text-center" placeholder="NOME DO USUARIO" name="nome" [(ngModel)]="usuario.username">
+                    </div>
+                    
+                    <div class="col-lg-6 mb-3">
+                        <label for="data-inicio">Email</label>
+                        <input type="email" class="form-control input-custom text-center" name="data-inicio" [(ngModel)]="usuario.email">
+                    </div>                  
                 </div>
-            </div>
+
+                <div class="row">
+                    <div class="col-lg-6 mb-3">
+                        <label for="nome">Senha</label>
+                        <input type="password" class="form-control input-custom text-center" placeholder="SENHA" name="senha" [(ngModel)]="usuario.password">
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="data-fim">Role</label>
+                        <input type="text" class="form-control input-custom text-center" name="role" [(ngModel)]="usuario.role">
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center gap-3">
+                    <button type="submit" class="btn btn-dark">CRIAR USUARIO</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

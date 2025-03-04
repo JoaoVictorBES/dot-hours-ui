@@ -1,45 +1,101 @@
 .sidebar {
-    width: 80px;
-    height: 100vh;
-    background-color: #091a2a;
+    background-color: #f6f6f6;
+    width: 80px;  /* Maior para melhor usabilidade */
+    height: 100vh; 
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
 }
 
-.circle {
+.sidebar .circle {
     width: 50px;
     height: 50px;
-    background-color: #f4b860;
+    background-color: #000;
     border-radius: 50%;
 }
 
-.nav-item i {
-    font-size: 24px;
-    color: #f4b860;
-    margin-top: 20px;
-    cursor: pointer;
+.sidebar .icons i {
+    font-size: 32px;
+    color: #000;
+    cursor: pointer;   
 }
-.content {
-    padding: 20px;
+
+.icons{
+    margin-bottom: 100px;
 }
+
+.icons a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+.icons a:hover {
+    transform: scale(1.2);
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 37px;
+    margin-left: 80px; 
+    width: calc(100% - 80px);
+}
+
+.main-content h2{
+    color: #000;
+}
+
+.btn-project {
+    background-color: #fff;
+    color: #000;
+    transition: 0.1s ease-in-out;
+}
+
+.btn-project:hover {
+    color: #000; 
+    border: 2px
+}
+
 .table-container {
-    background-color: #ffb84d;
-    padding: 20px;
-    border-radius: 15px;
-    margin-top: 20px;
-}
-.table thead {
-    font-weight: bold;
-}
-.btn-novo {
-    background-color: #ffb84d;
-    border: none;
-    padding: 10px 20px;
-    font-weight: bold;
+    background-color: #000;
     border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 }
-.btn-novo:hover {
-    background-color: #e09e3b;
+
+
+.view-btn i {
+    font-size: 20px; 
+    display: flex;
+    margin-top: 4px;
 }
+
+
+table {
+    background-color: transparent;
+    text-align: center;
+}
+
+th {
+    font-weight: 500;
+    color: black;
+}
+
+td {
+    font-size: 14px;
+    color: black;
+}
+
+

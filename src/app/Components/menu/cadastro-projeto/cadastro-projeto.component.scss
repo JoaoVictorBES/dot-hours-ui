@@ -1,6 +1,6 @@
 .sidebar {
-    background-color: #567c8d;
-    color: #f4a261;
+    background-color: #ffffff;
+    color: #000000;
     gap: 20px;
     width: 70px; 
     height: 100vh; 
@@ -10,13 +10,13 @@
 .sidebar .circle {
     width: 50px;
     height: 50px;
-    background-color: #f5efeb;
+    background-color: #000;
     border-radius: 50%;
 }
 
 .sidebar .icons i {
     font-size: 32px;
-    color: #f5efeb;
+    color: #0b0b0a;
     cursor: pointer;
 }
 
@@ -31,15 +31,15 @@
 }
 
 .form-container {
-    background-color: #567c8d;
+    background-color: #fff;
     width: 70%;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
 }
 
 .input-custom {
-    background-color: #fff;
+    background-color: #dde3e5;
     border: none;
     color: #000;
     padding: 12px;

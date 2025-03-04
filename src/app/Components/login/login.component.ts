@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { Login } from '../../Models/Login';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { LoginService } from '../../Services/login.service';
 import { AuthService } from '../../Auth/auth.service';
 
 @Component({
@@ -22,19 +21,22 @@ export class LoginComponent {
   authService = inject(AuthService);
   router: Router;
   login: Login = new Login();
-  loginService = inject(LoginService)
+  
 
   constructor(router: Router) {
     this.router = router;
-    this.loginService.removerToken();
+    this.authService.removerToken();
   }
  
 
   logar() {
-    this.loginService.logar(this.login).subscribe({
+    this.authService.login(this.login).subscribe({
       next: token => {
         if(token){
-          this.loginService.addToken(token);
+          this.authService.addToken(token);
+          const user = this.authService.decodeToken(token);
+          this.authService.saveUser(user);
+          console.log("Salvando usuário:", user);
           this.router.navigate(['/dashboard/admin'])
         }else{
           alert('Usuário ou senha incorretos!');

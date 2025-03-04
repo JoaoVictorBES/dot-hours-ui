@@ -1,20 +1,21 @@
 /* Sidebar */
 .sidebar {
-    background-color: #0E2B45;
-    color: #F4B460;
-    width: 80px;
-    height: 100vh;
+    background-color: #f6f6f6;
+    width: 80px;  /* Maior para melhor usabilidade */
+    height: 100vh; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px 0;
+    padding-top: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
 }
 
 .sidebar .circle {
     width: 50px;
     height: 50px;
-    background-color: #F4B460;
+    background-color: #000;
     border-radius: 50%;
 }
 
@@ -24,7 +25,7 @@
 
 .sidebar .icons i {
     font-size: 32px;
-    color: #F4B460;
+    color: #000;
     cursor: pointer;
 }
 
@@ -35,12 +36,14 @@
 /* Formulário */
 .main-content {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    margin-left: 37px;
+    margin-left: 80px; 
+    width: calc(100% - 80px);
 }
 
 .form-container {
-    background-color: #F4B460;
+    background-color: #fff;
     width: 80%;
     padding: 40px;
     border-radius: 20px;
@@ -48,17 +51,16 @@
 }
 
 .input-custom {
-    background-color: #2E2A26;
+    background-color: #dde3e5;
     border: none;
-    color: #fff;
+    color: #000;
     padding: 12px;
     border-radius: 10px;
     text-align: center;
 }
 
 .input-custom::placeholder {
-    color: #fff;
-    font-weight: bold;
+    color: #000;
 }
 
 textarea.input-custom {
@@ -87,7 +89,6 @@ textarea.input-custom {
     border-radius: 10px;
 }
 
-.btn-danger {
-    background-color: #ff4d4d;
-    color: #fff;
+.btn-dark:hover {
+    background-color: #000;
 }

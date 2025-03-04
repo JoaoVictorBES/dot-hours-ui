@@ -31,19 +31,19 @@
     <div class="container d-flex justify-content-center align-items-center flex-grow-1">
         <div class="form-box p-4 rounded">
             <h2 class="text-center">LANÇAMENTO DE HORAS</h2>
-            <form class="form" >
+            <form class="form" (submit)="lancarHoras()">
                 <div class="row g-3 mt-3">
                     <div class="col-lg-3">
                         <label for="dataRegistro" class="form-label">Registro</label>
-                        <input type="date" class="form-control" id="dataRegistro"[(ngModel)]="lancamentoHoras.dataRegistro" name="dataRegistro" readonly>
+                        <input type="date" class="form-control" id="dataRegistro"[(ngModel)]="lancamentoHoras.dataRegistro" name="dataRegistro">
                     </div>
                     <div class="col-lg-3">
                         <label for="dataInicio" class="form-label">Início</label>
-                        <input type="time" class="form-control" id="dataInicio" [(ngModel)]="dataInicio" name="dataInicio" readonly>
+                        <input type="time" class="form-control" id="dataInicio" [(ngModel)]="dataInicio" name="dataInicio" (blur)="calcularDuracao()">
                     </div>
                     <div class="col-lg-3">
                         <label for="dataFim" class="form-label"> Fim</label>
-                        <input type="time" class="form-control" id="dataFim" [(ngModel)]="dataFim" name="dataFim" readonly>
+                        <input type="time" class="form-control" id="dataFim" [(ngModel)]="dataFim" name="dataFim" (blur)="calcularDuracao()">
                     </div>
                     <div class="col-lg-3">
                         <label for="tempoDuracao" class="form-label">Tempo de Duração</label>
@@ -52,7 +52,7 @@
 
                     <div class="col-lg-4 mb-3">
                         <label for="vincular-projeto">Vincular atividade</label>
-                        <select class="form-control input-custom text-center" name="projeto" [(ngModel)]="lancamentoHoras.idAtividade" readonly>
+                        <select class="form-control input-custom text-center" name="projeto" [(ngModel)]="lancamentoHoras.idAtividade">
                             <option *ngFor="let atividade of atividades" [ngValue]="atividade.id">
                                 {{ atividade.nome }}
                             </option>
@@ -61,13 +61,14 @@
                     </div>
                     <div class="col-lg-8 ">
                         <label for="descricao" class="form-label">Descrição</label>
-                        <input type="text" class="form-control" id="descricao" [(ngModel)]="lancamentoHoras.descricao" name="descricao" readonly>
+                        <input type="text" class="form-control" id="descricao" [(ngModel)]="lancamentoHoras.descricao" name="descricao">
                     </div>
                     
                 </div>
-               
+                <div class="mt-4 text-center">
+                    <button type="submit" class="btn submit-btn" >LANÇAR HORAS</button>
+                </div>
             </form>
         </div>
     </div>
 </div>
-

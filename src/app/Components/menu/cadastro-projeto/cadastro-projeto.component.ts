@@ -36,7 +36,7 @@ export class CadastroProjetoComponent {
   prioridadeOptions = Object.values(PrioridadeProjeto);
 
   create(): void {
-
+    
     this.projetoService.create(this.projeto).subscribe(
       (response) => {
         console.log('Projeto criado com sucesso:', response);

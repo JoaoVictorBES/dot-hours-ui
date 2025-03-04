@@ -46,11 +46,11 @@
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="vincular-projeto">Vincular projeto</label>
-                    <select class="form-control input-custom text-center" name="projeto" [(ngModel)]="atividade.idProjetoVinculado">
-                        <option *ngFor="let projeto of listaProjetos" [value]="projeto.id">
-                            {{ projeto.nome }}
-                        </option>
-                    </select>
+                        <select class="form-control input-custom text-center" name="projeto" [(ngModel)]="atividade.idProjetoVinculado">
+                            <option *ngFor="let projeto of listaProjetos" [value]="projeto.id">
+                                {{ projeto.nome }}
+                            </option>
+                        </select>
                     </div>
                 </div>
                 <div class="row">

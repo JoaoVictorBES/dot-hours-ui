@@ -1,50 +1,66 @@
-<div class="container-fluid">
-    <div class="row">
-        <!-- Sidebar -->
-        <div class="sidebar d-flex flex-column align-items-center p-3">
-            <div class="circle"></div>
-            <ul class="nav flex-column mt-4">
-                <li class="nav-item"><i class="bi bi-clipboard"></i></li>
-                <li class="nav-item"><i class="bi bi-people"></i></li>
-                <li class="nav-item"><i class="bi bi-bar-chart"></i></li>
-                <li class="nav-item"><i class="bi bi-clock"></i></li>
-            </ul>
+<div class="container-fluid vh-100 d-flex">
+    <!-- Sidebar -->
+    <div class="sidebar d-flex flex-column align-items-center justify-content-between col-lg-1 py-4">
+        <div class="circle"></div>
+        <div class="icons d-flex flex-column gap-4">
+            <a routerLink="/dashboard/admin" href="/dashboard/admin" title="home">
+                <i class="bi bi-house"></i>
+            </a>
+            <a routerLink="/listar/atividades" href="/listar/atividades" title="Atividades">
+                <i class="bi bi-list-task"></i> 
+            </a>
+            <a routerLink="/listar/usuarios" href="/listar/usuarios" title="Usuarios">
+                <i class="bi bi-person"></i>
+            </a>
+            <a routerLink="/listar/projetos" href="/listar/projetos" title="Projetos">
+                <i class="bi bi-folder"></i>
+            </a>
+            <a routerLink="" href="" title="Relatórios">
+                <i class="bi bi-bar-chart"></i>
+            </a>
+            <a routerLink="/lancar-horas" href="/lancar-horas" title="Lançar-Horas">
+                <i class="bi bi-clock"></i>
+            </a>
         </div>
-        
-        <!-- Conteúdo principal -->
-        <main class="col-lg-10 col-md-9 content">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2 class="text-light">USUÁRIOS</h2>
-                <button class="btn-novo">NOVO USUÁRIO</button>
-            </div>
-            
-            <div class="table-container">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>NOME</th>
-                            <th>EMAIL</th>
-                            <th>SENHA</th>
-                            <th>DATA DE CRIAÇÃO</th>
-                            <th>ÚLTIMO LOGIN</th>
-                            <th>PERFIL</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>019</td>
-                            <td>JOAO VICTOR BARBOSA</td>
-                            <td>JOAO.VEMAIL.COM</td>
-                            <td>MINHASENHA</td>
-                            <td>2024-07-23</td>
-                            <td>2025-02-01</td>
-                            <td>ADMIN</td>
-                        </tr>
-                        <!-- Duplicar conforme necessário -->
-                    </tbody>
-                </table>
-            </div>
-        </main>
+    </div>
+
+    <!-- Área Principal -->
+    <div class="main-content col-lg-11 p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="fw-bold">USUARIOS</h2>
+            <button class="btn btn-project" [routerLink]="['/cadastro/usuario']">NOVO USUARIO</button>
+        </div>
+
+        <div class="table-container p-4 bg-white">
+            <table class="table  table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Ultimo Login</th>
+                        <th>Role</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr *ngFor="let usuario of usuarios">
+                        <td>{{ usuario.id }}</td>
+                        <td>{{ usuario.username }}</td>
+                        <td>{{ usuario.ultimoLogin }}</td>
+                        <td>{{ usuario.role }}</td>
+                        <td>
+                            <button class="view-btn" [routerLink]="['/usuario', usuario.id]">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <button class="edit" [routerLink]="['/editar/usuario', usuario.id]">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

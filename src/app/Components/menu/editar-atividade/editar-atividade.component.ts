@@ -25,6 +25,7 @@ export class EditarAtividadeComponent {
       statusOptions = Object.values(StatusAtividade); // Pega os valores do enum StatusAtividade
       usuarios: Usuario[] =[];
       
+      
       constructor(private atividadeService: AtividadeService, private route: ActivatedRoute, router: Router) {
         this.router = router;
       }

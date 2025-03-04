@@ -2,20 +2,20 @@ import { Atividade } from "./atividade";
 
 export class Usuario {
 
-  id: number;
+  id: number | null;
   username: string;
   email: string;
-  senha: string;
+  password: string;
   dataCriacao: string; 
   ultimoLogin: string; 
   role: string;
   atividades: Atividade[]; 
 
   constructor(
-    id: number,
+    id: number | null = null,
     username: string,
     email: string,
-    senha: string,
+    password: string,
     dataCriacao: string,
     ultimoLogin: string,
     role: string,
@@ -24,7 +24,7 @@ export class Usuario {
     this.id = id;
     this.username = username;
     this.email = email;
-    this.senha = senha;
+    this.password = password;
     this.dataCriacao = dataCriacao;
     this.ultimoLogin = ultimoLogin;
     this.role = role;

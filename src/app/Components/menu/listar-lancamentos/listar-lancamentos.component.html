@@ -18,7 +18,7 @@
             <a routerLink="" href="" title="Relatórios">
                 <i class="bi bi-bar-chart"></i>
             </a>
-            <a routerLink="/lancar-horas" href="/lancar-horas" title="Lançar-Horas">
+            <a routerLink="/lancar-horas" href="/listar/lancamentos" title="Lançar-Horas">
                 <i class="bi bi-clock"></i>
             </a>
         </div>
@@ -26,9 +26,10 @@
 
     <!-- Área Principal -->
     <div class="main-content col-lg-11 p-4">
+
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2 class="fw-bold">ATIVIDADES</h2>
-            <button class="btn btn-project" [routerLink]="['/cadastro/atividade']">NOVA ATIVIDADE</button>
+            <h2 class="fw-bold">Lançamentos</h2>
+            <button class="btn btn-project" [routerLink]="['/lancar-horas']">NOVO LANÇAMENTO</button>
         </div>
 
         <div class="table-container p-4 bg-white">
@@ -36,26 +37,27 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>NOME</th>
-                        <th>DESCRIÇÃO</th>
-                        <th>STATUS</th>
+                        <th>INICIO</th>
+                        <th>FIM</th>
+                        <th>DURAÇÃO</th>
                         <th>USUÁRIO RESP</th>
-                        <th>AÇÕES</th>
+                        <th>ATIVIDADE</th>
                     </tr>
                 </thead>
                 <tbody>
                     
-                    <tr *ngFor="let atividade of atividades">
-                        <td>{{ atividade.id }}</td>
-                        <td>{{ atividade.nome }}</td>
-                        <td>{{ atividade.descricao ? (atividade.descricao.length > 50 ? (atividade.descricao | slice:0:50) + '...' : atividade.descricao) : '' }}</td>
-                        <td>{{ atividade.status }}</td>
-                        <td>{{ atividade.idUsuarioResponsavel }}</td>
+                    <tr *ngFor="let lancamento of lancamentos">
+                        <td>{{ lancamento.id }}</td>
+                        <td>{{ lancamento.dataInicio}}</td>
+                        <td>{{ lancamento.dataFim}}</td>
+                        <td>{{ lancamento.tempoDuracao}}</td>
+                        <td>{{ lancamento.idUsuario}}</td>
+                        <td>{{ lancamento.idAtividade}}</td>
                         <td>
-                            <button class="view-btn" [routerLink]="['/atividade', atividade.id]">
+                            <button class="view-btn" [routerLink]="['/lancamento', lancamento.id]">
                                 <i class="bi bi-eye"></i>
                             </button>
-                            <button class="edit" [routerLink]="['/editar/atividade', atividade.id]">
+                            <button class="edit" [routerLink]="['/editar/lancamento', lancamento.id]">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
                         </td>
@@ -66,3 +68,4 @@
         </div>
     </div>
 </div>
+
