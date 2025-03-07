@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Atividade } from '../Models/atividade';
 import { Router } from '@angular/router';
+import { StatusAtividade } from '../Enums/status-atividade.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -20,12 +21,23 @@ export class AtividadeService {
 
   listAll(): Observable<Atividade[]> {
       
-    return this.http.get<Atividade[]>(`${this.API}/listAll`);
+    let token = '';
+
+    if (typeof window !== 'undefined') {
+       token = localStorage.getItem('token') || '';
+    }
+
+    console.log('Token enviado:', token);
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<Atividade[]>(`${this.API}/listAll`, { headers });
 
   }
 
   create(atividade: Atividade): Observable<Atividade> {
       
+    atividade.ativo = true;
     
     const token = (typeof window !== 'undefined' && localStorage) ? localStorage.getItem('token') : null;
 
@@ -37,7 +49,9 @@ export class AtividadeService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   
     console.log('Token enviado no header:', token);
-      
+    
+    atividade.status = StatusAtividade[atividade.status as keyof typeof StatusAtividade]; // Garante que o status seja um enum válido
+
     return this.http.post<Atividade>(`${this.API}/create`, atividade, { headers }).pipe(
       catchError(error => {
         if (error.status === 403) {
@@ -96,6 +110,14 @@ export class AtividadeService {
     
       return this.http.put<Atividade>(`${this.API}/update/${id}`, atividade, { headers });
   }
+
+  toggleAtivo(id: number): Observable<string> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  
+    return this.http.put(`${this.API}/toggle-status/${id}`, {}, { headers, responseType: 'text' });
+  }
+  
    
 
 }

@@ -1,3 +1,4 @@
+import { StatusAtividade } from "../Enums/status-atividade.enum";
 import { Projeto } from "./projeto";
 import { Usuario } from "./usuario";
 
@@ -8,11 +9,12 @@ export class Atividade {
   descricao: string;
   dataInicio: string;
   dataFim: string;
-  status: string;
+  status: StatusAtividade;
   idUsuarioResponsavel!: number;
   idUsuariosVinculados!: number[];
   idProjetoVinculado!: number;
   dataCriacao: string;
+  ativo!: boolean;
   
 
   constructor(
@@ -20,8 +22,9 @@ export class Atividade {
     descricao: string,
     dataInicio: string,
     dataFim: string,
-    status: string,
+    status: StatusAtividade,
     dataCriacao: string,
+    ativo: boolean
   ) {
     this.nome = nome;
     this.descricao = descricao;
@@ -29,6 +32,9 @@ export class Atividade {
     this.dataFim = dataFim;
     this.status = status;
     this.dataCriacao = dataCriacao;
+    this.ativo = ativo;
   }
+
+  
 
 }

@@ -28,14 +28,17 @@ export const HttpInterceptorService: HttpInterceptorFn = (request, next) => {
 	  
         if (err.status === 401) { //401 - NON AUTHORIZED
 
+          if (typeof window !== 'undefined') {
           alert('401 - tratar aqui - tratar erro personalizado ');
           router.navigate(['/login']);
-
+          }
 
         } else if (err.status === 403) { //403 - FORBIDDEN
 
-          alert('403 - tratar aqui - tratar erro personalizado ');
-		      router.navigate(['/login']);
+          if (typeof window !== 'undefined') {
+            alert('403 - tratar aqui - tratar erro personalizado ');
+            router.navigate(['/login']);
+            }
 
         } else {
           console.error('HTTP error:', err);

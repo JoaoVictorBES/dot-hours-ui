@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { StatusProjeto } from '../../../Enums/status-projeto.enum';
 import { Projeto } from '../../../Models/projeto';
 import { AtividadeService } from '../../../Services/atividade.service';
 import { Atividade } from '../../../Models/atividade';
@@ -10,21 +9,24 @@ import { Usuario } from '../../../Models/usuario';
 import { CommonModule } from '@angular/common';
 import { ProjetoService } from '../../../Services/projeto.service';
 import { UsuarioService } from '../../../Services/usuario.service';
-import { formatDate } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+
+
+declare var $: any;
 
 @Component({
   selector: 'app-cadastro-atividade',
   standalone: true,
   imports: [
     FormsModule,
-    CommonModule
+    CommonModule,
   ],
   templateUrl: './cadastro-atividade.component.html',
   styleUrl: './cadastro-atividade.component.scss'
 })
 export class CadastroAtividadeComponent implements OnInit {
+ 
   
-
   constructor(private atividadeService: AtividadeService, router: Router, private projetoService: ProjetoService, private usuarioService: UsuarioService) {
   
     this.router = router;
@@ -48,9 +50,11 @@ export class CadastroAtividadeComponent implements OnInit {
     '', 
     '',
     '',
+    StatusAtividade.PENDENTE,
     '',
-    ''
+    true
   );
+  
   
 
   ngOnInit(): void {
@@ -58,12 +62,13 @@ export class CadastroAtividadeComponent implements OnInit {
     this.carregarUsuarios();
   }
 
+ 
+
   
   carregarAtividades(): void {
     this.atividadeService.listAll().subscribe(
       (atividades: Atividade[]) => {
         console.log('atividades', atividades)
-        this.listaAtividades = atividades;
       },
       (erro: any) => {
         console.error('Erro ao carregar projetos', erro);
@@ -86,29 +91,42 @@ export class CadastroAtividadeComponent implements OnInit {
   carregarUsuarios(): void {
     this.usuarioService.findAll().subscribe(
       (usuarios: Usuario[]) => {
-        console.log('usuarios', usuarios)
         this.usuarios = usuarios;
+ 
       },
       (erro: any) => {
         console.error('Erro ao carregar usuarios', erro);
       }
     )
   }
+
  
   create(): void {
-    if (!this.atividade.status) {
-        this.atividade.status = StatusAtividade.PENDENTE;
+    
+    // Certificando-se de que idUsuariosVinculados seja um array de números
+    if (this.atividade.idUsuariosVinculados && Array.isArray(this.atividade.idUsuariosVinculados)) {
+      this.atividade.idUsuariosVinculados = this.atividade.idUsuariosVinculados.map(id => Number(id));
+    } else {
+      // Se não houver ids vinculados, pode querer definir um valor default ou mostrar erro
+      console.error('idUsuariosVinculados não está corretamente preenchido');
     }
 
-    // Certificando-se de que idUsuariosVinculados seja um array de números
-    this.atividade.idUsuariosVinculados = this.atividade.idUsuariosVinculados.map(id => Number(id));
-
     // Convertendo idProjetoVinculado para número
-    this.atividade.idProjetoVinculado = Number(this.atividade.idProjetoVinculado);
+    if (this.atividade.idProjetoVinculado) {
+      this.atividade.idProjetoVinculado = Number(this.atividade.idProjetoVinculado);
+      if (isNaN(this.atividade.idProjetoVinculado)) {
+        console.error('idProjetoVinculado inválido');
+      }
+    }
     
     // Formatando as datas corretamente
-    this.atividade.dataInicio = this.atividade.dataInicio.split('T')[0];
-    this.atividade.dataFim = this.atividade.dataFim.split('T')[0];
+    // Formatando as datas com toISOString para garantir que a data esteja correta
+    if (this.atividade.dataInicio && this.atividade.dataFim) {
+      this.atividade.dataInicio = new Date(this.atividade.dataInicio).toISOString().split('T')[0];
+      this.atividade.dataFim = new Date(this.atividade.dataFim).toISOString().split('T')[0];
+    } else {
+      console.error('Datas inválidas', this.atividade.dataInicio, this.atividade.dataFim);
+    }
 
     console.log('Atividade a ser criada:', JSON.stringify(this.atividade, null, 2));
 
@@ -117,8 +135,9 @@ export class CadastroAtividadeComponent implements OnInit {
             console.log('Atividade criada:', response);
             this.router.navigate(['/listar/atividades']);
         },
-        (error) => {
+        (error: HttpErrorResponse) => {
             console.error('Erro ao criar atividade:', error);
+            console.error('Detalhes do erro:', error.error);
         }
     );
 }

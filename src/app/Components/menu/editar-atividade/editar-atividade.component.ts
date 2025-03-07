@@ -97,6 +97,25 @@ export class EditarAtividadeComponent {
           });
         }
       }
+
+      toggleAtivo(): void {
+        if (!this.atividade || !this.atividade.id) {
+          console.error('Atividade inválida.');
+          return;
+        }
+      
+        this.atividadeService.toggleAtivo(this.atividade.id).subscribe({
+          next: () => {
+            this.atividade.ativo = !this.atividade.ativo; // Atualiza a UI
+            alert(`Atividade ${this.atividade.ativo ? 'ativada' : 'desativada'} com sucesso!`);
+          },
+          error: (error) => {
+            console.error('Erro ao alterar status da atividade:', error);
+            alert('Erro ao tentar alterar status da atividade.');
+          }
+        });
+      }
+      
       
 
 }
