@@ -5,17 +5,34 @@
 .sidebar {
     background: #fff;
     height: 100vh;
+    width: 250px;
     padding: 20px;
     position: fixed;
-    font-size: 10px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.sidebar.collapsed {
+    width: 70px;
+    
+}
+
+.sidebar.collapsed nav a {
+    justify-content: center;
 }
 
 .sidebar nav a{
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    color: #000;
+    text-decoration: none;
 }
 
-.sidebar nav i{
-    font-size: 14px;
+.sidebar nav a i{
+    font-size: 18px;
 }
 
 .sidebar nav {
@@ -28,6 +45,17 @@
     color: antiquewhite;
     list-style: none;
     padding: 0;
+}
+
+.toggle-btn {
+    cursor: pointer;
+    text-align: right;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.sidebar.collapsed .toggle-btn {
+    text-align: center;
 }
 
 
@@ -61,19 +89,55 @@
 
 .box-projetos, .box-atividades {
     background: #fff;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
-    height: 30rem;
+    height: auto;
     text-align: center;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    font-size: 14px; /* Redução do tamanho da fonte */
+    margin-bottom: 20px; /* Evita sobreposição */
+    width: 100%;
 }
 
- .box-projetos h3 {
-    color:#000 ;
+.box-projetos h3, .box-atividades h3 {
+    color: #000;
+    font-size: 18px; /* Redução do tamanho do título */
+    margin-bottom: 10px;
 }
 
-.box-atividades h3{
-    color:#000;
+.main-content {
+    margin-left: 250px; /* Mesmo valor da largura da sidebar */
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed ~ .main-content {
+    margin-left: 70px; /* Ajusta quando o menu é recolhido */
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 12px; /* Redução do tamanho da fonte da tabela */
+}
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+@media (max-width: 992px) {
+    .box-projetos, .box-atividades {
+        font-size: 12px; /* Reduz ainda mais em telas menores */
+    }
+
+    .table th, .table td {
+        font-size: 10px; /* Ajuste para telas pequenas */
+    }
 }
 
 
@@ -119,4 +183,10 @@
 
 span{
     color:#000;
+}
+
+@media (max-width: 992px) {
+    .box-projetos, .box-atividades {
+        width: 100%;
+    }
 }
