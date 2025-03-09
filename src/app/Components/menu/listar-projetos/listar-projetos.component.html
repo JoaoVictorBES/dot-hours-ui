@@ -1,26 +1,5 @@
 <div class="container-fluid vh-100 d-flex">
-    <!-- Sidebar -->
-    <div class="sidebar d-flex flex-column align-items-center justify-content-between col-lg-1 py-4">
-        <div class="circle"></div>
-        <div class="icons d-flex flex-column gap-4">
-            <a routerLink="/listar/atividades" href="/listar/atividades">
-                <i class="bi bi-list-task"></i> 
-            </a>
-            <a routerLink="/listar/usuarios" href="/listar/usuarios">
-                <i class="bi bi-person"></i>
-            </a>
-            <a routerLink="/listar/projetos" href="/listar/projetos">
-                <i class="bi bi-folder"></i>
-            </a>
-            <a routerLink="" href="">
-                <i class="bi bi-bar-chart"></i>
-            </a>
-            <a routerLink="/lancar-horas" href="/lancar-horas">
-                <i class="bi bi-clock"></i>
-            </a>
-        </div>
-    </div>
-
+   
     <!-- Área Principal -->
     <div class="main-content col-lg-11 p-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
@@ -35,17 +14,31 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                  </li>
-                </ul>
+                
+                  
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Status
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">Sta</a>
+                      <a class="dropdown-item" href="#">Outra ação</a>
+                      <a class="dropdown-item" href="#">Alguma coisa aqui</a>
+                    </div>
+                  </div>
+
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Prioridade
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">ALTA</a>
+                      <a class="dropdown-item" href="#">Outra ação</a>
+                      <a class="dropdown-item" href="#">Alguma coisa aqui</a>
+                    </div>
+                  </div>
+                 
+               
                 <form class="d-flex" role="search">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-success" type="submit">Search</button>

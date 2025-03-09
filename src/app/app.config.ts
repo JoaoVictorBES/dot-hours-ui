@@ -7,11 +7,12 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { FormsModule } from '@angular/forms';
 import { HttpInterceptorService } from './Auth/http.interceptor.service';
 
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes), 
     provideClientHydration(),
     provideHttpClient(withFetch(), withInterceptors([HttpInterceptorService])),
-    importProvidersFrom(FormsModule)
+    importProvidersFrom(FormsModule), 
   ]
 };

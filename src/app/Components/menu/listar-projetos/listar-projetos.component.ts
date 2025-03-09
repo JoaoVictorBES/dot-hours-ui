@@ -6,6 +6,7 @@ import { Projeto } from '../../../Models/projeto';
 import { Atividade } from '../../../Models/atividade';
 import { AtividadeService } from '../../../Services/atividade.service';
 import { ProjetoService } from '../../../Services/projeto.service';
+import { SidebarComponentComponent } from "../../../Util/sidebar-component/sidebar-component.component";
 
 @Component({
   selector: 'app-listar-projetos',
@@ -13,8 +14,8 @@ import { ProjetoService } from '../../../Services/projeto.service';
   imports: [
     FormsModule,
     CommonModule,
-    RouterLink
-  ],
+    RouterLink,
+],
   templateUrl: './listar-projetos.component.html',
   styleUrl: './listar-projetos.component.scss'
 })

@@ -1,0 +1,73 @@
+.sidebar {
+    background: #fff;
+    height: 100vh;
+    width: 180px;
+    padding: 20px;
+    position: fixed;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.sidebar.collapsed {
+    width: 70px;   
+}
+
+.sidebar.collapsed nav a {
+    justify-content: center;
+}
+
+.sidebar nav a{
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    color: #000;
+    text-decoration: none;
+}
+
+.sidebar nav a i{
+    font-size: 18px;
+}
+
+.sidebar nav {
+    padding: 10px 0;
+    cursor: pointer;
+    font-weight: normal;
+    letter-spacing: 2px;  
+    margin-bottom: 10px;  
+    text-transform: uppercase; 
+    color: antiquewhite;
+    list-style: none;
+    padding: 0;
+}
+
+.toggle-btn {
+    cursor: pointer;
+    text-align: right;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.sidebar.collapsed .toggle-btn {
+    text-align: center;
+}
+
+.logout-btn {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.logout-btn button {
+    background-color: #ffffff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    width: 80%;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+

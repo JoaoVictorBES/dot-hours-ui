@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Usuario } from '../../../Models/usuario';
 import { UsuarioService } from '../../../Services/usuario.service';
+import { SidebarComponentComponent } from '../../../Util/sidebar-component/sidebar-component.component';
 
 @Component({
   selector: 'app-listar-usuarios',
@@ -11,7 +12,7 @@ import { UsuarioService } from '../../../Services/usuario.service';
   imports: [
     FormsModule,
     CommonModule,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './listar-usuarios.component.html',
   styleUrl: './listar-usuarios.component.scss'
@@ -20,6 +21,7 @@ export class ListarUsuariosComponent implements OnInit {
 
   usuarios: Usuario [] = [];
 
+  
 
   constructor(
     private usuarioService: UsuarioService
@@ -29,6 +31,7 @@ export class ListarUsuariosComponent implements OnInit {
   ngOnInit(): void {
     this.carregarUsuarios();
   }
+
   carregarUsuarios(): void {
     this.usuarioService.findAll().subscribe({
       next: (data) => {

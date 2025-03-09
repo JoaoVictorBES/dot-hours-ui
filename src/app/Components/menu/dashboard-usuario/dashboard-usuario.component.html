@@ -1,50 +1,92 @@
 <div class="container-fluid">
     <div class="row">
-        <!-- Sidebar -->
-        <nav class="col-lg-2 sidebar d-flex flex-column align-items-center">
-            <h3>logo</h3>
-            <img src="user.jpg" alt="User">
-            <p>User Silva</p>
-            <a routerLink="/dashboard/usuario" href="/dashboard/usuario">DASHBOARD</a>
-            <a routerLink="/listar/atividades" href="/listar/atividades">ATIVIDADES</a>
-            <a routerLink="/relatorios" href="/relatorios">RELATÓRIOS</a>
-            <a routerLink="/lancar-horas" href="/lancar-horas">NOVA TAREFA</a>
-        </nav>
-        
-        <!-- Conteúdo principal -->
-        <main class="col-lg-10 content">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>ATIVIDADES</h2>
-                <button class="btn-custom">NOVA TAREFA</button>
-            </div>
-            
-            <div class="activities mt-3 p-3">
-                <h4 class="text-center">ATIVIDADES</h4>
-                <p>ATIVIDADE 1 - USUÁRIO RESPONSÁVEL | DESCRIÇÃO | STATUS</p>
-                <p>ATIVIDADE 2 - USUÁRIO RESPONSÁVEL | DESCRIÇÃO | STATUS</p>
-                <p>ATIVIDADE 3 - USUÁRIO RESPONSÁVEL | DESCRIÇÃO | STATUS</p>
-            </div>
-            
+          
+        <!-- Conteúdo Principal -->
+        <div class="main-content">
+
+                <!-- Projetos e Atividades -->
             <div class="row mt-4">
-                <div class="col-lg-4">
-                    <div class="card">
-                        <i class="fa-solid fa-clipboard-list"></i>
-                        <h5>NOVA TAREFA</h5>
+                <!-- Projetos -->
+                <div class="col-lg-6">
+                    <div class="box-projetos">
+                        <h3>PROJETOS</h3>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Prioridade</th>
+                                    <th>ID Responsável</th>
+                                    <th>Descrição</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let projeto of projetos">
+                                    <td><strong>{{ projeto.nome }}</strong></td>
+                                    <td>{{ projeto.prioridade }}</td>
+                                    <td>{{ projeto.idUsuarioResponsavel }}</td>
+                                    <td>{{ projeto.descricao }}</td>
+                                    <td>{{ projeto.status }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+
+                <!-- Atividades -->
                 <div class="col-lg-4">
-                    <div class="card" style="background-color: #ffb84d; color: #0f1e2d;">
-                        <i class="fa-solid fa-magnifying-glass-chart"></i>
-                        <h5>RELATÓRIOS</h5>
+                    <div class="box-atividades">
+                        <h3>ATIVIDADES</h3>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Status</th>
+                                        <th>ID Responsável</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let atividade of atividades">
+                                        <td><strong>{{ atividade.nome }}</strong></td>
+                                        <td>{{ atividade.status }}</td>
+                                        <td>{{ atividade.idUsuarioResponsavel }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <i class="bi bi-calendar"></i>
-                        <h5>CALENDÁRIO</h5>
+
+                <!-- Botões -->
+                <div class="row mt-4 text-center botoes">
+                    <div class="col-lg-3 d-flex">
+                        <a href="/listar/projetos" class="flex-fill">
+                            <div class="botao">
+                                <i class="fa-solid fa-clipboard-list"></i>
+                                <span>Gerenciamento de Projetos</span>
+                            </div>
+                        </a>                   
+                    </div>
+
+                    <div class="col-lg-3 d-flex">
+                        <a href="" class="flex-fill">
+                            <div class="botao">
+                                <i class="fa-solid fa-chart-pie"></i>
+                                <span>Relatórios</span>
+                            </div>
+                        </a>                   
+                    </div>
+
+                    <div class="col-lg-3 d-flex">
+                        <a href="/listar/usuarios" class="flex-fill">
+                            <div class="botao">
+                                <i class="fa-solid fa-user"></i>
+                                <span>Gerenciamento de Usuários</span>
+                            </div>
+                        </a>                  
                     </div>
                 </div>
+
             </div>
-        </main>
     </div>
 </div>

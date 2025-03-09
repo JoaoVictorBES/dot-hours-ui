@@ -1,90 +1,63 @@
 <div class="container-fluid">
     <div class="row">
-        <!-- Sidebar -->
-        <div class="col-lg-2 sidebar d-flex flex-column align-items-center">
-            <h5>Admin Silva</h5>
-            <nav class="text-start">
-                <div class="list-unstyled">
-                    <a routerLink="dashboard/admin" href="/dashboard/admin">
-                        <i class="bi bi-house"></i> Dashboard
-                    </a>
-                    <a routerLink="/listar/projetos" href="/listar/projetos">
-                        <i class="bi bi-folder"></i> Projetos
-                    </a>
-                    <a routerLink="/listar/atividades" href="/listar/atividades">
-                        <i class="bi bi-list-task"></i> Atividades
-                    </a>
-                    <a routerLink="/lancar-horas" href="/lancar-horas">
-                        <i class="bi bi-clock"> </i> Nova Tarefa
-                    </a>
-                    <a routerLink="">
-                        <i class="bi bi-bar-chart"></i> Relatórios
-                    </a>
-                    <a routerLink="/listar/usuarios" href="/listar/usuarios">
-                        <i class="bi bi-person"></i>Gerenciamento de Usuário
-                    </a>
-                </div>
-            </nav>
-        </div>
-
-       
-    <div class="col-lg-10 d-flex justify-content-center align-items-center">
-        <div class="content w-75">
-            <h2 class="text-center">{{ atividade.nome }}</h2>
-            <div class="row g-3" *ngIf="atividade">
-                <div class="col-lg-3">
-                    <label for="criacao">Criação</label>
-                    <input type="date" class="form-control" [(ngModel)]="atividade.dataCriacao">
-                </div>
-                <div class="col-lg-3">
-                    <label for="inicio">Início</label>
-                    <input type="date" class="form-control" [(ngModel)]="atividade.dataInicio">
-                </div>
-                <div class="col-lg-3">
-                    <label for="fim">Fim</label>
-                    <input type="date" class="form-control" [(ngModel)]="atividade.dataFim">
-                </div>
-                <div class="col-lg-6 mb-3">
-                    <label for="usuarios-vinculados">Vincular usuarios</label>
-                    <select class="form-control input-custom text-center" name="usuarios" [(ngModel)]="atividade.idUsuariosVinculados">
-                        <option *ngFor="let usuario of usuarios" [value]="usuario.id">  
-                            {{ usuario.username }}
-                        </option>
-                    </select>
-                </div>
-                <div class="row">
+      
+        <div class="col-lg-10 d-flex justify-content-center align-items-center">
+            <div class="content w-75">
+                <h2 class="text-center">{{ atividade.nome }}</h2>
+                <div class="row g-3" *ngIf="atividade">
+                    <div class="col-lg-3">
+                        <label for="criacao">Criação</label>
+                        <input type="date" class="form-control" [(ngModel)]="atividade.dataCriacao">
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="inicio">Início</label>
+                        <input type="date" class="form-control" [(ngModel)]="atividade.dataInicio">
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="fim">Fim</label>
+                        <input type="date" class="form-control" [(ngModel)]="atividade.dataFim">
+                    </div>
                     <div class="col-lg-6 mb-3">
-                        <label for="status">Status</label>
-                        <select class="form-control input-custom" name="status" [(ngModel)]="atividade.status">
-                            <option *ngFor="let status of statusOptions" [value]="status">
-                                {{ status }}
+                        <label for="usuarios-vinculados">Vincular usuarios</label>
+                        <select class="form-control input-custom text-center" name="usuarios" [(ngModel)]="atividade.idUsuariosVinculados">
+                            <option *ngFor="let usuario of usuarios" [value]="usuario.id">  
+                                {{ usuario.username }}
                             </option>
                         </select>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <label for="descricao">Descrição</label>
-                    <textarea class="form-control" rows="3" [(ngModel)]="atividade.descricao"></textarea>
-                </div>
-                <div class="col-lg-2">
-                    <button type="button" (click)="editarAtividade()" class="btn btn-custom w-100">EDITAR</button>
-                </div>
-                <div class="col-lg-10 trash-icon text-end">
-                    <i class="bi bi-trash3" (click)="deletarAtividade(atividade.id)" style="cursor: pointer;"></i>
-                </div>
-                <div class="col-lg-2">
-                    <button type="button" (click)="toggleAtivo()" class="btn w-100" 
-                        [ngClass]="atividade.ativo ? 'btn-danger' : 'btn-success'">
-                        {{ atividade.ativo ? 'Desativar' : 'Ativar' }}
-                    </button>
-                </div>
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+                    <div class="row">
+                        <div class="col-lg-6 mb-3">
+                            <label for="status">Status</label>
+                            <select class="form-control input-custom" name="status" [(ngModel)]="atividade.status">
+                                <option *ngFor="let status of statusOptions" [value]="status">
+                                    {{ status }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label for="descricao">Descrição</label>
+                        <textarea class="form-control" rows="3" [(ngModel)]="atividade.descricao"></textarea>
+                    </div>
+                    <div class="col-lg-2">
+                        <button type="button" (click)="editarAtividade()" class="btn btn-custom w-100">EDITAR</button>
+                    </div>
+                    <div class="col-lg-10 trash-icon text-end">
+                        <i class="bi bi-trash3" (click)="deletarAtividade(atividade.id)" style="cursor: pointer;"></i>
+                    </div>
+                    <div class="col-lg-2">
+                        <button type="button" (click)="toggleAtivo()" class="btn w-100" 
+                            [ngClass]="atividade.ativo ? 'btn-danger' : 'btn-success'">
+                            {{ atividade.ativo ? 'Desativar' : 'Ativar' }}
+                        </button>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
     </div>
 </div>

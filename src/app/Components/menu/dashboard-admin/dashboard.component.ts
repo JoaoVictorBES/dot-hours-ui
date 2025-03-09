@@ -5,6 +5,7 @@ import { Atividade } from '../../../Models/atividade';
 import { Projeto } from '../../../Models/projeto';
 import { ProjetoService } from '../../../Services/projeto.service';
 import { AtividadeService } from '../../../Services/atividade.service';
+import { AuthService } from '../../../Auth/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +19,7 @@ import { AtividadeService } from '../../../Services/atividade.service';
 })
 export class DashboardComponent {
 
-  constructor(private projetoService: ProjetoService, private atividadeService: AtividadeService) { }
+  constructor(private projetoService: ProjetoService, private atividadeService: AtividadeService, private authService: AuthService) { }
 
   projetos: Projeto[] = [];
 
@@ -50,6 +51,10 @@ export class DashboardComponent {
 
   toggleSidebar() {
     this.isCollapsed = !this.isCollapsed;
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }

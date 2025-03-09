@@ -32,22 +32,29 @@ export class LoginComponent {
   logar() {
     this.authService.login(this.login).subscribe({
       next: token => {
-        if(token){
+        if (token) {
           this.authService.addToken(token);
           const user = this.authService.decodeToken(token);
           this.authService.saveUser(user);
           console.log("Salvando usuário:", user);
-          this.router.navigate(['/dashboard/admin'])
-        }else{
+  
+          // Verifica o papel do usuário e redireciona para a rota correspondente
+          if (user.role === 'ADMIN') {
+            this.router.navigate(['/dashboard/admin']);
+          } else {
+            this.router.navigate(['/dashboard/usuario']);
+          }
+  
+        } else {
           alert('Usuário ou senha incorretos!');
         }
       },
-      error: erro =>{
+      error: erro => {
         alert('Deu erro');
       }
-    })
-
+    });
   }
+  
  
 
 }

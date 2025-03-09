@@ -18,49 +18,39 @@ import { ListarLancamentosComponent } from './Components/menu/listar-lancamentos
 import { EditarLancamentoComponent } from './Components/menu/editar-lancamento/editar-lancamento.component';
 import { CadastroLancamentoHorasComponent } from './Components/menu/cadastro-lancamento-horas/lancamento-horas.component';
 import { LancamentoHorasComponent } from './Components/lancamento-horas/lancamento-horas.component';
+import { MainLayoutComponent } from './Components/menu/main-layout/main-layout.component';
 
 export const routes: Routes = [
-
-    {path: '', redirectTo: 'login', pathMatch: 'full'},
-
-    {path: 'login', component: LoginComponent},
-
-    {path: 'dashboard/admin', component: DashboardComponent},
-    
-    {path: 'dashboard/usuario', component: DashboardUsuarioComponent},
-
-    {path: 'cadastro/usuario', component: CadastroUsuarioComponent},
-
-    {path: 'cadastro/projeto', component: CadastroProjetoComponent},
-
-    {path: 'cadastro/lancamento', component: CadastroLancamentoHorasComponent},
-
-    {path: 'cadastro/atividade', component: CadastroAtividadeComponent},
-
-    {path: 'listar/projetos', component: ListarProjetosComponent},
-
-    {path: 'listar/atividades', component: ListarAtividadesComponent},
-
-    {path: 'lancar-horas', component: LancamentoHorasComponent},
-
-    {path: 'listar/usuarios', component: ListarUsuariosComponent},
-
-    {path: 'listar/lancamentos', component: ListarLancamentosComponent},
-
-    {path: 'projeto/:id', component: ProjetoComponent},
-
-    {path: 'atividade/:id', component: AtividadeComponent},
-
-    {path: 'usuario/:id', component: UsuarioComponent},
-
-    {path: 'lancamento/:id', component: LancamentoHorasComponent},
-
-    {path: 'editar/projeto/:id' , component: EditarProjetoComponent},
-
-    {path: 'editar/atividade/:id' , component: EditarAtividadeComponent},
-
-    {path: 'editar/usuario/:id' , component: EditarUsuarioComponent},
-
-    {path: 'editar/lancamento/:id' , component: EditarLancamentoComponent}
-
-];
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'login', component: LoginComponent }, // Login sem sidebar
+  
+    { 
+      path: '', 
+      component: MainLayoutComponent, // Páginas com sidebar
+      children: [
+        { path: 'dashboard/admin', component: DashboardComponent },
+        { path: 'dashboard/usuario', component: DashboardUsuarioComponent },
+  
+        { path: 'cadastro/usuario', component: CadastroUsuarioComponent },
+        { path: 'cadastro/projeto', component: CadastroProjetoComponent },
+        { path: 'cadastro/lancamento', component: CadastroLancamentoHorasComponent },
+        { path: 'cadastro/atividade', component: CadastroAtividadeComponent },
+  
+        { path: 'listar/projetos', component: ListarProjetosComponent },
+        { path: 'listar/atividades', component: ListarAtividadesComponent },
+        { path: 'lancar-horas', component: LancamentoHorasComponent },
+        { path: 'listar/usuarios', component: ListarUsuariosComponent },
+        { path: 'listar/lancamentos', component: ListarLancamentosComponent },
+  
+        { path: 'projeto/:id', component: ProjetoComponent },
+        { path: 'atividade/:id', component: AtividadeComponent },
+        { path: 'usuario/:id', component: UsuarioComponent },
+        { path: 'lancamento/:id', component: LancamentoHorasComponent },
+  
+        { path: 'editar/projeto/:id', component: EditarProjetoComponent },
+        { path: 'editar/atividade/:id', component: EditarAtividadeComponent },
+        { path: 'editar/usuario/:id', component: EditarUsuarioComponent },
+        { path: 'editar/lancamento/:id', component: EditarLancamentoComponent }
+      ]
+    }
+  ];
