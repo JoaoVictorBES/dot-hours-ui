@@ -10,23 +10,23 @@
         </div>
         
         <div class="filter-bar">
-          <input type="text" [(ngModel)]="filtros.nome" placeholder="Filtrar por nome" class="form-control" />
-      
-          <select [(ngModel)]="filtros.status" class="form-select">
-              <option value="">Todos os Status</option>
-              <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
-          </select>
-      
-          <select [(ngModel)]="filtros.idProjeto" class="form-select">
-              <option value="">Todos os Projetos</option>
-              <option *ngFor="let projeto of projetos" [value]="projeto.id">{{ projeto.nome }}</option>
-          </select>
-      
-          <input type="date" [(ngModel)]="filtros.dataInicio" class="form-control" />
-          <input type="date" [(ngModel)]="filtros.dataFim" class="form-control" />
-      
-          <button class="btn btn-primary" (click)="aplicarFiltros()">Filtrar</button>
-      </div>
+            <input type="text" [(ngModel)]="filtros.nome" placeholder="Filtrar por nome" class="form-control" />
+        
+            <select [(ngModel)]="filtros.status" class="form-select">
+                <option value="">Todos os Status</option>
+                <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+            </select>
+        
+            <select [(ngModel)]="filtros.idProjeto" class="form-select">
+                <option value="">Todos os Projetos</option>
+                <option *ngFor="let projeto of projetos" [value]="projeto.id">{{ projeto.nome }}</option>
+            </select>
+        
+            <input type="date" [(ngModel)]="filtros.dataInicio" class="form-control" />
+            <input type="date" [(ngModel)]="filtros.dataFim" class="form-control" />
+        
+            <button class="btn btn-primary" (click)="aplicarFiltros()">Filtrar</button>
+        </div>
 
         <div class="table-container p-4 bg-white">
             <table class="table table-hover">

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { inject, Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
@@ -89,6 +89,17 @@ export class ProjetoService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   
     return this.http.put<Projeto>(`${this.API}/update/${id}`, projeto, { headers });
+  }
+
+  filtrarProjetos(nome?: string, status?: string, prioridade?: string, dataInicio?: string): Observable<Projeto[]> {
+    let params = new HttpParams();
+
+    if (nome) params = params.set('nome', nome);
+    if (status) params = params.set('status', status);
+    if (prioridade) params = params.set('prioridade', prioridade);
+    if (dataInicio) params = params.set('dataInicio', dataInicio);
+
+    return this.http.get<Projeto[]>(`${this.API}/filter`, { params });
   }
  
 }

@@ -1,72 +1,63 @@
-<div class="table-container p-4 bg-white">
-  <table class="table table-hover">
-      <thead>
-          <tr>
-              <th colspan="7">
-                  <nav class="navbar navbar-expand-lg navbar-light bg-light p-2">
-                      <div class="container-fluid">
-                          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#tabelaNavbar">
-                              <span class="navbar-toggler-icon"></span>
-                          </button>
-                          <div class="collapse navbar-collapse" id="tabelaNavbar">
-                              <div class="dropdown me-2">
-                                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                      Status
-                                  </button>
-                                  <ul class="dropdown-menu">
-                                      <li><a class="dropdown-item" href="#">Em andamento</a></li>
-                                      <li><a class="dropdown-item" href="#">Concluído</a></li>
-                                      <li><a class="dropdown-item" href="#">Cancelado</a></li>
-                                  </ul>
-                              </div>
-                              
-                              <div class="dropdown me-2">
-                                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                      Prioridade
-                                  </button>
-                                  <ul class="dropdown-menu">
-                                      <li><a class="dropdown-item" href="#">Alta</a></li>
-                                      <li><a class="dropdown-item" href="#">Média</a></li>
-                                      <li><a class="dropdown-item" href="#">Baixa</a></li>
-                                  </ul>
-                              </div>
-                              
-                              <form class="d-flex">
-                                  <input class="form-control me-2" type="search" placeholder="Pesquisar projetos">
-                                  <button class="btn btn-outline-success" type="submit">Buscar</button>
-                              </form>
-                          </div>
-                      </div>
-                  </nav>
-              </th>
-          </tr>
-          <tr>
-              <th>ID</th>
-              <th>NOME</th>
-              <th>DESCRIÇÃO</th>
-              <th>STATUS</th>
-              <th>USUÁRIO RESP</th>
-              <th>PRIORIDADE</th>
-              <th>AÇÕES</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let projeto of projetos">
-              <td>{{ projeto.id }}</td>
-              <td>{{ projeto.nome }}</td>
-              <td>{{ projeto.descricao | slice:0:50 }}...</td>
-              <td>{{ projeto.status }}</td>
-              <td>{{ projeto.idUsuarioResponsavel }}</td>
-              <td>{{ projeto.prioridade }}</td>
-              <td>
-                  <button class="view-btn" [routerLink]="['/projeto', projeto.id]">
-                      <i class="bi bi-eye"></i>
-                  </button>
-                  <button class="edit" [routerLink]="['/editar/projeto', projeto.id]">
-                      <i class="bi bi-pencil-square"></i>
-                  </button>
-              </td>
-          </tr>
-      </tbody>
-  </table>
+<div class="table-container p-4 bg-white ">
+    
+    <div class="main-content col-lg-11 p-4">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="fw-bold">PROJETOS</h2>
+                <button class="btn btn-project" [routerLink]="['/cadastro/projeto']">NOVO PROJETO</button>
+            </div>
+            
+            <div class="filter-bar">
+                <input type="text" [(ngModel)]="filtros.nome" placeholder="Filtrar por nome" class="form-control" />
+            
+                <select [(ngModel)]="filtros.status" class="form-select">
+                    <option value="">Status</option>
+                    <option *ngFor="let status of statusProjeto" [value]="status">{{ status }}</option>
+                </select>
+            
+                <select [(ngModel)]="filtros.prioridade" class="form-select">
+                    <option value="">Prioridade</option>
+                    <option *ngFor="let prioridade of prioridadeProjeto" [value]="prioridade">{{ prioridade }}</option>
+                </select>
+            
+                <input type="date" [(ngModel)]="filtros.dataInicio" class="form-control" />
+            
+                <button class="btn btn-primary" (click)="aplicarFiltros()">Filtrar</button>
+            </div>
+            <!-- Tabela -->
+            <table class="table table-hover mt-3">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOME</th>
+                    <th>DESCRIÇÃO</th>
+                    <th>STATUS</th>
+                    <th>USUÁRIO RESP</th>
+                    <th>PRIORIDADE</th>
+                    <th>AÇÕES</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let projeto of projetos">
+                    <td>{{ projeto.id }}</td>
+                    <td>{{ projeto.nome }}</td>
+                    <td>{{ projeto.descricao | slice:0:50 }}...</td>
+                    <td>{{ projeto.status }}</td>
+                    <td>{{ projeto.idUsuarioResponsavel }}</td>
+                    <td>{{ projeto.prioridade }}</td>
+                    <td>
+                    <button class="view-btn" [routerLink]="['/projeto', projeto.id]">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <button class="edit" [routerLink]="['/editar/projeto', projeto.id]">
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+    </div>
+    
 </div>
+  

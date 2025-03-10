@@ -2,20 +2,14 @@
 .main-content {
     display: flex;
     flex-direction: column;
-    margin-left: 180px; 
-    width: calc(100% - 180px);
-    transition: margin-left 0.3s ease, width 0.3s ease;
-    align-items: center;
-    padding: 20px;
+    margin-left: 37px;
+    margin-left: 80px; 
+    width: calc(100% - 80px);
+    
 }
 
 .main-content h2{
     color: #000;
-}
-
-.sidebar.collapsed + .main-content {
-    margin-left: 70px; /* Ajusta quando a sidebar está recolhida */
-    width: calc(100% - 70px);
 }
 
 .btn-project {
@@ -31,12 +25,9 @@
 
 .table-container {
     background-color: #000;
-    border-radius: 5px;
+    border-radius: 15px;
     padding: 20px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-    margin: auto;
-    width: 90%; /* Define um tamanho adequado */
-    text-align: center;
 }
 
 
@@ -46,11 +37,30 @@
     margin-top: 4px;
 }
 
+.filter-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.filter-bar .form-control, 
+.filter-bar .form-select {
+    width: auto;
+    flex: 1;
+}
+
+.filter-bar button {
+    flex: 0.5;
+}
+
 
 table {
     background-color: transparent;
     text-align: center;
-    width: 100%;
 }
 
 th {
@@ -62,36 +72,5 @@ td {
     font-size: 14px;
     color: black;
 }
-
-th, td {
-    padding: 12px;
-    text-align: center;
-}
-
-@media (max-width: 992px) {
-    .main-content {
-        margin-left: 70px; /* Ajusta para telas menores */
-        width: calc(100% - 70px);
-    }
-
-    .table-container {
-        width: 95%;
-    }
-}
-
-@media (max-width: 768px) {
-    .main-content {
-        margin-left: 0;
-        width: 100%;
-        padding: 10px;
-    }
-
-    .table-container {
-        width: 100%;
-        padding: 10px;
-    }
-}
-
-
 
 
