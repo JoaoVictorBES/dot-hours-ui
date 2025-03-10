@@ -5,6 +5,8 @@
     margin-left: 180px; 
     width: calc(100% - 180px);
     transition: margin-left 0.3s ease, width 0.3s ease;
+    align-items: center;
+    padding: 20px;
 }
 
 .main-content h2{
@@ -34,7 +36,7 @@
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     margin: auto;
     width: 90%; /* Define um tamanho adequado */
-    max-width: 1200px;
+    text-align: center;
 }
 
 
@@ -74,6 +76,19 @@ th, td {
 
     .table-container {
         width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .table-container {
+        width: 100%;
+        padding: 10px;
     }
 }
 

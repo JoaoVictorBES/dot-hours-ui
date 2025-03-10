@@ -32,7 +32,7 @@ export class Atividade {
     this.dataFim = dataFim;
     this.status = status;
     this.dataCriacao = dataCriacao;
-    this.ativo = ativo;
+    this.ativo = true;
   }
 
   

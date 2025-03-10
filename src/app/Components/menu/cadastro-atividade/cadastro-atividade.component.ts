@@ -102,7 +102,6 @@ export class CadastroAtividadeComponent implements OnInit {
 
  
   create(): void {
-    
     // Certificando-se de que idUsuariosVinculados seja um array de números
     if (this.atividade.idUsuariosVinculados && Array.isArray(this.atividade.idUsuariosVinculados)) {
       this.atividade.idUsuariosVinculados = this.atividade.idUsuariosVinculados.map(id => Number(id));
@@ -127,6 +126,8 @@ export class CadastroAtividadeComponent implements OnInit {
     } else {
       console.error('Datas inválidas', this.atividade.dataInicio, this.atividade.dataFim);
     }
+
+    this.atividade.ativo = true;
 
     console.log('Atividade a ser criada:', JSON.stringify(this.atividade, null, 2));
 

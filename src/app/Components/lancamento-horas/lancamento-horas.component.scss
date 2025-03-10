@@ -1,28 +1,4 @@
-.sidebar {
-    background-color: #f6f6f6;
-    width: 80px;  /* Maior para melhor usabilidade */
-    height: 100vh; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
-    position: fixed;
-    left: 0;
-    top: 0;
-}
 
-.sidebar .circle {
-    width: 50px;
-    height: 50px;
-    background-color: #000;
-    border-radius: 50%;
-}
-
-.sidebar .icons i {
-    font-size: 32px;
-    color: #000;
-    cursor: pointer;
-}
 
 .icons{
     margin-bottom: 80px;

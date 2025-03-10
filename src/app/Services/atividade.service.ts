@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Atividade } from '../Models/atividade';
@@ -118,6 +118,17 @@ export class AtividadeService {
     return this.http.put(`${this.API}/toggle-status/${id}`, {}, { headers, responseType: 'text' });
   }
   
+  filtrarAtividades(filtros: any): Observable<Atividade[]> {
+    let params = new HttpParams();
+
+    if (filtros.nome) params = params.set('nome', filtros.nome);
+    if (filtros.status) params = params.set('status', filtros.status);
+    if (filtros.idProjeto) params = params.set('idProjeto', filtros.idProjeto);
+    if (filtros.dataInicio) params = params.set('dataInicio', filtros.dataInicio);
+    if (filtros.dataFim) params = params.set('dataFim', filtros.dataFim);
+
+    return this.http.get<Atividade[]>(`${this.API}/findByFilters`, { params });
+  }
    
 
 }

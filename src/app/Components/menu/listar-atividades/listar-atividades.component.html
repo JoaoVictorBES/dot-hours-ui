@@ -8,31 +8,26 @@
             <h2 class="fw-bold">ATIVIDADES</h2>
             <button class="btn btn-project" [routerLink]="['/cadastro/atividade']">NOVA ATIVIDADE</button>
         </div>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-              
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                  </li>
-                </ul>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-              </div>
-            </div>
-        </nav>
+        
+        <div class="filter-bar">
+          <input type="text" [(ngModel)]="filtros.nome" placeholder="Filtrar por nome" class="form-control" />
+      
+          <select [(ngModel)]="filtros.status" class="form-select">
+              <option value="">Todos os Status</option>
+              <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+          </select>
+      
+          <select [(ngModel)]="filtros.idProjeto" class="form-select">
+              <option value="">Todos os Projetos</option>
+              <option *ngFor="let projeto of projetos" [value]="projeto.id">{{ projeto.nome }}</option>
+          </select>
+      
+          <input type="date" [(ngModel)]="filtros.dataInicio" class="form-control" />
+          <input type="date" [(ngModel)]="filtros.dataFim" class="form-control" />
+      
+          <button class="btn btn-primary" (click)="aplicarFiltros()">Filtrar</button>
+      </div>
+
         <div class="table-container p-4 bg-white">
             <table class="table table-hover">
                 <thead>

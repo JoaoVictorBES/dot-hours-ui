@@ -24,7 +24,7 @@ export class UsuarioComponent {
 
   usuario: Usuario = new Usuario(0, '', '', '', '', '', '', this.atividade);
 
-  constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, router: Router) {}
+  constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.carregarUsuario();
@@ -45,6 +45,14 @@ export class UsuarioComponent {
       });
     }
   }
+
+  voltar(): void {
+    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+    const rotaDestino = usuario.role === 'admin' ? '/dashboard/admin' : '/dashboard/usuario';
+
+    this.router.navigate([rotaDestino]);
+  }
+
 
 
 }
