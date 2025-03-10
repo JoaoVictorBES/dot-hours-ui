@@ -1,86 +1,72 @@
-<div class="container-fluid vh-100 d-flex">
-   
-    <!-- Área Principal -->
-    <div class="main-content col-lg-11 p-4">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2 class="fw-bold">PROJETOS</h2>
-            <button class="btn btn-project" [routerLink]="['/cadastro/projeto']">NOVO PROJETO</button>
-        </div>
-
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-              
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                
-                  
-                  <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Status
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Sta</a>
-                      <a class="dropdown-item" href="#">Outra ação</a>
-                      <a class="dropdown-item" href="#">Alguma coisa aqui</a>
-                    </div>
-                  </div>
-
-                  <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Prioridade
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">ALTA</a>
-                      <a class="dropdown-item" href="#">Outra ação</a>
-                      <a class="dropdown-item" href="#">Alguma coisa aqui</a>
-                    </div>
-                  </div>
-                 
-               
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-              </div>
-            </div>
-        </nav>
-        
-        <div class="table-container p-4 bg-white">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>NOME</th>
-                        <th>DESCRIÇÃO</th>
-                        <th>STATUS</th>
-                        <th>USUÁRIO RESP</th>
-                        <th>PRIORIDADE</th>
-                        <th>AÇÕES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr *ngFor="let projeto of projetos">
-                        <td>{{ projeto.id }}</td>
-                        <td>{{ projeto.nome }}</td>
-                        <td>{{ projeto.descricao.length > 50 ? (projeto.descricao | slice:0:50) + '...' : projeto.descricao }}</td>
-                        <td>{{ projeto.status }}</td>
-                        <td>{{ projeto.idUsuarioResponsavel }}</td>
-                        <td>{{ projeto.prioridade }}</td>
-                        <td>
-                            <button class="view-btn" [routerLink]="['/projeto', projeto.id]">
-                                <i class="bi bi-eye"></i>
-                            </button>
-                            <button class="edit" [routerLink]="['/editar/projeto', projeto.id]">
-                                <i class="bi bi-pencil-square"></i>
-                            </button>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </div>
-    </div>
+<div class="table-container p-4 bg-white">
+  <table class="table table-hover">
+      <thead>
+          <tr>
+              <th colspan="7">
+                  <nav class="navbar navbar-expand-lg navbar-light bg-light p-2">
+                      <div class="container-fluid">
+                          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#tabelaNavbar">
+                              <span class="navbar-toggler-icon"></span>
+                          </button>
+                          <div class="collapse navbar-collapse" id="tabelaNavbar">
+                              <div class="dropdown me-2">
+                                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                      Status
+                                  </button>
+                                  <ul class="dropdown-menu">
+                                      <li><a class="dropdown-item" href="#">Em andamento</a></li>
+                                      <li><a class="dropdown-item" href="#">Concluído</a></li>
+                                      <li><a class="dropdown-item" href="#">Cancelado</a></li>
+                                  </ul>
+                              </div>
+                              
+                              <div class="dropdown me-2">
+                                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                      Prioridade
+                                  </button>
+                                  <ul class="dropdown-menu">
+                                      <li><a class="dropdown-item" href="#">Alta</a></li>
+                                      <li><a class="dropdown-item" href="#">Média</a></li>
+                                      <li><a class="dropdown-item" href="#">Baixa</a></li>
+                                  </ul>
+                              </div>
+                              
+                              <form class="d-flex">
+                                  <input class="form-control me-2" type="search" placeholder="Pesquisar projetos">
+                                  <button class="btn btn-outline-success" type="submit">Buscar</button>
+                              </form>
+                          </div>
+                      </div>
+                  </nav>
+              </th>
+          </tr>
+          <tr>
+              <th>ID</th>
+              <th>NOME</th>
+              <th>DESCRIÇÃO</th>
+              <th>STATUS</th>
+              <th>USUÁRIO RESP</th>
+              <th>PRIORIDADE</th>
+              <th>AÇÕES</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let projeto of projetos">
+              <td>{{ projeto.id }}</td>
+              <td>{{ projeto.nome }}</td>
+              <td>{{ projeto.descricao | slice:0:50 }}...</td>
+              <td>{{ projeto.status }}</td>
+              <td>{{ projeto.idUsuarioResponsavel }}</td>
+              <td>{{ projeto.prioridade }}</td>
+              <td>
+                  <button class="view-btn" [routerLink]="['/projeto', projeto.id]">
+                      <i class="bi bi-eye"></i>
+                  </button>
+                  <button class="edit" [routerLink]="['/editar/projeto', projeto.id]">
+                      <i class="bi bi-pencil-square"></i>
+                  </button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
 </div>

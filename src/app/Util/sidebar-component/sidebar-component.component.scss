@@ -53,21 +53,108 @@
     text-align: center;
 }
 
+.sidebar.collapsed .logout-btn button {
+    justify-content: center; 
+    width: 100%; 
+    font-size: 0; 
+    margin-top: 290px;
+}
+
+.sidebar.collapsed .logout-btn button i {
+    font-size: 18px; /* Mantém o ícone visível */
+    font-size: initial;
+}
+
 .logout-btn {
-    position: absolute;
-    bottom: 20px;
     width: 100%;
     text-align: center;
 }
 
-.logout-btn button {
+button {
     background-color: #ffffff;
     color: #000;
     border: none;
-    padding: 10px 20px;
+    padding: 10px;
     width: 80%;
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
+    display: flex;
+    margin-top: 210px;
+    align-items: center;
+    justify-content: center; /* Centraliza o conteúdo */
+    gap: 10px; /* Espaçamento entre ícone e texto */
 }
 
+.profile{
+    margin-bottom: 30px;
+}
+
+//  Responsividade //
+
+/* Para telas menores que 768px */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+        padding: 10px;
+    }
+
+    .sidebar nav a {
+        justify-content: center;
+        font-size: 0; /* Esconde o texto dos botões */
+    }
+
+    .sidebar nav a i {
+        font-size: 20px;
+    }
+
+    .sidebar.collapsed {
+        width: 0;
+        padding: 0;
+    }
+
+    .sidebar.collapsed nav a {
+        display: none;
+    }
+
+    .toggle-btn {
+        text-align: center;
+    }
+}
+
+/* Para telas menores que 425px */
+@media screen and (max-width: 425px) {
+    .sidebar {
+        width: 0;
+        padding: 0;
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar.open {
+        width: 180px;
+        padding: 20px;
+    }
+
+    .sidebar .toggle-btn {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 22px;
+    }
+
+    .sidebar nav a {
+        font-size: 14px;
+    }
+
+    button {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+    }
+}

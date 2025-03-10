@@ -1,75 +1,19 @@
-.sidebar {
-    background-color: #f6f6f6;
-    width: 80px;  /* Maior para melhor usabilidade */
-    height: 100vh; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
-    position: fixed;
-    left: 0;
-    top: 0;
-}
-
-.sidebar .circle {
-    width: 50px;
-    height: 50px;
-    background-color: #000;
-    border-radius: 50%;
-}
-
-.sidebar .icons i {
-    font-size: 32px;
-    color: #000;
-    cursor: pointer;   
-}
-
-.icons{
-    margin-bottom: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin-top: 30px;
-}
-
-.icons a {
-    text-decoration: none;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1rem;
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.5rem;
-    transition: transform 0.2s ease-in-out;
-}
-
-.icons a:hover {
-    transform: scale(1.2);
-}
-
-.icons i {
-    font-size: 32px;
-    color: #fff;
-    transition: color 0.3s;
-}
-
-.icons i:hover {
-    color: #1e90ff; 
-}
 
 .main-content {
     display: flex;
     flex-direction: column;
-    margin-left: 37px;
-    margin-left: 80px; 
-    width: calc(100% - 80px);
+    margin-left: 180px; 
+    width: calc(100% - 180px);
+    transition: margin-left 0.3s ease, width 0.3s ease;
 }
 
 .main-content h2{
     color: #000;
+}
+
+.sidebar.collapsed + .main-content {
+    margin-left: 70px; /* Ajusta quando a sidebar está recolhida */
+    width: calc(100% - 70px);
 }
 
 .btn-project {
@@ -88,6 +32,9 @@
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    margin: auto;
+    width: 90%; /* Define um tamanho adequado */
+    max-width: 1200px;
 }
 
 
@@ -101,6 +48,7 @@
 table {
     background-color: transparent;
     text-align: center;
+    width: 100%;
 }
 
 th {
@@ -111,6 +59,22 @@ th {
 td {
     font-size: 14px;
     color: black;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .main-content {
+        margin-left: 70px; /* Ajusta para telas menores */
+        width: calc(100% - 70px);
+    }
+
+    .table-container {
+        width: 95%;
+    }
 }
 
 
