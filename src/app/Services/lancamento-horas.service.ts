@@ -42,10 +42,10 @@ export class LancamentoHorasService {
     );
   }
 
-  findAll(): Observable<LancamentoHoras[]> {
-      
-    return this.http.get<LancamentoHoras[]>(`${this.API}/findAll`, );
-  
+  findAll(page: number = 0, size: number = 8): Observable<any> {
+
+    return this.http.get<any>(`${this.API}/findAll?page=${page}&size=${size}`);
+    
   }
 
   update(id: number, lancamentoHoras: LancamentoHoras): Observable<LancamentoHoras> {
@@ -94,5 +94,16 @@ export class LancamentoHorasService {
     );
 
   }
+
+  filtrarLancamentos(idUsuario?: string, idAtividade?: string, idProjeto?: string, dataRegistro?: string): Observable<LancamentoHoras[]> {
+    const params: any = {};
+
+    if (idUsuario) params.idUsuario = idUsuario;
+    if (idAtividade) params.idAtividade = idAtividade;
+    if (idProjeto) params.idProjeto = idProjeto;
+    if (dataRegistro) params.dataRegistro = dataRegistro;
+
+    return this.http.get<LancamentoHoras[]>(`${this.API}/search`, { params });
+}
 
 }

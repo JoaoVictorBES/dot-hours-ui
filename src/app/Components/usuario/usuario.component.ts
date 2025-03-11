@@ -35,16 +35,36 @@ export class UsuarioComponent {
     
     if (id) {
       const idNumber = Number(id);
+  
+      // Verifique se está no ambiente de navegador
+      if (typeof window !== 'undefined' && window.localStorage) {
+        // Aqui você pode acessar o localStorage sem problemas
+        const usuarioData = localStorage.getItem('usuario'); // Exemplo de acesso ao localStorage
+      }
+  
+      // Buscar dados do usuário
       this.usuarioService.findById(idNumber).subscribe({
         next: (usuario) => {
           this.usuario = usuario;
         },
-        error: (error: any) => {
-          console.error('Erro ao buscar usuario:', error);
+        error: (error) => {
+          console.error('Erro ao buscar usuário:', error);
+        }
+      });
+  
+      // Buscar atividades vinculadas ao usuário
+      this.usuarioService.findAtividadesByUsuario(idNumber).subscribe({
+        next: (atividades) => {
+          this.usuario.atividades = atividades;
+        },
+        error: (error) => {
+          console.error('Erro ao buscar atividades:', error);
         }
       });
     }
   }
+  
+  
 
   voltar(): void {
     const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
@@ -52,7 +72,5 @@ export class UsuarioComponent {
 
     this.router.navigate([rotaDestino]);
   }
-
-
 
 }

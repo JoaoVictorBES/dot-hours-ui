@@ -8,31 +8,23 @@
             <button class="btn btn-project" [routerLink]="['/lancar-horas']">NOVO LANÇAMENTO</button>
         </div>
 
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-              
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                  </li>
-                </ul>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-              </div>
-            </div>
-        </nav>
+        <div class="filter-bar d-flex justify-content-between align-items-center p-3 bg-light rounded mb-3">
+          <input type="text" class="form-control me-2" placeholder="Pesquisar..." [(ngModel)]="filtros.searchTerm" (input)="aplicarFiltros()">
+          
+          <select class="form-select me-2" [(ngModel)]="filtros.selectedUsuario" (change)="aplicarFiltros()">
+              <option value="">Usuário</option>
+              <option *ngFor="let usuario of usuarios" [value]="usuario.id">{{ usuario.username }}</option>
+          </select>
+          
+          <select class="form-select me-2" [(ngModel)]="filtros.selectedAtividade" (change)="aplicarFiltros()">
+              <option value="">Atividade</option>
+              <option *ngFor="let atividade of atividades" [value]="atividade.id">{{ atividade.nome }}</option>
+          </select>
+          
+          <input type="date" class="form-control me-2" [(ngModel)]="filtros.selectedDate" (change)="aplicarFiltros()">
+          
+          <button class="btn btn-primary" (click)="aplicarFiltros()">Limpar</button>
+        </div>
         
         <div class="table-container p-4 bg-white">
             <table class="table table-hover">
@@ -66,7 +58,14 @@
                     </tr>
 
                 </tbody>
+                
+                  
             </table>
+            <div class="pagination">
+                <button (click)="paginaAnterior()" [disabled]="currentPage === 0">Anterior</button>
+                <span> {{ currentPage + 1 }} de {{ totalPages }}</span>
+                <button (click)="proximaPagina()" [disabled]="currentPage === totalPages - 1">Próxima</button>
+            </div>
         </div>
     </div>
 </div>

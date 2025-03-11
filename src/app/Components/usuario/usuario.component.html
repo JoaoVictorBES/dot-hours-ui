@@ -1,38 +1,67 @@
 <div class="container-fluid">
-    <div class="row">
-  
-        <!-- Conteúdo principal -->
-        <div class="col-lg-10 d-flex justify-content-center align-items-center">
-            <div class="content-box w-75">
-                <h2>Usuário</h2>
+    <div class="row justify-content-center mt-4">
+        
+        <!-- Card de Informações do Usuário -->
+        <div class="col-lg-8 col-md-10">
+            <div class="content-box">
+                <h2 class="text-center">Usuário</h2>
                 <div class="row" *ngIf="usuario">
-                    <div class="col-lg-6 mb-3">
-                        <label for="nome">Nome</label>
-                        <div class="info-box"> {{ usuario.username }}</div>
+                    <div class="col-md-6 mb-3">
+                        <label>Nome</label>
+                        <div class="info-box">{{ usuario.username }}</div>
                     </div>
-                    <div class="col-lg-6 mb-3">
-                        <label for="email">Email</label>
-                        <div class="info-box"> {{ usuario.email }}</div>
+                    <div class="col-md-6 mb-3">
+                        <label>Email</label>
+                        <div class="info-box">{{ usuario.email }}</div>
                     </div>
-                    <div class="col-lg-6 mb-3">
-                        <label for="role">Role</label>
-                        <div class="info-box"> {{ usuario.role }}</div>
+                    <div class="col-md-6 mb-3">
+                        <label>Role</label>
+                        <div class="info-box">{{ usuario.role }}</div>
                     </div>
-                    <div class="col-lg-6 mb-3">
-                        <label for="ultimoLogin">Último Login</label>
-                        <div class="info-box"> {{ usuario.ultimoLogin }}</div>
+                    <div class="col-md-6 mb-3">
+                        <label>Último Login</label>
+                        <div class="info-box">{{ usuario.ultimoLogin || 'N/A' }}</div>
                     </div>
-                    <div class="col-lg-6 mt-4">
-                        <label for="atividades">Atividades</label>
-                        <div class="info-box"> {{ usuario.atividades.length }} </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Total de Atividades</label>
+                        <div class="info-box">{{ usuario.atividades.length }}</div>
                     </div>
-
                 </div>
             </div>
         </div>
-        <button (click)="voltar()" class="botao-voltar">Voltar</button>
+
+        <!-- Tabela de Atividades -->
+        <div class="col-lg-8 col-md-12 mt-4">
+            <div class="content-box">
+                <h3 class="text-center">Atividades Vinculadas</h3>
+                <div *ngIf="usuario.atividades.length > 0; else noAtividades">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Status</th>
+                                <th>Horas Lançadas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let atividade of usuario.atividades">
+                                <td>{{ atividade.nome }}</td>
+                                <td>{{ atividade.status }}</td>
+                                <!--<td>{{ atividade.horasLancadas || '0' }}</td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ng-template #noAtividades>
+                    <p class="text-center text-muted">Nenhuma atividade vinculada.</p>
+                </ng-template>
+            </div>
+        </div>
+
+        <!-- Botão Voltar -->
+        <div class="col-lg-6 text-center mt-3">
+            <button (click)="voltar()" class="botao-voltar">Voltar</button>
+        </div>
 
     </div>
 </div>
-
-
