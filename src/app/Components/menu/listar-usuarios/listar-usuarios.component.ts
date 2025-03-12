@@ -24,6 +24,8 @@ export class ListarUsuariosComponent implements OnInit {
   usuarios: Usuario [] = [];
   roles: string[] = ['ADMIN', 'USER']; 
   atividades: Atividade[] = [];
+  totalPages: number = 0;
+  currentPage: number = 0;
 
   filtros = {
     nome: '',
@@ -44,17 +46,19 @@ export class ListarUsuariosComponent implements OnInit {
     this.carregarAtividades();
   }
 
-  carregarUsuarios(): void {
-    this.usuarioService.findAll().subscribe({
-      next: (data) => {
-        this.usuarios = data;
+  carregarUsuarios(page: number = 0): void {
+    this.usuarioService.findAll(page).subscribe({
+      next: (response) => {
+        this.usuarios = response.content;
+        this.totalPages = response.totalPages;
+        this.currentPage = response.number;
       },
       error: (err) => console.error("Erro ao carregar usuarios:", err)
     });
   }
 
   carregarAtividades(): void {
-    this.atividadeService.listAll().subscribe({
+    this.atividadeService.findAll().subscribe({
       next: (atividades: Atividade[]) => {
         this.atividades = atividades;
       },
@@ -74,5 +78,16 @@ export class ListarUsuariosComponent implements OnInit {
     });
   }
 
+  proximaPagina(): void {
+    if (this.currentPage < this.totalPages - 1) {
+      this.carregarUsuarios(this.currentPage + 1);
+    }
+  }
+  
+  paginaAnterior(): void {
+    if (this.currentPage > 0) {
+      this.carregarUsuarios(this.currentPage - 1);
+    }
+  }
   
 }

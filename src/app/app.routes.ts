@@ -35,7 +35,7 @@ export const routes: Routes = [
       // 🛑 Rotas protegidas para ADMIN 🛑
       { path: 'cadastro/usuario', component: CadastroUsuarioComponent, canActivate: [AuthGuard] },
       { path: 'cadastro/projeto', component: CadastroProjetoComponent, canActivate: [AuthGuard] },
-      { path: 'cadastro/atividade', component: CadastroAtividadeComponent, canActivate: [AuthGuard] },
+      { path: 'cadastro/atividade', component: CadastroAtividadeComponent },
       { path: 'projeto/:id', component: ProjetoComponent, canActivate: [AuthGuard] },
 
       { path: 'editar/projeto/:id', component: EditarProjetoComponent, canActivate: [AuthGuard] },

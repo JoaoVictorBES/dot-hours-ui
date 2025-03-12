@@ -30,8 +30,11 @@ export class DashboardComponent {
   ngOnInit(): void {
     // Chama o serviço para buscar os projetos ao inicializar o componente
     this.projetoService.findAll().subscribe(
-      (dados) => {
-        this.projetos = dados;  // Armazena os dados retornados na variável projetos
+      (dados: any) => {
+        
+        console.log('Dados retornados', dados)
+          this.projetos = dados.content; // Ajuste conforme a estrutura real
+    
       },
       (erro) => {
         console.error('Erro ao carregar projetos:', erro);
@@ -39,9 +42,10 @@ export class DashboardComponent {
     );
 
     // Carregar as atividades
-    this.atividadeService.listAll().subscribe(
+    this.atividadeService.findAll().subscribe(
       (dados) => {
-        this.atividades = dados;  // Armazenando as atividades
+        console.log('dados', dados)
+        this.atividades = dados.content;  // Armazenando as atividades
       },
       (erro) => {
         console.error('Erro ao carregar atividades:', erro);

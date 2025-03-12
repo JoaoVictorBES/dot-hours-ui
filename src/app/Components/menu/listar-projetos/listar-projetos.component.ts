@@ -30,6 +30,8 @@ export class ListarProjetosComponent implements OnInit {
 
     projetos: Projeto[] = [];
     atividades: Atividade[] = [];
+    totalPages: number = 0;
+    currentPage: number = 0;
 
     statusProjeto = Object.values(StatusProjeto)
     prioridadeProjeto = Object.values(PrioridadeProjeto)
@@ -46,17 +48,19 @@ export class ListarProjetosComponent implements OnInit {
       this.carregarAtividades();
     }
 
-    carregarProjetos(): void {
-      this.projetoService.findAll().subscribe({
-        next: (data) => {
-          this.projetos = data;
+    carregarProjetos(page: number = 0): void {
+      this.projetoService.findAll(page).subscribe({
+        next: (response) => {
+          this.projetos = response.content;
+          this.totalPages = response.totalPages;
+          this.currentPage = response.number;
         },
-        error: (err) => console.error("Erro ao carregar projetos:", err)
+        error: (err) => console.error("Erro ao carregar lançamentos:", err)
       });
     }
 
     carregarAtividades(): void {
-      this.atividadeService.listAll().subscribe({
+      this.atividadeService.findAll().subscribe({
         next: (data) => {
           this.atividades = data;
         },
@@ -79,4 +83,16 @@ export class ListarProjetosComponent implements OnInit {
       this.carregarProjetos();
     }
 */
+
+proximaPagina(): void {
+  if (this.currentPage < this.totalPages - 1) {
+    this.carregarProjetos(this.currentPage + 1);
+  }
+}
+
+paginaAnterior(): void {
+  if (this.currentPage > 0) {
+    this.carregarProjetos(this.currentPage - 1);
+  }
+}
 }

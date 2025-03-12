@@ -19,9 +19,9 @@ export class AtividadeService {
   constructor() { }
 
 
-  listAll(): Observable<Atividade[]> {
+  findAll(page: number = 0, size: number = 8): Observable<any> {
       
-    let token = '';
+   /*let token = '';
 
     if (typeof window !== 'undefined') {
        token = localStorage.getItem('token') || '';
@@ -29,9 +29,9 @@ export class AtividadeService {
 
     console.log('Token enviado:', token);
 
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);*/
 
-    return this.http.get<Atividade[]>(`${this.API}/listAll`, { headers });
+    return this.http.get<any>(`${this.API}/findAll?page=${page}&size=${size}`);
 
   }
 

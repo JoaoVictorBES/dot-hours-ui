@@ -1,14 +1,13 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { inject, Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { Projeto } from '../Models/projeto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjetoService {
-
 
   http = inject(HttpClient);
   
@@ -37,11 +36,12 @@ export class ProjetoService {
   }
   
 
-  findAll(): Observable<Projeto[]> {
-    
-    return this.http.get<Projeto[]>(`${this.API}/listAll`);
+  findAll(page: number = 0, size: number = 8): Observable<any> {
 
+    return this.http.get<any>(`${this.API}/findAll?page=${page}&size=${size}`)
+    
   }
+
 
   findById(id: number): Observable<Projeto>{
 

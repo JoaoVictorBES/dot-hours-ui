@@ -39,7 +39,7 @@ export class DashboardUsuarioComponent {
       );
   
       // Carregar as atividades
-      this.atividadeService.listAll().subscribe(
+      this.atividadeService.findAll().subscribe(
         (dados) => {
           this.atividades = dados;  // Armazenando as atividades
         },

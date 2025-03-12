@@ -51,7 +51,7 @@ export class CadastroLancamentoHorasComponent {
   ngOnInit(): void {
     this.idUsuario = this.authService.getUsuarioId();
 
-    this.atividadeService.listAll().subscribe((data) => {
+    this.atividadeService.findAll().subscribe((data) => {
       this.atividades = data;
     });
 

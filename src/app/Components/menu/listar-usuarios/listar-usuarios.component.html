@@ -64,6 +64,11 @@
 
                 </tbody>
             </table>
+            <div class="pagination">
+                <button (click)="paginaAnterior()" [disabled]="currentPage === 0">-</button>
+                <span> {{ currentPage + 1 }} de {{ totalPages }}</span>
+                <button (click)="proximaPagina()" [disabled]="currentPage === totalPages - 1">></button>
+            </div>
         </div>
     </div>
 </div>

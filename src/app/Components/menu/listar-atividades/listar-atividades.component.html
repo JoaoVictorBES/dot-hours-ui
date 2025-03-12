@@ -60,6 +60,12 @@
 
                 </tbody>
             </table>
+            <!-- Paginação -->
+            <div class="pagination">
+                <button (click)="carregarAtividades(currentPage - 1)" [disabled]="currentPage <= 0">-</button>
+                <span> {{ currentPage + 1 }} de {{ totalPages }}</span>
+                <button (click)="carregarAtividades(currentPage + 1)" [disabled]="currentPage >= totalPages - 1">></button>
+            </div>
         </div>
     </div>
 </div>

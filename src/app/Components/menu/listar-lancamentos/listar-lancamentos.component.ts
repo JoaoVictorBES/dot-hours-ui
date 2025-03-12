@@ -89,7 +89,7 @@ export class ListarLancamentosComponent {
     }
 
   carregarAtividades(): void {
-    this.atividadeService.listAll().subscribe({
+    this.atividadeService.findAll().subscribe({
       next: (atividades: Atividade[]) => {
         this.atividades = atividades;
       },

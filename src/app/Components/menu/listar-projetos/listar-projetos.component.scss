@@ -57,6 +57,22 @@
     flex: 0.5;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  
+    button {
+      margin: 0 10px;
+    }
+  
+    span {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+
 
 table {
     background-color: transparent;

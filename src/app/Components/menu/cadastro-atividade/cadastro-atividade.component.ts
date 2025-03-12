@@ -66,7 +66,7 @@ export class CadastroAtividadeComponent implements OnInit {
 
   
   carregarAtividades(): void {
-    this.atividadeService.listAll().subscribe(
+    this.atividadeService.findAll().subscribe(
       (atividades: Atividade[]) => {
         console.log('atividades', atividades)
       },

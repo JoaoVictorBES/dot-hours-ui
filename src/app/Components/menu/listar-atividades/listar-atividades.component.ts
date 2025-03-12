@@ -40,15 +40,21 @@ export class ListarAtividadesComponent implements OnInit {
 
   projetos: Projeto[] = [];
 
+  totalPages: number = 0;
+
+  currentPage: number = 0;
+
   ngOnInit(): void {
     this.carregarAtividades();
     this.carregarProjetos();
   }
 
-  carregarAtividades(): void {
-    this.atividadeService.listAll().subscribe({
-      next: (atividades: Atividade[]) => {
-        this.atividades = atividades;
+  carregarAtividades(page: number = 0): void {
+    this.atividadeService.findAll(page).subscribe({
+      next: (response) => {
+        this.atividades = response.content;
+        this.totalPages = response.totalPages;
+        this.currentPage = response.number;
       },
       error: (err: any) => console.error("Erro ao carregar atividades:", err)
     });
@@ -68,6 +74,18 @@ export class ListarAtividadesComponent implements OnInit {
       next: (atividades: Atividade[]) => this.atividades = atividades,
       error: (err: any) => console.error("Erro ao aplicar filtros:", err)
     });
+  }
+
+  proximaPagina(): void {
+    if (this.currentPage < this.totalPages - 1) {
+      this.carregarAtividades(this.currentPage + 1);
+    }
+  }
+  
+  paginaAnterior(): void {
+    if (this.currentPage > 0) {
+      this.carregarAtividades(this.currentPage - 1);
+    }
   }
 
 }

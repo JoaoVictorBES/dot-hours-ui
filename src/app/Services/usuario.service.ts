@@ -37,9 +37,9 @@ export class UsuarioService {
 
   }
 
-  findAll(): Observable<Usuario[]> {
+  findAll(page: number = 0, size: number = 8): Observable<any> {
         
-        return this.http.get<Usuario[]>(`${this.API}/findAll`,);
+        return this.http.get<Usuario[]>(`${this.API}/findAll?page=${page}&size=${size}`,);
     
   }
 
