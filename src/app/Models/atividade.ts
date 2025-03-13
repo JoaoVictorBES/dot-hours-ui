@@ -13,6 +13,7 @@ export class Atividade {
   idUsuarioResponsavel!: number;
   idUsuariosVinculados!: number[];
   idProjetoVinculado!: number;
+  nomeUsuarioResponsavel: string;
   dataCriacao: string;
   ativo!: boolean;
   
@@ -24,6 +25,7 @@ export class Atividade {
     dataFim: string,
     status: StatusAtividade,
     dataCriacao: string,
+    nomeUsuarioResponsavel: string,
     ativo: boolean
   ) {
     this.nome = nome;
@@ -32,6 +34,7 @@ export class Atividade {
     this.dataFim = dataFim;
     this.status = status;
     this.dataCriacao = dataCriacao;
+    this.nomeUsuarioResponsavel = nomeUsuarioResponsavel;
     this.ativo = true;
   }
 

@@ -43,6 +43,13 @@ export class UsuarioService {
     
   }
 
+
+  listAll(): Observable<Usuario[]> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Usuario[]>(`${this.API}/listAll`, { headers });
+  }
+
   findById(id: number): Observable<Usuario>{
   
       const token = localStorage.getItem('token'); // Pegando o token do localStorage

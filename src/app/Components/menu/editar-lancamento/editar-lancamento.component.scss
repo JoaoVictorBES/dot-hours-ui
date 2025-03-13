@@ -1,43 +1,19 @@
-.sidebar {
-    background-color: #f6f6f6;
-    width: 80px;  /* Maior para melhor usabilidade */
-    height: 100vh; 
+.container-fluid.d-flex {
+    min-height: 100vh; /* Garante que o container ocupe a altura total da tela */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
-    position: fixed;
-    left: 0;
-    top: 0;
-}
-
-.sidebar .circle {
-    width: 50px;
-    height: 50px;
-    background-color: #000;
-    border-radius: 50%;
-}
-
-.sidebar .icons i {
-    font-size: 32px;
-    color: #000;
-    cursor: pointer;
-}
-
-.icons{
-    margin-bottom: 80px;
-}
-
-.icons a:hover {
-    transform: scale(1.2);
+    justify-content: center; /* Centraliza verticalmente */
+    padding-top: 60px; /* Espaço para a navbar */
 }
 
 .form-box {
     background-color: #fff;
-    flex-direction: column;
-    margin-left: 37px;
-    margin-left: 80px; 
-    width: calc(100% - 80px);
+    width: 100%;
+    max-width: 800px; /* Define uma largura máxima */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1); /* Adiciona sombra para destaque */
+    margin-top: 50px; /* Afastamento do topo */
 }
 
 h2 {
@@ -76,4 +52,22 @@ h2 {
 
 .submit-btn:hover {
     background-color: #000;
+}
+
+.col-lg-2, .col-lg-10 {
+    margin-top: 20px;
+}
+
+.trash-icon {
+    margin-top: 20px;
+}
+
+.text-end i {
+    font-size: 24px;
+    color: #ff0000;
+    cursor: pointer;
+}
+
+.text-end i:hover {
+    opacity: 0.7;
 }

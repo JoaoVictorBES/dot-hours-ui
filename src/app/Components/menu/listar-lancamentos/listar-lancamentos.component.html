@@ -1,32 +1,35 @@
-<div class="container-fluid vh-100 d-flex">
-
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
     <!-- Área Principal -->
     <div class="main-content col-lg-11 p-4">
-
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2 class="fw-bold">Lançamentos</h2>
-            <button class="btn btn-project" [routerLink]="['/lancar-horas']">NOVO LANÇAMENTO</button>
-        </div>
-
-        <div class="filter-bar d-flex justify-content-between align-items-center p-3 bg-light rounded mb-3">
-          <input type="text" class="form-control me-2" placeholder="Pesquisar..." [(ngModel)]="filtros.searchTerm" (input)="aplicarFiltros()">
-          
-          <select class="form-select me-2" [(ngModel)]="filtros.selectedUsuario" (change)="aplicarFiltros()">
-              <option value="">Usuário</option>
-              <option *ngFor="let usuario of usuarios" [value]="usuario.id">{{ usuario.username }}</option>
-          </select>
-          
-          <select class="form-select me-2" [(ngModel)]="filtros.selectedAtividade" (change)="aplicarFiltros()">
-              <option value="">Atividade</option>
-              <option *ngFor="let atividade of atividades" [value]="atividade.id">{{ atividade.nome }}</option>
-          </select>
-          
-          <input type="date" class="form-control me-2" [(ngModel)]="filtros.selectedDate" (change)="aplicarFiltros()">
-          
-          <button class="btn btn-primary" (click)="aplicarFiltros()">Limpar</button>
-        </div>
         
         <div class="table-container p-4 bg-white">
+            
+            <!-- Cabeçalho e Botão -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="fw-bold">Lançamentos</h2>
+                <button class="btn btn-project" [routerLink]="['/cadastro/lancamento']">NOVO LANÇAMENTO</button>
+            </div>
+
+            <!-- Barra de Filtros -->
+            <div class="filter-bar d-flex justify-content-between align-items-center p-3 bg-light rounded mb-3">
+                <input type="text" class="form-control me-2" placeholder="Pesquisar..." [(ngModel)]="filtros.searchTerm" (input)="aplicarFiltros()">
+                
+                <select class="form-select me-2" [(ngModel)]="filtros.selectedUsuario" (change)="aplicarFiltros()">
+                    <option value="">Usuário</option>
+                    <option *ngFor="let usuario of usuarios" [value]="usuario.id">{{ usuario.username }}</option>
+                </select>
+                
+                <select class="form-select me-2" [(ngModel)]="filtros.selectedAtividade" (change)="aplicarFiltros()">
+                    <option value="">Atividade</option>
+                    <option *ngFor="let atividade of atividades" [value]="atividade.id">{{ atividade.nome }}</option>
+                </select>
+                
+                <input type="date" class="form-control me-2" [(ngModel)]="filtros.selectedDate" (change)="aplicarFiltros()">
+                
+                <button class="btn btn-primary" (click)="aplicarFiltros()">Limpar</button>
+            </div>
+
+            <!-- Tabela -->
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -36,31 +39,31 @@
                         <th>DURAÇÃO</th>
                         <th>USUÁRIO RESP</th>
                         <th>ATIVIDADE</th>
+                        <th>AÇÕES</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
                     <tr *ngFor="let lancamento of lancamentos">
                         <td>{{ lancamento.id }}</td>
-                        <td>{{ lancamento.dataInicio}}</td>
-                        <td>{{ lancamento.dataFim}}</td>
-                        <td>{{ lancamento.tempoDuracao}}</td>
-                        <td>{{ lancamento.idUsuario}}</td>
-                        <td>{{ lancamento.idAtividade}}</td>
+                        <td>{{ lancamento.dataInicio }}</td>
+                        <td>{{ lancamento.dataFim }}</td>
+                        <td>{{ lancamento.tempoDuracao }}</td>
+                        <td>{{ lancamento.nomeUsuarioResponsavel }}</td>
+                        <td>{{ lancamento.idAtividade }}</td>
                         <td>
                             <button class="view-btn" [routerLink]="['/lancamento', lancamento.id]">
                                 <i class="bi bi-eye"></i>
                             </button>
+                            <span class="separator">|</span> 
                             <button class="edit" [routerLink]="['/editar/lancamento', lancamento.id]">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
                         </td>
                     </tr>
-
                 </tbody>
-                
-                  
             </table>
+
+            <!-- Paginação -->
             <div class="pagination">
                 <button (click)="paginaAnterior()" [disabled]="currentPage === 0">-</button>
                 <span> {{ currentPage + 1 }} de {{ totalPages }}</span>
@@ -69,4 +72,3 @@
         </div>
     </div>
 </div>
-

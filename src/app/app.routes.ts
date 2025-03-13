@@ -20,10 +20,17 @@ import { CadastroLancamentoHorasComponent } from './Components/menu/cadastro-lan
 import { LancamentoHorasComponent } from './Components/lancamento-horas/lancamento-horas.component';
 import { MainLayoutComponent } from './Components/menu/main-layout/main-layout.component';
 import { AuthGuard } from './Auth/auth.guard';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  // 📌 Rota para solicitar recuperação de senha
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+
+  // 📌 Rota para redefinir a senha com o token
+  { path: 'reset-password', component: ResetPasswordComponent },
 
   {
     path: '',
@@ -33,14 +40,14 @@ export const routes: Routes = [
       { path: 'dashboard/usuario', component: DashboardUsuarioComponent },
 
       // 🛑 Rotas protegidas para ADMIN 🛑
-      { path: 'cadastro/usuario', component: CadastroUsuarioComponent, canActivate: [AuthGuard] },
-      { path: 'cadastro/projeto', component: CadastroProjetoComponent, canActivate: [AuthGuard] },
+      { path: 'cadastro/usuario', component: CadastroUsuarioComponent },
+      { path: 'cadastro/projeto', component: CadastroProjetoComponent},
       { path: 'cadastro/atividade', component: CadastroAtividadeComponent },
       { path: 'projeto/:id', component: ProjetoComponent, canActivate: [AuthGuard] },
 
-      { path: 'editar/projeto/:id', component: EditarProjetoComponent, canActivate: [AuthGuard] },
-      { path: 'editar/atividade/:id', component: EditarAtividadeComponent, canActivate: [AuthGuard] },
-      { path: 'editar/usuario/:id', component: EditarUsuarioComponent, canActivate: [AuthGuard] },
+      { path: 'editar/projeto/:id', component: EditarProjetoComponent },
+      { path: 'editar/atividade/:id', component: EditarAtividadeComponent },
+      { path: 'editar/usuario/:id', component: EditarUsuarioComponent },
 
       // 🚀 Demais rotas acessíveis a todos os usuários
       { path: 'cadastro/lancamento', component: CadastroLancamentoHorasComponent },

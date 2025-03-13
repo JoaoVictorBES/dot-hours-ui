@@ -24,12 +24,15 @@
                     </div>
 
                     <div class="col-lg-4 mb-3">
+
                         <label for="vincular-projeto">Vincular atividade</label>
                         <select class="form-control input-custom text-center" name="projeto" [(ngModel)]="lancamentoHoras.idAtividade">
+                            <option *ngIf="atividades.length === 0" disabled>Carregando atividades...</option>
                             <option *ngFor="let atividade of atividades" [ngValue]="atividade.id">
-                                {{ atividade.nome }}
+                              {{ atividade.nome }}
                             </option>
-                        </select>
+                          </select>
+                          
 
                     </div>
                     <div class="col-lg-8 ">

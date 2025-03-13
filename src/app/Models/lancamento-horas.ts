@@ -11,6 +11,7 @@ export class LancamentoHoras {
         dataFim: string;
         dataRegistro: string;
         tempoDuracao: string;
+        nomeUsuarioResponsavel: string;
       
         constructor(
           id: number,
@@ -20,7 +21,8 @@ export class LancamentoHoras {
           dataInicio: string,
           dataFim: string,
           dataRegistro: string,
-          tempoDuracao: string
+          tempoDuracao: string,
+          nomeUsuarioResponsavel: string
         ) {
           this.id = id;
           this.idAtividade = idAtividade;
@@ -30,6 +32,7 @@ export class LancamentoHoras {
           this.dataFim = dataFim;
           this.dataRegistro = dataRegistro;
           this.tempoDuracao = tempoDuracao;
+          this.nomeUsuarioResponsavel = nomeUsuarioResponsavel;
         }
 
 }

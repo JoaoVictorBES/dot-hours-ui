@@ -31,14 +31,15 @@ export class EditarLancamentoComponent {
   lancamento!: LancamentoHoras;
 
   lancamentoHoras: LancamentoHoras ={
-      id: 0,
-      descricao: '',
-      dataInicio: '',
-      dataFim: '',
-      dataRegistro: '',
-      tempoDuracao: '',
-      idAtividade: 0,
-      idUsuario: 0
+    id: 0,
+    descricao: '',
+    dataInicio: '',
+    dataFim: '',
+    dataRegistro: '',
+    tempoDuracao: '',
+    idAtividade: 0,
+    idUsuario: 0,
+    nomeUsuarioResponsavel: ''
   }
 
   ngOnInit(): void{

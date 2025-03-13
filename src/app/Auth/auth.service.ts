@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Login } from '../Models/Login';
@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   private API = "http://localhost:8080/api/login";
+
+  private api = "http://localhost:8080/api/auth"
 
   private user: Usuario | null = null ;
   
@@ -106,4 +108,26 @@ export class AuthService {
       console.log("Salvando usuário:", user); 
       localStorage.setItem('user', JSON.stringify(user));
     }
+
+     // Enviar solicitação de recuperação de senha
+  recoverPassword(email: string): Observable<any> {
+    const token = localStorage.getItem('token'); // Pegando o token do localStorage
+      
+    console.log('Token enviado:', token);
+      
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.post(`${this.api}/forgot-password`, { email }, { headers });
+  }
+
+  // Validar o token recebido por e-mail
+  validateToken(token: string): Observable<any> {
+    return this.http.post(`${this.api}/reset-password?token=${token}`, {});
+  }
+
+  // Alterar a senha com o novo token
+  changePassword(token: string, newPassword: string): Observable<any> {
+    return this.http.post(`${this.api}/change-password?token=${token}`, { newPassword });
+  }
+
 }

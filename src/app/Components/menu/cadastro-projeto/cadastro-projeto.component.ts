@@ -30,7 +30,7 @@ export class CadastroProjetoComponent {
 
   }
 
-  projeto: Projeto = new Projeto(0, '', '', '', '', '', 0, '', '', []);
+  projeto: Projeto = new Projeto(0, '', '', '', '', '', 0, '', '', '', []);
 
   statusOptions = Object.values(StatusProjeto); // Transforma o enum em array de valores
   prioridadeOptions = Object.values(PrioridadeProjeto);

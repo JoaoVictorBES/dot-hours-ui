@@ -40,7 +40,8 @@ export class CadastroLancamentoHorasComponent {
     dataRegistro: '',
     tempoDuracao: '',
     idAtividade: 0,
-    idUsuario: 0
+    idUsuario: 0,
+    nomeUsuarioResponsavel: ''
   }
 
   atividades: Atividade [] = [];
@@ -53,6 +54,7 @@ export class CadastroLancamentoHorasComponent {
 
     this.atividadeService.findAll().subscribe((data) => {
       this.atividades = data;
+      console.log("Atividades carregadas:", this.atividades);
     });
 
   }

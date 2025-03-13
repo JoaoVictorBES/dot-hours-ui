@@ -16,7 +16,7 @@
                         <label for="usuarios-vinculados">Vincular usuarios</label>
                         <select class="form-control input-custom text-center" name="usuarios" [(ngModel)]="atividade.idUsuariosVinculados" multiple>
                             <option *ngFor="let usuario of usuarios" [value]="usuario.id">  
-                                {{ usuario.username }}
+                                {{ usuario.username }} 
                             </option>
                         </select>
                     </div>

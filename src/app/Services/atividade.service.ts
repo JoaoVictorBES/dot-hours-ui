@@ -4,6 +4,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { Atividade } from '../Models/atividade';
 import { Router } from '@angular/router';
 import { StatusAtividade } from '../Enums/status-atividade.enum';
+import { Usuario } from '../Models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,12 @@ export class AtividadeService {
     return this.http.get<any>(`${this.API}/findAll?page=${page}&size=${size}`);
 
   }
+
+  listAll(): Observable<Atividade[]> {
+    return this.http.get<Atividade[]>(`${this.API}/findAll`);
+  }
+
+  
 
   create(atividade: Atividade): Observable<Atividade> {
       

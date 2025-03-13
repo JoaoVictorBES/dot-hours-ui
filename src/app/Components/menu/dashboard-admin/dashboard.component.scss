@@ -1,117 +1,27 @@
-*{
-    color: rgb(0, 0, 0);
-}
-
-.sidebar {
-    background: #fff;
-    height: 100vh;
-    width: 180px;
+.main-content {
+    margin-top: 20px; /* Ajuste para não sobrepor a navbar */
     padding: 20px;
-    position: fixed;
-    transition: all 0.3s ease;
-    overflow: hidden;
-}
-
-.sidebar.collapsed {
-    width: 70px;   
-}
-
-.sidebar.collapsed nav a {
-    justify-content: center;
-}
-
-.sidebar nav a{
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    color: #000;
-    text-decoration: none;
-}
-
-.sidebar nav a i{
-    font-size: 18px;
-}
-
-.sidebar nav {
-    padding: 10px 0;
-    cursor: pointer;
-    font-weight: normal;
-    letter-spacing: 2px;  
-    margin-bottom: 10px;  
-    text-transform: uppercase; 
-    color: antiquewhite;
-    list-style: none;
-    padding: 0;
-}
-
-.toggle-btn {
-    cursor: pointer;
-    text-align: right;
-    margin-bottom: 10px;
-    font-size: 18px;
-}
-
-.sidebar.collapsed .toggle-btn {
-    text-align: center;
-}
-
-
-.profile img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.profile{
-    margin-bottom: 20px;
-}
-
-.profile h2{
-    font-size: 27px;
-    color: #000;
-}
-
-.list-unstyled a {
-    display: block;
-    padding: 10px 0; 
-    text-decoration: none; 
-    color: #000; 
-    font-size: 15px;
-}
-
-.list-unstyled a:hover {
-    color: #0e35d3; 
+    transition: margin-left 0.3s ease;
 }
 
 .box-projetos, .box-atividades {
     background: #fff;
-    padding: 15px;
+    padding: 20px;
     border-radius: 10px;
     height: auto;
     text-align: center;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-    font-size: 14px; /* Redução do tamanho da fonte */
-    margin-bottom: 20px; /* Evita sobreposição */
+    font-size: 14px;
     width: 100%;
+    margin-bottom: 20px; /* Espaçamento entre as tabelas */
 }
 
 .box-projetos h3, .box-atividades h3 {
     color: #000;
-    font-size: 18px; /* Redução do tamanho do título */
+    font-size: 25px;
     margin-bottom: 10px;
 }
 
-.main-content {
-    margin-left: 180px; /* Mesmo valor da largura da sidebar */
-    transition: margin-left 0.3s ease;
-}
-
-.sidebar.collapsed ~ .main-content {
-    margin-left: 70px; /* Ajusta quando o menu é recolhido */
-}
 
 .table {
     width: 100%;
@@ -119,32 +29,24 @@
 }
 
 .table th, .table td {
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ddd;
     text-align: center;
-    font-size: 12px; /* Redução do tamanho da fonte da tabela */
+    font-size: 14px;
 }
 
 .table-striped tbody tr:nth-child(odd) {
     background-color: #f9f9f9;
 }
 
-@media (max-width: 992px) {
-    .box-projetos, .box-atividades {
-        font-size: 12px; /* Reduz ainda mais em telas menores */
-    }
-
-    .table th, .table td {
-        font-size: 10px; /* Ajuste para telas pequenas */
-    }
+.botoes {
+    margin-top: 20px;
 }
 
-
-
-.botoes {
+.botoes .row {
     display: flex;
-    gap: 63px;
-    
+    gap: 50px;
+    justify-content: center; /* Centraliza os botões */
 }
 
 .botoes .botao {
@@ -162,10 +64,6 @@
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 }
 
-.botoes .col-lg-4 {
-    display: flex;
-}
-
 .botoes a {
     text-decoration: none;
     color: inherit;
@@ -180,12 +78,37 @@
     color: #000;
 }
 
-span{
+.btn-novo-projeto, .btn-nova-atividade {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-novo-projeto i, .btn-nova-atividade i {
+    font-size: 1rem;
+}
+
+span {
     color:#000;
 }
 
 @media (max-width: 992px) {
     .box-projetos, .box-atividades {
         width: 100%;
+    }
+
+    .botoes .row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .main-content {
+        margin-left: 0;
     }
 }

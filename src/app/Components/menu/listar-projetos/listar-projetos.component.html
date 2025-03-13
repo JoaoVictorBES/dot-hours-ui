@@ -20,7 +20,6 @@
                     <option *ngFor="let prioridade of prioridadeProjeto" [value]="prioridade">{{ prioridade }}</option>
                 </select>
             
-                <input type="date" [(ngModel)]="filtros.dataInicio" class="form-control" />
             
                 <button class="btn btn-primary" (click)="aplicarFiltros()">Filtrar</button>
             </div>
@@ -43,12 +42,13 @@
                     <td>{{ projeto.nome }}</td>
                     <td>{{ projeto.descricao | slice:0:50 }}...</td>
                     <td>{{ projeto.status }}</td>
-                    <td>{{ projeto.idUsuarioResponsavel }}</td>
+                    <td>{{ projeto.nomeUsuarioResponsavel }}</td>
                     <td>{{ projeto.prioridade }}</td>
                     <td>
                     <button class="view-btn" [routerLink]="['/projeto', projeto.id]">
                         <i class="bi bi-eye"></i>
                     </button>
+                    <span class="separator">|</span> 
                     <button class="edit" [routerLink]="['/editar/projeto', projeto.id]">
                         <i class="bi bi-pencil-square"></i>
                     </button>

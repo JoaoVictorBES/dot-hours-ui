@@ -2,10 +2,8 @@
 .main-content {
     display: flex;
     flex-direction: column;
-    margin-left: 37px;
-    margin-left: 80px; 
-    width: calc(100% - 80px);
-    
+    width: 100%; /* Garante que ocupa todo o espaço disponível */
+    padding: 20px;
 }
 
 .main-content h2{
@@ -28,6 +26,8 @@
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    max-width: 90%; /* Define um limite de largura */
+    margin: 100px auto 20px;
 }
 
 
@@ -73,9 +73,44 @@
     }
   }
 
+/* Estilo dos botões de ação */
+.view-btn, .edit {
+    display: inline-flex;
+    align-items: center;
+    font-size: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: #007bff;
+    transition: color 0.3s;
+}
 
+.view-btn:hover, .edit:hover {
+    color: #0056b3;
+}
+
+.view-btn i, .edit i {
+    margin-right: 5px;
+}
+
+/* Pipe separador entre os botões */
+.separator {
+    margin: 0 10px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Estilo da tabela */
 table {
     background-color: transparent;
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
     text-align: center;
 }
 
@@ -88,5 +123,8 @@ td {
     font-size: 14px;
     color: black;
 }
+
+
+
 
 

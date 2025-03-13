@@ -30,4 +30,5 @@ export class Usuario {
     this.role = role;
     this.atividades = atividades;
   }
+  
 }

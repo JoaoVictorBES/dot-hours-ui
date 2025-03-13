@@ -22,13 +22,10 @@
                 <option *ngFor="let projeto of projetos" [value]="projeto.id">{{ projeto.nome }}</option>
             </select>
         
-            <input type="date" [(ngModel)]="filtros.dataInicio" class="form-control" />
-            <input type="date" [(ngModel)]="filtros.dataFim" class="form-control" />
-        
             <button class="btn btn-primary" (click)="aplicarFiltros()">Filtrar</button>
         </div>
 
-        <div class="table-container p-4 bg-white">
+        
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -47,11 +44,12 @@
                         <td>{{ atividade.nome }}</td>
                         <td>{{ atividade.descricao ? (atividade.descricao.length > 50 ? (atividade.descricao | slice:0:50) + '...' : atividade.descricao) : '' }}</td>
                         <td>{{ atividade.status }}</td>
-                        <td>{{ atividade.idUsuarioResponsavel }}</td>
+                        <td>{{ atividade.nomeUsuarioResponsavel }}</td>
                         <td>
                             <button class="view-btn" [routerLink]="['/atividade', atividade.id]">
                                 <i class="bi bi-eye"></i>
                             </button>
+                            <span class="separator">|</span>
                             <button class="edit" [routerLink]="['/editar/atividade', atividade.id]">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
@@ -66,6 +64,6 @@
                 <span> {{ currentPage + 1 }} de {{ totalPages }}</span>
                 <button (click)="carregarAtividades(currentPage + 1)" [disabled]="currentPage >= totalPages - 1">></button>
             </div>
-        </div>
+        
     </div>
 </div>

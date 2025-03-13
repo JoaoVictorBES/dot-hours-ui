@@ -10,7 +10,7 @@
     <!-- Login Form -->
     <div class="col-lg-6">
         <div class="login-container"> 
-                <h2>LOGIN</h2>
+                <h2>ACESSAR</h2>
                 <form (ngSubmit)="logar()" method="post">
                     <div class="form-group">
                         <label for="username">Usuário</label>
@@ -19,6 +19,9 @@
                     <div class="form-group">
                         <label for="password">Senha</label>
                         <input type="password" id="password" placeholder="Digite sua senha" [(ngModel)]="login.password" name="password" required>
+                    </div>
+                    <div class="link-container">
+                        <a routerLink="/forgot-password" href="/forgot-password">Esqueceu a senha?</a>
                     </div>
                     <button type="submit">ACESSAR</button>
                 </form> 

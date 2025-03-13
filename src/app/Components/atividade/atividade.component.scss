@@ -1,9 +1,36 @@
+.container-fluid {
+    min-height: 100vh; /* Garante que o container ocupe a altura total da tela */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Garante que o conteúdo não fique no topo */
+    padding-top: 60px; /* Adiciona o espaçamento para a navbar */
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
 
 .content {
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
+    width: 80%; /* Limita a largura do conteúdo */
+    max-width: 1000px; /* Garante uma largura máxima */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra para dar destaque */
+    margin-top: 50px; /* Distância entre o topo e o componente */
 }
+
+h2 {
+    font-weight: bold;
+    text-align: center;
+}
+
+.form-control {
+    background-color: #dde3e5;
+}
+
 .box {
     background-color: #0d1b2a;
     padding: 15px;
@@ -13,8 +40,8 @@
     font-weight: bold;
 }
 
-.form-control{
-    background-color: #dde3e5;
+textarea.form-control {
+    resize: none; /* Remove a possibilidade de redimensionamento da área de texto */
 }
 
 .btn-custom {
@@ -24,12 +51,27 @@
     padding: 10px 20px;
     border-radius: 5px;
 }
+
 .btn-custom:hover {
     background-color: #1b2c42;
 }
+
 .trash-icon {
     text-align: right;
     font-size: 24px;
     cursor: pointer;
     color: white;
+}
+
+/* Para garantir que o conteúdo não sobreponha a navbar, adicionei uma altura mínima para o body e o container */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
 }

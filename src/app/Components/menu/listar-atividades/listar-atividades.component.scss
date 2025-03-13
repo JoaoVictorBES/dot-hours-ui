@@ -1,11 +1,20 @@
+.container-fluid {
+    display: flex;
+    justify-content: center; /* Centraliza a tabela horizontalmente */
+    align-items: flex-start; /* Mantém o conteúdo no topo */
+    min-height: 100vh; /* Faz com que ocupe a altura total da tela */
+    padding-top: 100px; /* Afasta do navbar */
+}
 
 .main-content {
     display: flex;
     flex-direction: column;
-    margin-left: 37px;
-    margin-left: 80px; 
-    width: calc(100% - 80px);
-    
+    width: 90%; /* Garante um tamanho adequado */
+    max-width: 1200px; /* Define um limite para telas grandes */
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);  
 }
 
 .main-content h2{
@@ -72,6 +81,41 @@
       font-weight: bold;
     }
   }
+
+  .view-btn, .edit {
+    display: inline-flex;
+    align-items: center;
+    font-size: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.separator {
+    margin: 0 10px;
+    font-weight: bold;
+    color: #000;
+}
+
+.view-btn i, .edit i {
+    font-size: 18px;
+}
+
+/* Ajuste visual adicional */
+.view-btn, .edit {
+    border: none;
+    background: none;
+    color: #007bff;
+    transition: color 0.3s;
+}
+
+.view-btn:hover, .edit:hover {
+    color: #0056b3;
+}
+
+.view-btn i, .edit i {
+    margin-right: 5px;
+}
+
 
 
 table {

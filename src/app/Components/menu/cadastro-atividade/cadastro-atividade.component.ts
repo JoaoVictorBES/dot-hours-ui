@@ -52,7 +52,8 @@ export class CadastroAtividadeComponent implements OnInit {
     '',
     StatusAtividade.PENDENTE,
     '',
-    true
+    '',
+    true // Add the missing argument here
   );
   
   
@@ -89,10 +90,10 @@ export class CadastroAtividadeComponent implements OnInit {
   }
 
   carregarUsuarios(): void {
-    this.usuarioService.findAll().subscribe(
+    this.usuarioService.listAll().subscribe(
       (usuarios: Usuario[]) => {
+        console.log('Usuários carregados:', usuarios);
         this.usuarios = usuarios;
- 
       },
       (erro: any) => {
         console.error('Erro ao carregar usuarios', erro);

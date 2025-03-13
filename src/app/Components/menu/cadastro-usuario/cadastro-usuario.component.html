@@ -4,7 +4,7 @@
     <div class="main-content col-lg-8 d-flex align-items-center justify-content-center">
         <div class="form-container p-5 bg-light">
             <h2 class="text-center fw-bold">NOVO USUARIO</h2>
-            <form (ngSubmit)="cadastrar()" class="form">
+            <form (ngSubmit)="cadastrar()" class="form" #usuarioForm="ngForm">
                 <div class="row">
                     <div class="col-lg-6 mb-3">
                         <label for="nome">Nome</label>
@@ -24,12 +24,15 @@
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="data-fim">Role</label>
-                        <input type="text" class="form-control input-custom text-center" name="role" [(ngModel)]="usuario.role">
-                    </div>
+                        <select class="form-control input-custom text-center" name="role" [(ngModel)]="usuario.role" required>
+                          <option value="USER">Usuário</option>
+                          <option value="ADMIN">Administrador</option>
+                        </select>
+                      </div>
                 </div>
 
                 <div class="d-flex justify-content-center gap-3">
-                    <button type="submit" class="btn btn-dark">CRIAR USUARIO</button>
+                    <button type="submit" class="btn btn-dark" [disabled]="usuarioForm.invalid">CRIAR USUARIO</button>
                 </div>
             </form>
         </div>

@@ -21,14 +21,8 @@ export class SidebarComponentComponent {
 
   isCollapsed = false;
 
-  isSidebarOpen = false;
-
-  toggleSidebar() {
-    if (window.innerWidth <= 425) {
-      this.isSidebarOpen = !this.isSidebarOpen;
-    } else {
-      this.isCollapsed = !this.isCollapsed;
-    }
+  toggleNavbar() {
+    this.isCollapsed = !this.isCollapsed;
   }
 
   logout() {

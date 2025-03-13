@@ -6,13 +6,15 @@ import { Projeto } from '../../../Models/projeto';
 import { ProjetoService } from '../../../Services/projeto.service';
 import { AtividadeService } from '../../../Services/atividade.service';
 import { AuthService } from '../../../Auth/auth.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [
     FormsModule,
-    CommonModule
+    CommonModule,
+    RouterLink
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'

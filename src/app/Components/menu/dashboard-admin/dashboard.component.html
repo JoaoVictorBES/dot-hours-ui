@@ -1,21 +1,23 @@
 <div class="container-fluid">
     <div class="row">
-
         <!-- Conteúdo Principal -->
         <div class="main-content">
-
-                <!-- Projetos e Atividades -->
-            <div class="row mt-4">
-                <!-- Projetos -->
-                <div class="col-lg-6">
+            <!-- Projetos -->
+            <div class="row mt-5">
+                <div class="col-lg-12">
                     <div class="box-projetos">
+                        <button class="btn btn-primary btn-novo-projeto" [routerLink]="['/cadastro/projeto']">
+                            <i class="fa-solid fa-plus"></i> Novo 
+                        </button>
                         <h3>PROJETOS</h3>
+                        
+
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th>Nome</th>
                                     <th>Prioridade</th>
-                                    <th>ID Responsável</th>
+                                    <th>Responsável</th>
                                     <th>Descrição</th>
                                     <th>Status</th>
                                 </tr>
@@ -24,7 +26,7 @@
                                 <tr *ngFor="let projeto of projetos">
                                     <td><strong>{{ projeto.nome }}</strong></td>
                                     <td>{{ projeto.prioridade }}</td>
-                                    <td>{{ projeto.idUsuarioResponsavel }}</td>
+                                    <td>{{ projeto.nomeUsuarioResponsavel }}</td>
                                     <td>{{ projeto.descricao }}</td>
                                     <td>{{ projeto.status }}</td>
                                 </tr>
@@ -32,63 +34,73 @@
                         </table>
                     </div>
                 </div>
-
-                <!-- Atividades -->
-                <div class="col-lg-4">
-                    <div class="box-atividades">
-                        <h3>ATIVIDADES</h3>
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Nome</th>
-                                        <th>Status</th>
-                                        <th>ID Responsável</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let atividade of atividades">
-                                        <td><strong>{{ atividade.nome }}</strong></td>
-                                        <td>{{ atividade.status }}</td>
-                                        <td>{{ atividade.idUsuarioResponsavel }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-            
-
-                <!-- Botões -->
-                <div class="row mt-4 text-center botoes">
-                    <div class="col-lg-3 d-flex">
-                        <a href="/listar/projetos" class="flex-fill">
-                            <div class="botao">
-                                <i class="fa-solid fa-clipboard-list"></i>
-                                <span>Gerenciamento de Projetos</span>
-                            </div>
-                        </a>                   
-                    </div>
-
-                    <div class="col-lg-3 d-flex">
-                        <a href="" class="flex-fill">
-                            <div class="botao">
-                                <i class="fa-solid fa-chart-pie"></i>
-                                <span>Relatórios</span>
-                            </div>
-                        </a>                   
-                    </div>
-
-                    <div class="col-lg-3 d-flex">
-                        <a href="/listar/usuarios" class="flex-fill">
-                            <div class="botao">
-                                <i class="fa-solid fa-user"></i>
-                                <span>Gerenciamento de Usuários</span>
-                            </div>
-                        </a>                  
-                    </div>
-                </div>
-                
             </div>
 
+            <!-- Atividades -->
+            <div class="row mt-4">
+                <div class="col-lg-12">
+                    <div class="box-atividades">
+                    
+                        <button class="btn btn-primary btn-nova-atividade" [routerLink]="['/cadastro/atividade']">
+                            <i class="fa-solid fa-plus"></i> Novo 
+                        </button>
+                        <h3>ATIVIDADES</h3>
+                        
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Status</th>
+                                    <th>Responsável</th>
+                                    <th>Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let atividade of atividades">
+                                    <td><strong>{{ atividade.nome }}</strong></td>
+                                    <td>{{ atividade.status }}</td>
+                                    <td>{{ atividade.nomeUsuarioResponsavel }}</td>
+                                    <td>{{ atividade.descricao }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botões -->
+            <div class="row mt-4 botoes">
+                <div class="col-lg-12">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 d-flex">
+                            <a href="/listar/projetos" class="flex-fill">
+                                <div class="botao">
+                                    <i class="fa-solid fa-clipboard-list"></i>
+                                    <span>Gerenciamento de Projetos</span>
+                                </div>
+                            </a>                   
+                        </div>
+
+                        <div class="col-lg-3 d-flex">
+                            <a href="" class="flex-fill">
+                                <div class="botao">
+                                    <i class="fa-solid fa-chart-pie"></i>
+                                    <span>Relatórios</span>
+                                </div>
+                            </a>                   
+                        </div>
+
+                        <div class="col-lg-3 d-flex">
+                            <a href="/listar/usuarios" class="flex-fill">
+                                <div class="botao">
+                                    <i class="fa-solid fa-user"></i>
+                                    <span>Gerenciamento de Usuários</span>
+                                </div>
+                            </a>                  
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
