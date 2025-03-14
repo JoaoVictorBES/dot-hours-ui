@@ -1,19 +1,45 @@
+/* Garante que o conteúdo fique centralizado e espaçado da navbar */
+.container-fluid {
+    padding-top: 80px; /* Espaço para evitar sobreposição do navbar */
+}
+
+/* Layout flexível para organizar os elementos lado a lado */
+.layout-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px; /* Espaço entre os elementos */
+}
+
+/* Estilização dos cards de informações e tabelas */
 .content-box {
-    background-color: #fff; /* Fundo branco */
+    background-color: #fff; 
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    flex: 1;
+    min-width: 350px; /* Largura mínima para responsividade */
+    max-width: 600px; /* Máximo para evitar muito alongamento */
 }
 
+/* Estilo das informações do usuário */
 .info-box {
     background-color: #dde3e5;
     padding: 15px;
     border-radius: 10px;
-    text-align: center;
     font-weight: bold;
 }
 
+/* Ajuste para manter as tabelas alinhadas e responsivas */
+.table-container {
+    flex: 1;
+    min-width: 350px;
+    max-width: 600px;
+}
+
+/* Estilização da tabela */
 .table {
     width: 100%;
     border-radius: 10px;
@@ -29,6 +55,7 @@
     text-align: center;
 }
 
+/* Botão voltar */
 .botao-voltar {
     background-color: #dde3e5;
     color: #000;

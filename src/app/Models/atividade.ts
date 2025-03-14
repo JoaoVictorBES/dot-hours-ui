@@ -16,6 +16,7 @@ export class Atividade {
   nomeUsuarioResponsavel: string;
   dataCriacao: string;
   ativo!: boolean;
+  horasAtividade!: string;
   
 
   constructor(

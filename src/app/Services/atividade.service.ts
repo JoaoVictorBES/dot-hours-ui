@@ -37,7 +37,7 @@ export class AtividadeService {
   }
 
   listAll(): Observable<Atividade[]> {
-    return this.http.get<Atividade[]>(`${this.API}/findAll`);
+    return this.http.get<Atividade[]>(`${this.API}/listAll`);
   }
 
   
@@ -135,6 +135,25 @@ export class AtividadeService {
     if (filtros.dataFim) params = params.set('dataFim', filtros.dataFim);
 
     return this.http.get<Atividade[]>(`${this.API}/findByFilters`, { params });
+  }
+
+  findAtividadeByIdUsuario(id: number): Observable<Atividade[]>{
+  
+    const token = localStorage.getItem('token'); // Pegando o token do localStorage
+
+    console.log('Token enviado:', token);
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<Atividade[]>(`${this.API}/findAtividadeByIdUsuario/${id}`, { headers }).pipe(
+      catchError(error => {
+        if (error.status === 403) {
+          this.router.navigate(['/dashboard/admin']); // Redireciona para login se não estiver autenticado
+        }
+        return throwError(error);
+      })
+    );
+
   }
    
 

@@ -1,22 +1,43 @@
+/* Garante que o conteúdo ocupe 100% da altura da tela e seja centralizado */
+.container-fluid {
+    min-height: 100vh; /* Ocupa toda a altura da tela */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    padding-top: 60px; /* Espaçamento para a navbar */
+}
 
+/* Responsabilidade do layout das colunas */
+.row {
+    display: flex;
+    justify-content: center; /* Centraliza a coluna */
+    flex-grow: 1;
+}
+
+/* Estilo para o conteúdo, adicionando margem superior para não ficar colado no topo */
 .content {
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
+    width: 80%; /* Limita a largura */
+    max-width: 1000px; /* Largura máxima */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Efeito de sombra para profundidade */
+    margin-top: 30px; /* Distância do topo */
 }
-.box {
-    background-color: #0d1b2a;
-    padding: 15px;
-    border-radius: 5px;
-    color: white;
-    text-align: center;
+
+/* Título centralizado */
+h2 {
     font-weight: bold;
+    text-align: center;
 }
 
-.form-control{
+/* Estilo do input */
+.form-control {
     background-color: #dde3e5;
+    border-radius: 5px;
 }
 
+/* Estilo para o botão */
 .btn-custom {
     background-color: #0d1b2a;
     color: white;
@@ -24,12 +45,28 @@
     padding: 10px 20px;
     border-radius: 5px;
 }
+
 .btn-custom:hover {
     background-color: #1b2c42;
 }
+
+/* Estilo para o ícone de exclusão */
 .trash-icon {
     text-align: right;
     font-size: 24px;
     cursor: pointer;
     color: white;
+}
+
+/* Estilo para os botões em colunas pequenas */
+.col-lg-2, .col-lg-10 {
+    display: flex;
+    justify-content: center;
+}
+
+/* Ajusta o layout para garantir que não quebre nas telas pequenas */
+@media (max-width: 768px) {
+    .content {
+        width: 90%; /* Ajusta o tamanho da largura para telas menores */
+    }
 }

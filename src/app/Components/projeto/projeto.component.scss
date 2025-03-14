@@ -1,25 +1,38 @@
+/* Garante que o conteúdo fique centralizado na tela */
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ocupa toda a altura da tela */
+    padding-top: 80px; /* Ajuste para evitar sobreposição do navbar */
+}
 
-
-
+/* Centraliza o conteúdo e adiciona um espaçamento */
 .content {
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 75%;
+    max-width: 900px; /* Para não ficar muito largo em telas grandes */
+    text-align: center;
 }
 
+/* Estilização dos boxes */
 .box {
-    background-color: #0d1b2a;
+    background-color: #dde3e5;
     padding: 15px;
     border-radius: 5px;
-    color: white;
+    color: #000;
     text-align: center;
-    font-weight: bold;
 }
 
-.form-control{
+/* Estilização dos campos de formulário */
+.form-control {
     background-color: #dde3e5;
 }
 
+/* Botões personalizados */
 .btn-custom {
     background-color: #0d1b2a;
     color: white;
@@ -32,6 +45,7 @@
     background-color: #1b2c42;
 }
 
+/* Ícone de exclusão */
 .trash-icon {
     text-align: right;
     font-size: 24px;

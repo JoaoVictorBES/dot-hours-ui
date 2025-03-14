@@ -1,10 +1,8 @@
 <div class="container-fluid">
-    <div class="row">
-        
-
-        <!-- Conteúdo -->
-        <div class="col-lg-10 d-flex justify-content-center align-items-center">
-            <div class="content w-75">
+    <div class="row justify-content-center align-items-center">
+        <!-- Conteúdo centralizado -->
+        <div class="col-lg-10 d-flex justify-content-center">
+            <div class="content">
                 <h2 class="text-center">{{ projeto?.nome }}</h2>
                 <div class="row g-3">
                     <div class="col-lg-3">
@@ -20,8 +18,8 @@
                         <input type="text" class="form-control" [value]="projeto?.dataFim" readonly>
                     </div>
                     <div class="col-lg-3">
-                        <label for="usuario-reponsavel">Usuário Responsável</label>
-                        <div class="box">{{ projeto?.idUsuarioResponsavel }}</div>
+                        <label for="usuario-reponsavel">Responsável</label>
+                        <div class="box">{{ projeto?.nomeUsuarioResponsavel }}</div>
                     </div>
                     <div class="col-lg-6">
                         <label for="prioridade">Prioridade</label>
@@ -35,10 +33,8 @@
                         <label for="descricao">Descrição</label>
                         <textarea class="form-control" rows="3" readonly>{{ projeto?.descricao }}</textarea>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-

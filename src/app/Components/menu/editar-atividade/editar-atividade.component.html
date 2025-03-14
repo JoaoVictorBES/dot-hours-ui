@@ -1,39 +1,48 @@
 <div class="container-fluid">
-    <div class="row">
-      
-        <div class="col-lg-10 d-flex justify-content-center align-items-center">
-            <div class="content w-75">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-lg-10">
+            <div class="content">
                 <h2 class="text-center">{{ atividade.nome }}</h2>
                 <div class="row g-3" *ngIf="atividade">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <label for="criacao">Criação</label>
                         <input type="date" class="form-control" [(ngModel)]="atividade.dataCriacao">
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <label for="inicio">Início</label>
                         <input type="date" class="form-control" [(ngModel)]="atividade.dataInicio">
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <label for="fim">Fim</label>
                         <input type="date" class="form-control" [(ngModel)]="atividade.dataFim">
                     </div>
                     <div class="col-lg-6 mb-3">
-                        <label for="usuarios-vinculados">Vincular usuarios</label>
-                        <select class="form-control input-custom text-center" name="usuarios" [(ngModel)]="atividade.idUsuariosVinculados">
-                            <option *ngFor="let usuario of usuarios" [value]="usuario.id">  
+                        <label for="usuarios-vinculados">Vincular usuários</label>
+                        <select class="form-control input-custom text-center" name="usuarios" [(ngModel)]="selectedUsuarios" (ngModelChange)="onUsuariosChange()" multiple>
+                            <option *ngFor="let usuario of usuarios" [value]="usuario.id">
                                 {{ usuario.username }}
                             </option>
                         </select>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6 mb-3">
-                            <label for="status">Status</label>
-                            <select class="form-control input-custom" name="status" [(ngModel)]="atividade.status">
-                                <option *ngFor="let status of statusOptions" [value]="status">
-                                    {{ status }}
-                                </option>
-                            </select>
-                        </div>
+                    
+                    <!-- Div para listar os usuários selecionados -->
+                    <div class="col-lg-6 mb-3">
+                        <label for="usuarios-listados">Usuários Vinculados</label>
+                        <ul class="list-group">
+                        <li *ngFor="let usuario of usuariosSelecionados" class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ usuario.username }}
+                            <button class="btn btn-danger btn-sm" (click)="removerUsuario(usuario)">Remover</button>
+                        </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-lg-6 mb-3">
+                        <label for="status">Status</label>
+                        <select class="form-control input-custom" name="status" [(ngModel)]="atividade.status">
+                            <option *ngFor="let status of statusOptions" [value]="status">
+                                {{ status }}
+                            </option>
+                        </select>
                     </div>
                     <div class="col-lg-12">
                         <label for="descricao">Descrição</label>
@@ -51,16 +60,14 @@
                             {{ atividade.ativo ? 'Desativar' : 'Ativar' }}
                         </button>
                     </div>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+                    <div class="col-lg-12 mt-3">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
-
-
-

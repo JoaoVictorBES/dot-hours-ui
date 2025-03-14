@@ -58,15 +58,18 @@ export class ListarUsuariosComponent implements OnInit {
   }
 
   carregarAtividades(): void {
-    this.atividadeService.findAll().subscribe({
+    //debugger;
+    this.atividadeService.listAll().subscribe({
       next: (atividades: Atividade[]) => {
         this.atividades = atividades;
+        console.log("atividades", this.atividades)
       },
       error: (err: any) => console.error("Erro ao carregar atividades:", err)
     });
   }
 
   filtrarUsuarios(): void {
+    debugger;
     const params: any = { ...this.filtros };
     if (!params.role) delete params.role;
     if (!params.atividade) delete params.atividade;

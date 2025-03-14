@@ -52,7 +52,7 @@ export class CadastroLancamentoHorasComponent {
   ngOnInit(): void {
     this.idUsuario = this.authService.getUsuarioId();
 
-    this.atividadeService.findAll().subscribe((data) => {
+    this.atividadeService.listAll().subscribe((data) => {
       this.atividades = data;
       console.log("Atividades carregadas:", this.atividades);
     });
@@ -126,8 +126,11 @@ export class CadastroLancamentoHorasComponent {
     console.log('ID do usuário:', this.lancamentoHoras.idUsuario);
   
     // Ajusta dataInicio e dataFim para o formato correto antes de enviar
-    this.lancamentoHoras.dataInicio = this.formatDateTime(this.lancamentoHoras.dataRegistro, this.dataInicio);
-    this.lancamentoHoras.dataFim = this.formatDateTime(this.lancamentoHoras.dataRegistro, this.dataFim);
+    //this.lancamentoHoras.dataInicio = this.formatDateTime(this.lancamentoHoras.dataRegistro, this.dataInicio).replace('T', ' ');
+    //this.lancamentoHoras.dataFim = this.formatDateTime(this.lancamentoHoras.dataRegistro, this.dataFim).replace('T', ' ');
+
+    this.lancamentoHoras.dataInicio = this.formatTime(this.dataInicio);
+    this.lancamentoHoras.dataFim = this.formatTime(this.dataFim);
   
     // Ajusta o tempoDuracao para o formato correto
     this.lancamentoHoras.tempoDuracao = this.converterParaLocalTime(this.tempoDuracao);
@@ -148,6 +151,10 @@ export class CadastroLancamentoHorasComponent {
         alert(`Erro ao lançar as horas: ${error.error?.message || 'Erro desconhecido'}`);
       }
     );
+  }
+  
+  formatTime(time: string): string {
+    return time.length === 5 ? `${time}:00` : time; // Garante que o formato seja HH:mm:ss
   }
   
 

@@ -13,19 +13,19 @@
                     </div>
                     <div class="col-lg-3">
                         <label for="dataInicio" class="form-label">Início</label>
-                        <input type="time" class="form-control" id="dataInicio" [(ngModel)]="dataInicio" name="dataInicio" readonly>
+                        <input type="time" class="form-control" id="dataInicio" [(ngModel)]="lancamentoHoras.dataInicio" name="dataInicio" readonly>
                     </div>
                     <div class="col-lg-3">
                         <label for="dataFim" class="form-label"> Fim</label>
-                        <input type="time" class="form-control" id="dataFim" [(ngModel)]="dataFim" name="dataFim" readonly>
+                        <input type="time" class="form-control" id="dataFim" [(ngModel)]="lancamentoHoras.dataFim" name="dataFim" readonly>
                     </div>
                     <div class="col-lg-3">
                         <label for="tempoDuracao" class="form-label">Tempo de Duração</label>
-                        <input type="text" class="form-control" id="tempoDuracao" name="tempoDuracao"  [(ngModel)]="tempoDuracao" readonly>
+                        <input type="text" class="form-control" id="tempoDuracao" name="tempoDuracao"  [(ngModel)]="lancamentoHoras.tempoDuracao" readonly>
                     </div>
 
                     <div class="col-lg-4 mb-3">
-                        <label for="vincular-projeto">Vincular atividade</label>
+                        <label for="vincular-projeto">Atividades</label>
                         <select class="form-control input-custom text-center" name="projeto" [(ngModel)]="lancamentoHoras.idAtividade" readonly>
                             <option *ngFor="let atividade of atividades" [ngValue]="atividade.id">
                                 {{ atividade.nome }}

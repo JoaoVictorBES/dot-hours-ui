@@ -1,67 +1,67 @@
 <div class="container-fluid">
-    <div class="row justify-content-center mt-4">
+    <div class="layout-container">
         
         <!-- Card de Informações do Usuário -->
-        <div class="col-lg-8 col-md-10">
-            <div class="content-box">
-                <h2 class="text-center">Usuário</h2>
-                <div class="row" *ngIf="usuario">
-                    <div class="col-md-6 mb-3">
-                        <label>Nome</label>
-                        <div class="info-box">{{ usuario.username }}</div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label>Email</label>
-                        <div class="info-box">{{ usuario.email }}</div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label>Role</label>
-                        <div class="info-box">{{ usuario.role }}</div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label>Último Login</label>
-                        <div class="info-box">{{ usuario.ultimoLogin || 'N/A' }}</div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label>Total de Atividades</label>
-                        <div class="info-box">{{ usuario.atividades.length }}</div>
-                    </div>
+        <div class="content-box">
+            <h2 class="text-center">Usuário</h2>
+            <div class="row" *ngIf="usuario">
+                <div class="col-md-6 mb-3">
+                    <label>Nome</label>
+                    <div class="info-box">{{ usuario.username }}</div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Email</label>
+                    <div class="info-box">{{ usuario.email }}</div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Role</label>
+                    <div class="info-box">{{ usuario.role }}</div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Último Login</label>
+                    <div class="info-box">{{ usuario.ultimoLogin || 'N/A' }}</div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Total de Atividades</label>
+                    <div class="info-box">{{ usuario.atividades.length }}</div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Data de Criação</label>
+                    <div class="info-box">{{ usuario.dataCriacao }}</div>
                 </div>
             </div>
         </div>
 
         <!-- Tabela de Atividades -->
-        <div class="col-lg-8 col-md-12 mt-4">
-            <div class="content-box">
-                <h3 class="text-center">Atividades Vinculadas</h3>
-                <div *ngIf="usuario.atividades.length > 0; else noAtividades">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Status</th>
-                                <th>Horas Lançadas</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let atividade of usuario.atividades">
-                                <td>{{ atividade.nome }}</td>
-                                <td>{{ atividade.status }}</td>
-                                <!--<td>{{ atividade.horasLancadas || '0' }}</td> -->
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <ng-template #noAtividades>
-                    <p class="text-center text-muted">Nenhuma atividade vinculada.</p>
-                </ng-template>
+        <div class="table-container content-box">
+            <h3 class="text-center">Atividades Vinculadas</h3>
+            <div *ngIf="usuario.atividades.length > 0; else noAtividades">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Status</th>
+                            <th>Horas Lançadas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let atividade of usuario.atividades">
+                            <td>{{ atividade.nome }}</td>
+                            <td>{{ atividade.status }}</td>
+                            <td>{{ atividade.horasAtividade }}</td> 
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+            <ng-template #noAtividades>
+                <p class="text-center text-muted">Nenhuma atividade vinculada.</p>
+            </ng-template>
         </div>
 
-        <!-- Botão Voltar -->
-        <div class="col-lg-6 text-center mt-3">
-            <button (click)="voltar()" class="botao-voltar">Voltar</button>
-        </div>
+    </div>
 
+    <!-- Botão Voltar -->
+    <div class="text-center mt-3">
+        <button (click)="voltar()" class="botao-voltar">Voltar</button>
     </div>
 </div>

@@ -43,7 +43,7 @@ export const routes: Routes = [
       { path: 'cadastro/usuario', component: CadastroUsuarioComponent },
       { path: 'cadastro/projeto', component: CadastroProjetoComponent},
       { path: 'cadastro/atividade', component: CadastroAtividadeComponent },
-      { path: 'projeto/:id', component: ProjetoComponent, canActivate: [AuthGuard] },
+      { path: 'projeto/:id', component: ProjetoComponent },
 
       { path: 'editar/projeto/:id', component: EditarProjetoComponent },
       { path: 'editar/atividade/:id', component: EditarAtividadeComponent },

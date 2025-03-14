@@ -80,7 +80,7 @@ export class ListarLancamentosComponent {
     }
 
     carregarUsuarios(): void {
-      this.usuarioService.findAll().subscribe({
+      this.usuarioService.listAll().subscribe({
         next: (data) => {
           this.usuarios = data;
         },
@@ -89,7 +89,7 @@ export class ListarLancamentosComponent {
     }
 
   carregarAtividades(): void {
-    this.atividadeService.findAll().subscribe({
+    this.atividadeService.listAll().subscribe({
       next: (atividades: Atividade[]) => {
         this.atividades = atividades;
       },

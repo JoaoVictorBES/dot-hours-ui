@@ -4,7 +4,7 @@
     <div class="container d-flex justify-content-center align-items-center flex-grow-1">
         <div class="form-box p-4 rounded">
             <h2 class="text-center">LANÇAMENTO DE HORAS</h2>
-            <form class="form" *ngIf="lancamento">
+            <form class="form" *ngIf="lancamentoHoras">
                 <div class="row g-3 mt-3">
                     <div class="col-lg-3">
                         <label for="dataRegistro" class="form-label">Registro</label>
@@ -12,15 +12,15 @@
                     </div>
                     <div class="col-lg-3">
                         <label for="dataInicio" class="form-label">Início</label>
-                        <input type="time" class="form-control" id="dataInicio" [(ngModel)]="dataInicio" name="dataInicio" (blur)="calcularDuracao()">
+                        <input type="time" class="form-control" id="dataInicio" [(ngModel)]="lancamentoHoras.dataInicio" name="dataInicio" (blur)="calcularDuracao()">
                     </div>
                     <div class="col-lg-3">
                         <label for="dataFim" class="form-label"> Fim</label>
-                        <input type="time" class="form-control" id="dataFim" [(ngModel)]="dataFim" name="dataFim" (blur)="calcularDuracao()">
+                        <input type="time" class="form-control" id="dataFim" [(ngModel)]="lancamentoHoras.dataFim" name="dataFim" (blur)="calcularDuracao()">
                     </div>
                     <div class="col-lg-3">
                         <label for="tempoDuracao" class="form-label">Tempo de Duração</label>
-                        <input type="text" class="form-control" id="tempoDuracao" name="tempoDuracao"  [(ngModel)]="tempoDuracao" readonly>
+                        <input type="text" class="form-control" id="tempoDuracao" name="tempoDuracao"  [(ngModel)]="lancamentoHoras.tempoDuracao" readonly>
                     </div>
 
                     <div class="col-lg-4 mb-3">
@@ -43,7 +43,7 @@
                     <button type="button" (click)="editarLancamento()" class="btn btn-custom w-100">EDITAR</button>
                 </div>
                 <div class="col-lg-10 trash-icon text-end">
-                    <i class="bi bi-trash3" (click)="deletarLancamento(lancamento.id)" style="cursor: pointer;"></i>
+                    <i class="bi bi-trash3" (click)="deletarLancamento(lancamentoHoras.id)" style="cursor: pointer;"></i>
                 </div>
             </form>
         </div>

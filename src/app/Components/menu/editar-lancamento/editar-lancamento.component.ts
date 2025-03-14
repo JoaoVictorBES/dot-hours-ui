@@ -5,6 +5,9 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { LancamentoHoras } from '../../../Models/lancamento-horas';
 import { LancamentoHorasService } from '../../../Services/lancamento-horas.service';
 import { Atividade } from '../../../Models/atividade';
+import { AtividadeService } from '../../../Services/atividade.service';
+import { HttpHeaders } from '@angular/common/http';
+import { AuthService } from '../../../Auth/auth.service';
 
 @Component({
   selector: 'app-editar-lancamento',
@@ -19,7 +22,7 @@ import { Atividade } from '../../../Models/atividade';
 })
 export class EditarLancamentoComponent {
 
-  constructor(private lancamentoHorasService: LancamentoHorasService, private route: ActivatedRoute, router: Router) {
+  constructor(private lancamentoHorasService: LancamentoHorasService, private route: ActivatedRoute, router: Router, private atividadeService: AtividadeService, private authService: AuthService) {
       this.router = router;
   }
 
@@ -44,30 +47,45 @@ export class EditarLancamentoComponent {
 
   ngOnInit(): void{
     this.carregarLancamento();
+    this.carregarAtividades();
   }
 
   editarLancamento(): void {
-    
-    if (!this.lancamento || !this.lancamento.id) {
-      console.error('lancamento inválido para edição.');
+    if (!this.lancamentoHoras || !this.lancamentoHoras.id) {
+      console.error('Lançamento inválido para edição.');
       return;
     }
-
-    const confirmar = confirm('Tem certeza que deseja editar esta lancamento?');
+  
+    const confirmar = confirm('Tem certeza que deseja editar este lançamento?');
   
     if (confirmar) {
-      this.lancamentoHorasService.update(this.lancamento.id, this.lancamento).subscribe({
+      const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.authService.getToken());
+      
+      this.lancamentoHorasService.update(this.lancamentoHoras.id, this.lancamentoHoras, { headers }).subscribe({
         next: () => {
-          alert('Atividade editada com sucesso!');
-          this.router.navigate(['/listar/atividades']); // Navegação correta
+          alert('Lançamento editado com sucesso!');
+          this.router.navigate(['/listar/lancamentos']);
         },
         error: (error) => {
-          console.error('Erro ao editar projeto:', error);
-          alert('Erro ao tentar editar o projeto.');
+          console.error('Erro ao editar lançamento:', error);
+          alert('Erro ao tentar editar o lançamento.');
         }
       });
     }
   }
+  
+
+  carregarAtividades(): void {
+      this.atividadeService.listAll().subscribe(
+        (atividades: Atividade[]) => {
+          this.atividades = atividades;
+          console.log('atividades', atividades)
+        },
+        (erro: any) => {
+          console.error('Erro ao carregar projetos', erro);
+        }
+      );
+    }
 
   carregarLancamento(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -76,7 +94,8 @@ export class EditarLancamentoComponent {
       const idNumber = Number(id);
       this.lancamentoHorasService.findById(idNumber).subscribe({
         next: (lancamento) => {
-          this.lancamento = lancamento;
+          this.lancamentoHoras = lancamento;
+          console.log('lancamento', this.lancamentoHoras)
         },
         error: (error) => {
           console.error('Erro ao buscar lancamento:', error);

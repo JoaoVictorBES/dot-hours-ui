@@ -1,30 +1,24 @@
-
-
-.icons{
-    margin-bottom: 80px;
+/* Garante que o conteúdo fique centralizado e espaçado do navbar */
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ocupa toda a altura da tela */
+    padding-top: 80px; /* Ajuste para evitar sobreposição do navbar */
 }
 
-.icons a:hover {
-    transform: scale(1.2);
-}
-
+/* Caixa do formulário centralizada */
 .form-box {
     background-color: #fff;
-    flex-direction: column;
-    margin-left: 37px;
-    margin-left: 80px; 
-    width: calc(100% - 80px);
-}
-
-h2 {
-    font-weight: bold;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px; /* Mantém o formulário responsivo */
     text-align: center;
 }
 
-.form-label {
-    color: #000;
-}
-
+/* Melhorando a aparência dos inputs */
 .form-control {
     background-color: #dde3e5;
     color: #000;
@@ -33,23 +27,39 @@ h2 {
     padding: 10px;
 }
 
+/* Estilo do placeholder */
 .form-control::placeholder {
     color: #aaa;
 }
 
+/* Foco nos inputs */
 .form-control:focus {
     background-color: #dde3e5;
     color: #000;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
+/* Botão personalizado */
 .submit-btn {
     background-color: #060d17;
     color: white;
     padding: 10px 20px;
     font-weight: bold;
     border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .submit-btn:hover {
     background-color: #000;
+}
+
+/* Ícones ajustados */
+.icons {
+    margin-bottom: 80px;
+}
+
+.icons a:hover {
+    transform: scale(1.2);
 }

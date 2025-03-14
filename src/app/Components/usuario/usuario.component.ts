@@ -6,6 +6,7 @@ import { Usuario } from '../../Models/usuario';
 import { Projeto } from '../../Models/projeto';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AtividadeService } from '../../Services/atividade.service';
 
 
 @Component({
@@ -24,10 +25,11 @@ export class UsuarioComponent {
 
   usuario: Usuario = new Usuario(0, '', '', '', '', '', '', this.atividade);
 
-  constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, private router: Router) {}
+  constructor(private usuarioService: UsuarioService, private route: ActivatedRoute, private router: Router, private atividadeService: AtividadeService) {}
 
   ngOnInit(): void {
     this.carregarUsuario();
+    
   }
 
   private carregarUsuario(): void {
@@ -56,14 +58,28 @@ export class UsuarioComponent {
       this.usuarioService.findAtividadesByUsuario(idNumber).subscribe({
         next: (atividades) => {
           this.usuario.atividades = atividades;
+          this.formatarHorasAtividade();
         },
         error: (error) => {
           console.error('Erro ao buscar atividades:', error);
         }
       });
+      this.carregarAtividades(idNumber);
+      console.log('id', idNumber);
     }
   }
   
+  carregarAtividades(id: any): void {
+    this.atividadeService.findAtividadeByIdUsuario(id).subscribe(
+      (atividades: Atividade[]) => {
+        this.usuario.atividades = atividades
+        console.log('atividades', atividades)
+      },
+      (erro: any) => {
+        console.error('Erro ao carregar projetos', erro);
+      }
+    );
+  }
   
 
   voltar(): void {
@@ -71,6 +87,26 @@ export class UsuarioComponent {
     const rotaDestino = usuario.role === 'admin' ? '/dashboard/admin' : '/dashboard/usuario';
 
     this.router.navigate([rotaDestino]);
+  }
+
+  formatarHorasAtividade(): void {
+    // Aqui você pode formatar as horas no formato que achar necessário, caso seja necessário
+    this.usuario.atividades.forEach(atividade => {
+      if (atividade.horasAtividade && atividade.horasAtividade.length > 0) {
+        // Caso o formato não seja 'HH:mm:ss', você pode formatar conforme necessário aqui
+        atividade.horasAtividade = this.formatarHora(atividade.horasAtividade);
+      }
+    });
+  }
+
+  // Função para garantir que a hora esteja no formato correto
+  formatarHora(horas: string): string {
+    const parts = horas.split(':');
+    if (parts.length === 2) {
+      // Se for apenas horas e minutos, adiciona os segundos como zero
+      return `${parts[0]}:${parts[1]}:00`;
+    }
+    return horas; // Caso já esteja no formato correto
   }
 
 }

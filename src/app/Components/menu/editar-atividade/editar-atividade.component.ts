@@ -6,6 +6,7 @@ import { AtividadeService } from '../../../Services/atividade.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Usuario } from '../../../Models/usuario';
+import { UsuarioService } from '../../../Services/usuario.service';
 
 @Component({
   selector: 'app-editar-atividade',
@@ -24,16 +25,34 @@ export class EditarAtividadeComponent {
       atividade!: Atividade;
       statusOptions = Object.values(StatusAtividade); // Pega os valores do enum StatusAtividade
       usuarios: Usuario[] =[];
+      usuariosNomesVinculados: string[] = []; 
+      selectedUsuarios: number[] = []; // Array para armazenar os IDs dos usuários selecionados
+      usuariosSelecionados: any[] = []; // Array para armazenar os objetos dos usuários selecionados
       
-      
-      constructor(private atividadeService: AtividadeService, private route: ActivatedRoute, router: Router) {
+      constructor(private atividadeService: AtividadeService, private route: ActivatedRoute, router: Router, private usuarioService: UsuarioService) {
         this.router = router;
       }
     
       ngOnInit(): void {
         this.carregarAtividade();
+        this.carregarUsuarios();
       }
   
+      onUsuariosChange() {
+        // Para cada ID selecionado, adicione o usuário completo na lista se ele não estiver já na lista
+        this.selectedUsuarios.forEach(id => {
+          const usuario = this.usuarios.find(u => u.id === id);
+          if (usuario && !this.usuariosSelecionados.some(u => u.id === usuario.id)) {
+            this.usuariosSelecionados.push(usuario);
+          }
+        });
+    
+        // Atualiza o idUsuariosVinculados na atividade
+        this.atividade.idUsuariosVinculados = this.usuariosSelecionados.map(usuario => usuario.id);
+    
+        // Loga os dados dos usuários selecionados
+        console.log('Usuarios selecionados:', this.usuariosSelecionados);
+      }
       
     
       private carregarAtividade(): void {
@@ -51,6 +70,20 @@ export class EditarAtividadeComponent {
             }
           });
         }
+      }
+
+      carregarUsuarios(): void {
+    
+        this.usuarioService.listAll().subscribe(
+          (usuarios: Usuario[]) => {
+          
+            console.log('Usuários carregados:', usuarios);
+            this.usuarios = usuarios;
+          },
+          (erro: any) => {
+            console.error('Erro ao carregar usuarios', erro);
+          }
+        )
       }
     
     
@@ -114,6 +147,18 @@ export class EditarAtividadeComponent {
             alert('Erro ao tentar alterar status da atividade.');
           }
         });
+      }
+      
+      
+      removerUsuario(usuario: any) {
+        // Remove o usuário da lista de usuários selecionados
+        this.usuariosSelecionados = this.usuariosSelecionados.filter(u => u.id !== usuario.id);
+    
+        // Atualiza o selectedUsuarios, removendo o ID do usuário removido
+        this.selectedUsuarios = this.selectedUsuarios.filter(id => id !== usuario.id);
+    
+        // Loga a lista de usuários selecionados
+        console.log('Usuarios após remoção:', this.usuariosSelecionados);
       }
       
       

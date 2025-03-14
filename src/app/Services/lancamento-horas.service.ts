@@ -48,7 +48,7 @@ export class LancamentoHorasService {
     
   }
 
-  update(id: number, lancamentoHoras: LancamentoHoras): Observable<LancamentoHoras> {
+  update(id: number, lancamentoHoras: LancamentoHoras, p0?: { headers: HttpHeaders; }): Observable<LancamentoHoras> {
       const token = localStorage.getItem('token'); // Pegando o token do localStorage
       console.log('Token enviado:', token);
     

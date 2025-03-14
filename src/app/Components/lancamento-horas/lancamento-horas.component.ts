@@ -55,7 +55,7 @@ export class LancamentoHorasComponent {
       const idNumber = Number(id);
       this.lancamentoHorasService.findById(idNumber).subscribe({
         next: (lancamento) => {
-          this.lancamento = lancamento;
+          this.lancamentoHoras = lancamento;
         },
         error: (error) => {
           console.error('Erro ao buscar lancamento:', error);

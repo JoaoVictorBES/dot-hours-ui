@@ -41,7 +41,7 @@ export class ProjetoService {
     return this.http.get<any>(`${this.API}/findAll?page=${page}&size=${size}`)
     
   }
-
+  
 
   findById(id: number): Observable<Projeto>{
 
