@@ -87,7 +87,7 @@ export class EditarProjetoComponent {
         this.projetoService.update(this.projeto.id, this.projeto).subscribe({
           next: () => {
             alert('Projeto editado com sucesso!');
-            this.router.navigate(['/listar/projetos']); // Navegação correta
+            this.router.navigate(['/listar/projetos']); 
           },
           error: (error) => {
             console.error('Erro ao editar projeto:', error);

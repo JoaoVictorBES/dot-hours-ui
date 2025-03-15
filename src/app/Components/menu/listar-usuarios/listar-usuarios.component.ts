@@ -7,6 +7,7 @@ import { UsuarioService } from '../../../Services/usuario.service';
 import { SidebarComponentComponent } from '../../../Util/sidebar-component/sidebar-component.component';
 import { Atividade } from '../../../Models/atividade';
 import { AtividadeService } from '../../../Services/atividade.service';
+import { AuthService } from '../../../Auth/auth.service';
 
 @Component({
   selector: 'app-listar-usuarios',
@@ -26,6 +27,7 @@ export class ListarUsuariosComponent implements OnInit {
   atividades: Atividade[] = [];
   totalPages: number = 0;
   currentPage: number = 0;
+  isAdmin: boolean = false;
 
   filtros = {
     nome: '',
@@ -37,13 +39,15 @@ export class ListarUsuariosComponent implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
-    private atividadeService: AtividadeService
+    private atividadeService: AtividadeService,
+    private authService: AuthService
   ) {}
 
 
   ngOnInit(): void {
     this.carregarUsuarios();
     this.carregarAtividades();
+    this.verificarPermissao();
   }
 
   carregarUsuarios(page: number = 0): void {
@@ -92,5 +96,10 @@ export class ListarUsuariosComponent implements OnInit {
       this.carregarUsuarios(this.currentPage - 1);
     }
   }
-  
+
+  verificarPermissao(): void {
+    const usuario = this.authService.getUserRole(); 
+    this.isAdmin =  usuario === 'ROLE_ADMIN';
+
+  }
 }

@@ -14,9 +14,8 @@ import { AuthService } from '../../../Auth/auth.service';
   standalone: true,
   imports: [
     FormsModule,
-    CommonModule,
-    RouterLink
-  ],
+    CommonModule
+],
   templateUrl: './editar-lancamento.component.html',
   styleUrl: './editar-lancamento.component.scss'
 })

@@ -6,7 +6,7 @@
 
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h2 class="fw-bold">ATIVIDADES</h2>
-            <button class="btn btn-project" [routerLink]="['/cadastro/atividade']">NOVA ATIVIDADE</button>
+            <button *ngIf="isAdmin" class="btn btn-project" [routerLink]="['/cadastro/atividade']">NOVA ATIVIDADE</button>
         </div>
         
         <div class="filter-bar">
@@ -17,9 +17,9 @@
                 <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
             </select>
         
-            <select [(ngModel)]="filtros.idProjeto" class="form-select">
+            <select [(ngModel)]="filtros.idProjeto" class="form-select" name="projeto">
                 <option value="">Todos os Projetos</option>
-                <option *ngFor="let projeto of projetos" [value]="projeto.id">{{ projeto.nome }}</option>
+                <option *ngFor="let projeto of listaProjetos" [value]="projeto.id">{{ projeto.nome }}</option>
             </select>
         
             <button class="btn btn-primary" (click)="aplicarFiltros()">Filtrar</button>
@@ -49,8 +49,8 @@
                             <button class="view-btn" [routerLink]="['/atividade', atividade.id]">
                                 <i class="bi bi-eye"></i>
                             </button>
-                            <span class="separator">|</span>
-                            <button class="edit" [routerLink]="['/editar/atividade', atividade.id]">
+                            <span *ngIf="isAdmin" class="separator">|</span>
+                            <button *ngIf="isAdmin" class="edit" [routerLink]="['/editar/atividade', atividade.id]">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
                         </td>

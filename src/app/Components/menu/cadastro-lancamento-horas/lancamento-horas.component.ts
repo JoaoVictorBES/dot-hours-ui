@@ -102,9 +102,8 @@ export class CadastroLancamentoHorasComponent {
   }
 
   lancarHoras(): void {
-    // Se o usuário estiver logado, obtém seu ID; caso contrário, permite o envio sem ID
+    
     const user = this.authService.getUser();
-    console.log("Usuário recuperado do localStorage:", user);
 
     if (user && user.id !== null) {
       this.lancamentoHoras.idUsuario = user.id;
@@ -112,22 +111,14 @@ export class CadastroLancamentoHorasComponent {
       alert('Usuário não encontrado ou ID inválido!');
       return;
     }
-    
-    console.log(localStorage.getItem('user'));
 
-    console.log('Usuário logado:', user);
   
     // Valida se todos os campos necessários estão preenchidos (exceto idUsuario)
     if (!this.lancamentoHoras.idAtividade || !this.lancamentoHoras.descricao || !this.dataInicio || !this.dataFim) {
       alert('Por favor, preencha todos os campos necessários!');
       return;
     }
-  
-    console.log('ID do usuário:', this.lancamentoHoras.idUsuario);
-  
-    // Ajusta dataInicio e dataFim para o formato correto antes de enviar
-    //this.lancamentoHoras.dataInicio = this.formatDateTime(this.lancamentoHoras.dataRegistro, this.dataInicio).replace('T', ' ');
-    //this.lancamentoHoras.dataFim = this.formatDateTime(this.lancamentoHoras.dataRegistro, this.dataFim).replace('T', ' ');
+
 
     this.lancamentoHoras.dataInicio = this.formatTime(this.dataInicio);
     this.lancamentoHoras.dataFim = this.formatTime(this.dataFim);
@@ -137,13 +128,10 @@ export class CadastroLancamentoHorasComponent {
   
     this.lancamentoHoras.idUsuario = Number(this.lancamentoHoras.idUsuario);
 
-    console.log("🔍 Dados enviados para o backend:", this.lancamentoHoras);
-
     // Chama o serviço para criar o lançamento de horas
     this.lancamentoHorasService.create(this.lancamentoHoras).subscribe(
       (response) => {
-        console.log('Horas lançadas com sucesso:', response);
-        this.router.navigate(['/listar/projetos']);
+        this.router.navigate(['/listar/lancamentos']);
         alert('Lançamento de horas realizado com sucesso!');
       },
       (error) => {

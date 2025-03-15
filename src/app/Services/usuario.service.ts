@@ -45,14 +45,16 @@ export class UsuarioService {
 
 
   listAll(): Observable<Usuario[]> {
+
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<Usuario[]>(`${this.API}/listAll`, { headers });
+    
   }
 
   findById(id: number): Observable<Usuario>{
   
-      const token = localStorage.getItem('token'); // Pegando o token do localStorage
+      const token = localStorage.getItem('token'); 
   
       console.log('Token enviado:', token);
   
@@ -61,7 +63,7 @@ export class UsuarioService {
       return this.http.get<Usuario>(`${this.API}/findById/${id}`, { headers }).pipe(
         catchError(error => {
           if (error.status === 403) {
-            this.router.navigate(['/dashboard/admin']); // Redireciona para login se não estiver autenticado
+            this.router.navigate(['/dashboard/admin']); 
           }
           return throwError(error);
         })
@@ -71,7 +73,7 @@ export class UsuarioService {
 
     delete(id: number): Observable<string>{
     
-      const token = localStorage.getItem('token'); // Pegando o token do localStorage
+      const token = localStorage.getItem('token'); 
   
       console.log('Token enviado:', token);
   
@@ -80,7 +82,7 @@ export class UsuarioService {
       return this.http.delete(`${this.API}/delete/${id}` , { headers, responseType: 'text'}).pipe(
         catchError(error => {
           if (error.status === 403) {
-            this.router.navigate(['/dashboard/admin']); // Redireciona para login se não estiver autenticado
+            this.router.navigate(['/dashboard/admin']); 
           }
           return throwError(error);
         })
@@ -90,23 +92,29 @@ export class UsuarioService {
 
 
      update(id: number, usuario: Usuario): Observable<Usuario> {
-        const token = localStorage.getItem('token'); // Pegando o token do localStorage
+
+        const token = localStorage.getItem('token'); 
         console.log('Token enviado:', token);
       
         const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       
         return this.http.put<Usuario>(`${this.API}/update/${id}`, usuario, { headers });
+
       }
 
       findByFilters(params: any): Observable<Usuario[]> {
+
         return this.http.get<Usuario[]>(`${this.API}/findByFilters`, { params });
+
       }
       
       findAtividadesByUsuario(id: number): Observable<Atividade[]> {
+
         const token = localStorage.getItem('token');
         const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
         
         return this.http.get<Atividade[]>(`${this.API}/${id}/atividades`, { headers });
+
       }
       
   

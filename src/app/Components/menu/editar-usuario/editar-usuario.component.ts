@@ -11,7 +11,6 @@ import { CommonModule } from '@angular/common';
   imports: [
     FormsModule,
     CommonModule,
-    RouterLink
   ],
   templateUrl: './editar-usuario.component.html',
   styleUrl: './editar-usuario.component.scss'
@@ -80,7 +79,7 @@ export class EditarUsuarioComponent {
       this.usuarioService.update(this.usuario.id, this.usuario).subscribe({
         next: () => {
           alert('Usuário editado com sucesso!');
-          this.router.navigate(['/listar/usuarios']); // Navegação correta
+          this.router.navigate(['/listar/usuarios']); 
         },
         error: (error) => {
           console.error('Erro ao editar usuario:', error);

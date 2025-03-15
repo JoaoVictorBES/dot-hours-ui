@@ -9,6 +9,7 @@ import { ProjetoService } from '../../../Services/projeto.service';
 import { SidebarComponentComponent } from "../../../Util/sidebar-component/sidebar-component.component";
 import { StatusProjeto } from '../../../Enums/status-projeto.enum';
 import { PrioridadeProjeto } from '../../../Enums/prioridade-projeto.enum';
+import { AuthService } from '../../../Auth/auth.service';
 
 @Component({
   selector: 'app-listar-projetos',
@@ -25,13 +26,15 @@ export class ListarProjetosComponent implements OnInit {
 
     constructor(
       private projetoService: ProjetoService,
-      private atividadeService: AtividadeService
+      private atividadeService: AtividadeService,
+      private authService: AuthService
     ) {}
 
     projetos: Projeto[] = [];
     atividades: Atividade[] = [];
     totalPages: number = 0;
     currentPage: number = 0;
+    isAdmin: boolean = false;
 
     statusProjeto = Object.values(StatusProjeto)
     prioridadeProjeto = Object.values(PrioridadeProjeto)
@@ -46,6 +49,7 @@ export class ListarProjetosComponent implements OnInit {
     ngOnInit(): void {
       this.carregarProjetos();
       this.carregarAtividades();
+      this.verificarPermissao();
     }
 
     carregarProjetos(page: number = 0): void {
@@ -94,5 +98,11 @@ paginaAnterior(): void {
   if (this.currentPage > 0) {
     this.carregarProjetos(this.currentPage - 1);
   }
+}
+
+verificarPermissao(): void {
+  const usuario = this.authService.getUserRole(); 
+  this.isAdmin =  usuario === 'ROLE_ADMIN';
+
 }
 }

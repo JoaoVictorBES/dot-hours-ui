@@ -11,7 +11,6 @@ import { ProjetoService } from '../../../Services/projeto.service';
 import { UsuarioService } from '../../../Services/usuario.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
-
 declare var $: any;
 
 @Component({
@@ -26,7 +25,6 @@ declare var $: any;
 })
 export class CadastroAtividadeComponent implements OnInit {
  
-  
   constructor(private atividadeService: AtividadeService, router: Router, private projetoService: ProjetoService, private usuarioService: UsuarioService) {
   
     this.router = router;
@@ -56,16 +54,12 @@ export class CadastroAtividadeComponent implements OnInit {
     true // Add the missing argument here
   );
   
-  
 
   ngOnInit(): void {
     this.carregarProjetos();
     this.carregarUsuarios();
   }
 
- 
-
-  
   carregarAtividades(): void {
     this.atividadeService.findAll().subscribe(
       (atividades: Atividade[]) => {
@@ -78,9 +72,8 @@ export class CadastroAtividadeComponent implements OnInit {
   }
 
   carregarProjetos(): void {
-    this.projetoService.findAll().subscribe(
+    this.projetoService.listAll().subscribe(
       (projetos: Projeto[]) => {
-        console.log('projetos', projetos)
         this.listaProjetos = projetos;
       },
       (erro: any) => {
@@ -92,7 +85,6 @@ export class CadastroAtividadeComponent implements OnInit {
   carregarUsuarios(): void {
     this.usuarioService.listAll().subscribe(
       (usuarios: Usuario[]) => {
-        console.log('Usuários carregados:', usuarios);
         this.usuarios = usuarios;
       },
       (erro: any) => {
@@ -130,7 +122,6 @@ export class CadastroAtividadeComponent implements OnInit {
 
     this.atividade.ativo = true;
 
-    console.log('Atividade a ser criada:', JSON.stringify(this.atividade, null, 2));
 
     this.atividadeService.create(this.atividade).subscribe(
         (response: Atividade) => {
@@ -143,8 +134,6 @@ export class CadastroAtividadeComponent implements OnInit {
         }
     );
 }
-
-  
 
 
 }

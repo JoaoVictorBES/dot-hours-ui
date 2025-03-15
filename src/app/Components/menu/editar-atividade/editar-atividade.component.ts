@@ -23,11 +23,11 @@ export class EditarAtividadeComponent {
       projeto: Atividade | null = null;
       router: Router;
       atividade!: Atividade;
-      statusOptions = Object.values(StatusAtividade); // Pega os valores do enum StatusAtividade
+      statusOptions = Object.values(StatusAtividade); 
       usuarios: Usuario[] =[];
       usuariosNomesVinculados: string[] = []; 
-      selectedUsuarios: number[] = []; // Array para armazenar os IDs dos usuários selecionados
-      usuariosSelecionados: any[] = []; // Array para armazenar os objetos dos usuários selecionados
+      selectedUsuarios: number[] = []; 
+      usuariosSelecionados: any[] = []; 
       
       constructor(private atividadeService: AtividadeService, private route: ActivatedRoute, router: Router, private usuarioService: UsuarioService) {
         this.router = router;

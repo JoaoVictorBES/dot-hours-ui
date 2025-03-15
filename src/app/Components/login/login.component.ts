@@ -36,7 +36,6 @@ export class LoginComponent {
           this.authService.addToken(token);
           const user = this.authService.decodeToken(token);
           this.authService.saveUser(user);
-          console.log("Salvando usuário:", user);
   
           // Verifica o papel do usuário e redireciona para a rota correspondente
           if (user.role === 'ADMIN') {

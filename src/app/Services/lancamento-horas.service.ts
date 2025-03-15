@@ -22,7 +22,7 @@ export class LancamentoHorasService {
     
     const token = localStorage.getItem('token');
     
-    console.log("Token decodificado:", this.authService.jwtDecode());// Pegando o token do localStorage
+    console.log("Token decodificado:", this.authService.jwtDecode());
   
     console.log('Token enviado:', token);
 
@@ -30,7 +30,6 @@ export class LancamentoHorasService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
-    //const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     return this.http.post<LancamentoHoras>(`${this.API}/create`, lancamentoHoras, { headers }).pipe(
       catchError(error => {
@@ -49,17 +48,19 @@ export class LancamentoHorasService {
   }
 
   update(id: number, lancamentoHoras: LancamentoHoras, p0?: { headers: HttpHeaders; }): Observable<LancamentoHoras> {
-      const token = localStorage.getItem('token'); // Pegando o token do localStorage
+
+      const token = localStorage.getItem('token'); 
       console.log('Token enviado:', token);
     
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     
       return this.http.put<LancamentoHoras>(`${this.API}/update/${id}`, lancamentoHoras, { headers });
+
   }
 
   findById(id: number): Observable<LancamentoHoras>{
   
-      const token = localStorage.getItem('token'); // Pegando o token do localStorage
+      const token = localStorage.getItem('token'); 
   
       console.log('Token enviado:', token);
   
@@ -68,7 +69,7 @@ export class LancamentoHorasService {
       return this.http.get<LancamentoHoras>(`${this.API}/findById/${id}`, { headers }).pipe(
         catchError(error => {
           if (error.status === 403) {
-            this.router.navigate(['/dashboard/admin']); // Redireciona para login se não estiver autenticado
+            this.router.navigate(['/dashboard/admin']); 
           }
           return throwError(error);
         })
@@ -78,7 +79,7 @@ export class LancamentoHorasService {
 
   delete(id: number): Observable<string>{
     
-    const token = localStorage.getItem('token'); // Pegando o token do localStorage
+    const token = localStorage.getItem('token'); 
 
     console.log('Token enviado:', token);
 
@@ -87,7 +88,7 @@ export class LancamentoHorasService {
     return this.http.delete(`${this.API}/delete/${id}` , { headers, responseType: 'text'}).pipe(
       catchError(error => {
         if (error.status === 403) {
-          this.router.navigate(['/dashboard/admin']); // Redireciona para login se não estiver autenticado
+          this.router.navigate(['/dashboard/admin']); 
         }
         return throwError(error);
       })
@@ -96,6 +97,7 @@ export class LancamentoHorasService {
   }
 
   filtrarLancamentos(idUsuario?: string, idAtividade?: string, idProjeto?: string, dataRegistro?: string): Observable<LancamentoHoras[]> {
+
     const params: any = {};
 
     if (idUsuario) params.idUsuario = idUsuario;
@@ -104,6 +106,7 @@ export class LancamentoHorasService {
     if (dataRegistro) params.dataRegistro = dataRegistro;
 
     return this.http.get<LancamentoHoras[]>(`${this.API}/search`, { params });
+    
 }
 
 }

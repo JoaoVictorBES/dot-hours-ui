@@ -61,9 +61,12 @@ export class AuthService {
     return !!this.getToken();
   }
 
-  hasPermission(role: string): boolean {
-    const user = this.jwtDecode() as Usuario | null;
-    return user?.role === role;
+  hasPermission(role: string) {
+    const user = this.jwtDecode() as Usuario;
+    if (user.role == role)
+      return true;
+    else
+      return false;
   }
 
   logout() {
@@ -128,6 +131,27 @@ export class AuthService {
   // Alterar a senha com o novo token
   changePassword(token: string, newPassword: string): Observable<any> {
     return this.http.post(`${this.api}/change-password?token=${token}`, { newPassword });
+  }
+
+  getUserInfo(): any {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+  
+    const tokenPayload = JSON.parse(atob(token.split('.')[1])); // Decodifica o token JWT
+    return { role: tokenPayload.role }; // Ajuste conforme a estrutura do token
+  }
+
+  getUserRole(): any {
+    const token = localStorage.getItem('token'); // Recupera o token do usuário
+    if (!token) return null;
+
+    try {
+      const tokenPayload = JSON.parse(atob(token.split('.')[1])); // Decodifica o token JWT
+      return tokenPayload.role || null; // Retorna a role do usuário
+    } catch (error) {
+      console.error('Erro ao decodificar o token JWT', error);
+      return null;
+    }
   }
 
 }

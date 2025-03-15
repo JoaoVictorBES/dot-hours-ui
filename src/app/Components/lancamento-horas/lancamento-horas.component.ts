@@ -22,13 +22,11 @@ export class LancamentoHorasComponent {
 
   constructor(private lancamentoHorasService: LancamentoHorasService, private authService: AuthService, private route: ActivatedRoute, private router: Router, private atividadeService: AtividadeService) {
       this.router = router;
-      //this.idUsuario = this.authService.getUsuarioId();
   }
 
   dataInicio: string = '';
   dataFim: string = '';
   tempoDuracao: string = '';
-  //idUsuario: number;
   atividades: Atividade[] = [];
   lancamento!: LancamentoHoras;
 

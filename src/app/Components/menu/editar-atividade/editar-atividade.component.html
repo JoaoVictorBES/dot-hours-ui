@@ -4,17 +4,25 @@
             <div class="content">
                 <h2 class="text-center">{{ atividade.nome }}</h2>
                 <div class="row g-3" *ngIf="atividade">
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <label for="criacao">Criação</label>
                         <input type="date" class="form-control" [(ngModel)]="atividade.dataCriacao">
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <label for="inicio">Início</label>
                         <input type="date" class="form-control" [(ngModel)]="atividade.dataInicio">
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <label for="fim">Fim</label>
                         <input type="date" class="form-control" [(ngModel)]="atividade.dataFim">
+                    </div>
+                    <div class="col-lg-3 mb-3">
+                        <label for="status">Status</label>
+                        <select class="form-control input-custom" name="status" [(ngModel)]="atividade.status">
+                            <option *ngFor="let status of statusOptions" [value]="status">
+                                {{ status }}
+                            </option>
+                        </select>
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="usuarios-vinculados">Vincular usuários</label>
@@ -36,14 +44,7 @@
                         </ul>
                     </div>
                     
-                    <div class="col-lg-6 mb-3">
-                        <label for="status">Status</label>
-                        <select class="form-control input-custom" name="status" [(ngModel)]="atividade.status">
-                            <option *ngFor="let status of statusOptions" [value]="status">
-                                {{ status }}
-                            </option>
-                        </select>
-                    </div>
+                    
                     <div class="col-lg-12">
                         <label for="descricao">Descrição</label>
                         <textarea class="form-control" rows="3" [(ngModel)]="atividade.descricao"></textarea>
@@ -59,12 +60,6 @@
                             [ngClass]="atividade.ativo ? 'btn-danger' : 'btn-success'">
                             {{ atividade.ativo ? 'Desativar' : 'Ativar' }}
                         </button>
-                    </div>
-                    <div class="col-lg-12 mt-3">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                            <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-                        </div>
                     </div>
                 </div>
             </div>

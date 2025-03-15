@@ -7,7 +7,7 @@
             <!-- Cabeçalho e Botão -->
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h2 class="fw-bold">USUÁRIOS</h2>
-                <button class="btn btn-project" [routerLink]="['/cadastro/usuario']">NOVO USUÁRIO</button>
+                <button *ngIf="isAdmin" class="btn btn-project" [routerLink]="['/cadastro/usuario']">NOVO USUÁRIO</button>
             </div>
 
             <!-- Barra de Filtros -->
@@ -28,8 +28,7 @@
                     <option value="">Atividades</option>
                     <option *ngFor="let atividade of atividades" [value]="atividade.id">{{ atividade.nome }}</option>
                 </select>
-
-                <input type="datetime-local" class="form-control" [(ngModel)]="filtros.ultimoLogin">
+    
 
                 <button class="btn btn-primary" (click)="filtrarUsuarios()">Filtrar</button>
             </div>
@@ -55,8 +54,8 @@
                             <button class="view-btn" [routerLink]="['/usuario', usuario.id]">
                                 <i class="bi bi-eye"></i>
                             </button>
-                            <span class="separator">|</span>
-                            <button class="edit" [routerLink]="['/editar/usuario', usuario.id]">
+                            <span *ngIf="isAdmin" class="separator">|</span>
+                            <button *ngIf="isAdmin" class="edit" [routerLink]="['/editar/usuario', usuario.id]">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
                         </td>

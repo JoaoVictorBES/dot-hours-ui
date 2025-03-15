@@ -6,7 +6,8 @@
             <div class="row mt-5">
                 <div class="col-lg-12">
                     <div class="box-projetos">
-                        <button class="btn btn-primary btn-novo-projeto" [routerLink]="['/cadastro/projeto']">
+                    
+                        <button *ngIf="isAdmin" class="btn btn-primary btn-novo-projeto" [routerLink]="['/cadastro/projeto']">
                             <i class="fa-solid fa-plus"></i> Novo 
                         </button>
                         <h3>PROJETOS</h3>
@@ -41,7 +42,7 @@
                 <div class="col-lg-12">
                     <div class="box-atividades">
                     
-                        <button class="btn btn-primary btn-nova-atividade" [routerLink]="['/cadastro/atividade']">
+                        <button *ngIf="isAdmin" class="btn btn-primary btn-nova-atividade" [routerLink]="['/cadastro/atividade']">
                             <i class="fa-solid fa-plus"></i> Novo 
                         </button>
                         <h3>ATIVIDADES</h3>
@@ -72,7 +73,7 @@
             <div class="row mt-4 botoes">
                 <div class="col-lg-12">
                     <div class="row justify-content-center">
-                        <div class="col-lg-3 d-flex">
+                        <div *ngIf="isAdmin" class="col-lg-3 d-flex">
                             <a href="/listar/projetos" class="flex-fill">
                                 <div class="botao">
                                     <i class="fa-solid fa-clipboard-list"></i>
@@ -90,7 +91,7 @@
                             </a>                   
                         </div>
 
-                        <div class="col-lg-3 d-flex">
+                        <div *ngIf="isAdmin" class="col-lg-3 d-flex">
                             <a href="/listar/usuarios" class="flex-fill">
                                 <div class="botao">
                                     <i class="fa-solid fa-user"></i>

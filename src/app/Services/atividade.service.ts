@@ -22,25 +22,15 @@ export class AtividadeService {
 
   findAll(page: number = 0, size: number = 8): Observable<any> {
       
-   /*let token = '';
-
-    if (typeof window !== 'undefined') {
-       token = localStorage.getItem('token') || '';
-    }
-
-    console.log('Token enviado:', token);
-
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);*/
-
     return this.http.get<any>(`${this.API}/findAll?page=${page}&size=${size}`);
 
   }
 
   listAll(): Observable<Atividade[]> {
-    return this.http.get<Atividade[]>(`${this.API}/listAll`);
-  }
 
-  
+    return this.http.get<Atividade[]>(`${this.API}/listAll`);
+
+  }
 
   create(atividade: Atividade): Observable<Atividade> {
       
@@ -57,8 +47,7 @@ export class AtividadeService {
   
     console.log('Token enviado no header:', token);
     
-    atividade.status = StatusAtividade[atividade.status as keyof typeof StatusAtividade]; // Garante que o status seja um enum válido
-
+    atividade.status = StatusAtividade[atividade.status as keyof typeof StatusAtividade]; 
     return this.http.post<Atividade>(`${this.API}/create`, atividade, { headers }).pipe(
       catchError(error => {
         if (error.status === 403) {
@@ -72,7 +61,7 @@ export class AtividadeService {
 
    findById(id: number): Observable<Atividade>{
   
-      const token = localStorage.getItem('token'); // Pegando o token do localStorage
+      const token = localStorage.getItem('token'); 
   
       console.log('Token enviado:', token);
   
@@ -81,7 +70,7 @@ export class AtividadeService {
       return this.http.get<Atividade>(`${this.API}/findById/${id}`, { headers }).pipe(
         catchError(error => {
           if (error.status === 403) {
-            this.router.navigate(['/dashboard/admin']); // Redireciona para login se não estiver autenticado
+            this.router.navigate(['/dashboard/admin']); 
           }
           return throwError(error);
         })
@@ -92,7 +81,7 @@ export class AtividadeService {
     
   delete(id: number): Observable<string>{
     
-    const token = localStorage.getItem('token'); // Pegando o token do localStorage
+    const token = localStorage.getItem('token'); 
 
     console.log('Token enviado:', token);
 
@@ -101,7 +90,7 @@ export class AtividadeService {
     return this.http.delete(`${this.API}/delete/${id}` , { headers, responseType: 'text'}).pipe(
       catchError(error => {
         if (error.status === 403) {
-          this.router.navigate(['/dashboard/admin']); // Redireciona para login se não estiver autenticado
+          this.router.navigate(['/dashboard/admin']); 
         }
         return throwError(error);
       })
@@ -110,22 +99,27 @@ export class AtividadeService {
   }
 
   update(id: number, atividade: Atividade): Observable<Atividade> {
-      const token = localStorage.getItem('token'); // Pegando o token do localStorage
+
+      const token = localStorage.getItem('token');
       console.log('Token enviado:', token);
     
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     
       return this.http.put<Atividade>(`${this.API}/update/${id}`, atividade, { headers });
+      
   }
 
   toggleAtivo(id: number): Observable<string> {
+
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   
     return this.http.put(`${this.API}/toggle-status/${id}`, {}, { headers, responseType: 'text' });
+
   }
   
   filtrarAtividades(filtros: any): Observable<Atividade[]> {
+
     let params = new HttpParams();
 
     if (filtros.nome) params = params.set('nome', filtros.nome);
@@ -135,11 +129,12 @@ export class AtividadeService {
     if (filtros.dataFim) params = params.set('dataFim', filtros.dataFim);
 
     return this.http.get<Atividade[]>(`${this.API}/findByFilters`, { params });
+
   }
 
   findAtividadeByIdUsuario(id: number): Observable<Atividade[]>{
   
-    const token = localStorage.getItem('token'); // Pegando o token do localStorage
+    const token = localStorage.getItem('token'); 
 
     console.log('Token enviado:', token);
 
@@ -148,7 +143,7 @@ export class AtividadeService {
     return this.http.get<Atividade[]>(`${this.API}/findAtividadeByIdUsuario/${id}`, { headers }).pipe(
       catchError(error => {
         if (error.status === 403) {
-          this.router.navigate(['/dashboard/admin']); // Redireciona para login se não estiver autenticado
+          this.router.navigate(['/dashboard/admin']); 
         }
         return throwError(error);
       })

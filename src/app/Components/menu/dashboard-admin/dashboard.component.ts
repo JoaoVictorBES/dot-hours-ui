@@ -27,14 +27,15 @@ export class DashboardComponent {
 
   atividades: Atividade[] = [];
 
-  isCollapsed = false;
+  isAdmin: boolean = false;
 
   ngOnInit(): void {
+
+    this.verificarPermissao();
     // Chama o serviço para buscar os projetos ao inicializar o componente
     this.projetoService.findAll().subscribe(
       (dados: any) => {
-        
-        console.log('Dados retornados', dados)
+
           this.projetos = dados.content; // Ajuste conforme a estrutura real
     
       },
@@ -46,7 +47,6 @@ export class DashboardComponent {
     // Carregar as atividades
     this.atividadeService.findAll().subscribe(
       (dados) => {
-        console.log('dados', dados)
         this.atividades = dados.content;  // Armazenando as atividades
       },
       (erro) => {
@@ -55,12 +55,14 @@ export class DashboardComponent {
     );
   }
 
-  toggleSidebar() {
-    this.isCollapsed = !this.isCollapsed;
-  }
-
   logout() {
     this.authService.logout();
+  }
+
+  verificarPermissao(): void {
+    const usuario = this.authService.getUserRole(); 
+    this.isAdmin =  usuario === 'ROLE_ADMIN';
+
   }
 
 }
