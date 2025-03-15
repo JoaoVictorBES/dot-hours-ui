@@ -1,36 +1,31 @@
-Dot Hours - UI
+# Dot Hours - UI
 
 Este repositório contém a interface de usuário (UI) do sistema de gerenciamento e lançamento de horas Dot Hours. O projeto foi desenvolvido utilizando Angular para fornecer uma experiência responsiva e eficiente aos usuários.
 
-Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
-Angular (framework principal)
+- **Angular** (framework principal)
+- **TypeScript**
+- **HTML5 e CSS3**
+- **Angular Material** (para componentes visuais)
+- **RxJS** (para manipulação reativa de dados)
+- **JWT** (para autenticação e autorização)
 
-TypeScript
+## Funcionalidades Principais
 
-HTML5 e CSS3
+- Autenticação e autorização de usuários.
+- Registro e gerenciamento de atividades e horas trabalhadas.
+- Filtragem de projetos e atividades por diferentes critérios.
+- Interface intuitiva e responsiva.
 
-Angular Material (para componentes visuais)
-
-RxJS (para manipulação reativa de dados)
-
-JWT (para autenticação e autorização)
-
-Funcionalidades Principais
-
-Autenticação e autorização de usuários.
-
-Registro e gerenciamento de atividades e horas trabalhadas.
-
-Filtragem de projetos e atividades por diferentes critérios.
-
-Interface intuitiva e responsiva.
-
-Como Rodar o Projeto
+## Como Rodar o Projeto
 
 1. Clonar o Repositório
+
+   ```bash
    git clone git@github.com:JoaoVictorBES/dot-hours-ui.git
-cd dot-hours-ui
+   cd dot-hours-ui
+
 
 2. Instalar as Dependências
     npm install
