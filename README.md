@@ -1,28 +1,61 @@
-# DotHours
+Dot Hours - UI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+Este repositório contém a interface de usuário (UI) do sistema de gerenciamento e lançamento de horas Dot Hours. O projeto foi desenvolvido utilizando Angular para fornecer uma experiência responsiva e eficiente aos usuários.
 
-## Development server
+Tecnologias Utilizadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Angular (framework principal)
 
-## Code scaffolding
+TypeScript
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+HTML5 e CSS3
 
-## Build
+Angular Material (para componentes visuais)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+RxJS (para manipulação reativa de dados)
 
-## Running unit tests
+JWT (para autenticação e autorização)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Funcionalidades Principais
 
-## Running end-to-end tests
+Autenticação e autorização de usuários.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Registro e gerenciamento de atividades e horas trabalhadas.
 
-## Further help
+Filtragem de projetos e atividades por diferentes critérios.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# dot-hours-ui
+Interface intuitiva e responsiva.
+
+Como Rodar o Projeto
+
+1. Clonar o Repositório
+   git clone git@github.com:JoaoVictorBES/dot-hours-ui.git
+cd dot-hours-ui
+
+2. Instalar as Dependências
+    npm install
+
+3. Rodar o Servidor de Desenvolvimento
+   ng serve
+
+O projeto estará disponível em http://localhost:4200/.
+
+Contribuição
+
+Para contribuir, siga estas etapas:
+
+Crie um fork do repositório.
+
+Crie uma branch para sua funcionalidade (git checkout -b minha-feature).
+
+Commit suas alterações (git commit -m 'Adiciona nova funcionalidade').
+
+Suba sua branch (git push origin minha-feature).
+
+Abra um Pull Request.
+
+Contato
+
+Desenvolvido por João Victor 🚀
+
+Caso tenha dúvidas ou sugestões, entre em contato pelo GitHub ou LinkedIn!
